@@ -1,4 +1,11 @@
 coprocure-search {
+  box-sizing: border-box;
+  font-size: 16px;
+
+  li {
+    font-size: 16px;
+  }
+
   .search-form {
     width: 700px;
     margin: 20px auto;
@@ -8,7 +15,7 @@ coprocure-search {
   .query {
     width: 500px;
     margin: 0;
-    height: 48px;
+    height: 44px;
     font-size: 16px;
     text-indent: 50px;
     border: solid #2456b4 1px;
@@ -49,7 +56,6 @@ coprocure-search {
   .contract-name {
     width: 400px;
     color: #153269;
-    font-size: 18px;
     padding-right: 14px;
   }
   .summary {
@@ -76,7 +82,7 @@ coprocure-search {
     justify-content: space-around;
     flex-flow: row;
     align-items: flex-start;
-    background-color: #fafafa;
+    /* background-color: #fafafa; */
   }
   .results-list .all-files {
     display: flex;
@@ -128,7 +134,7 @@ coprocure-search {
   }
   .expandable-contract:hover,
   .expandable-contract.flipped {
-    background-color: #f4f9fe;
+    /* background-color: #f4f9fe; */
   }
   .what-is-this {
     position: absolute;
@@ -225,6 +231,7 @@ coprocure-search {
     height: 48px;
     font-size: 16px;
     padding: 10px;
+    box-sizing: border-box;
   }
   .modal-dialog form button {
     height: 48px;
