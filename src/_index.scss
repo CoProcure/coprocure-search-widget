@@ -5,6 +5,9 @@ coprocure-search {
   li {
     font-size: 16px;
   }
+  input, textarea {
+    box-sizing: border-box;
+  }
 
   .search-form {
     width: 700px;
@@ -15,7 +18,7 @@ coprocure-search {
   .query {
     width: 500px;
     margin: 0;
-    height: 44px;
+    height: 48px;
     font-size: 16px;
     text-indent: 50px;
     border: solid #2456b4 1px;
