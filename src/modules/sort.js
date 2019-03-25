@@ -34,17 +34,43 @@ export function handleSort(event) {
       window.highlightItem = '.contract-expiration';
     }
     if(sortableNode.classList.contains('contract-agency')) {
-      window.currentSort = '&sort=buyer%20asc';
+      window.currentSort = '&sort=buyer_lead_agency%20asc';
       if(window.highlightItem == '.contract-agency') {
         if(sortableNode.classList.contains('reverse')) {
           window.reverseSort = '';
-          window.currentSort = '&sort=buyer%20asc';
+          window.currentSort = '&sort=buyer_lead_agency%20asc';
         } else {
-          window.currentSort = '&sort=buyer%20desc';
+          window.currentSort = '&sort=buyer_lead_agency%20desc';
           window.reverseSort = 'contract-agency';
         }
       }
       window.highlightItem = '.contract-agency';
+    }
+    if(sortableNode.classList.contains('contract-vendor')) {
+      window.currentSort = '&sort=suppliers%20asc';
+      if(window.highlightItem == '.contract-vendor') {
+        if(sortableNode.classList.contains('reverse')) {
+          window.reverseSort = '';
+          window.currentSort = '&sort=suppliers%20asc';
+        } else {
+          window.currentSort = '&sort=suppliers%20desc';
+          window.reverseSort = 'contract-vendor';
+        }
+      }
+      window.highlightItem = '.contract-vendor';
+    }
+    if(sortableNode.classList.contains('contract-state')) {
+      window.currentSort = '&sort=states%20asc';
+      if(window.highlightItem == '.contract-state') {
+        if(sortableNode.classList.contains('reverse')) {
+          window.reverseSort = '';
+          window.currentSort = '&sort=states%20asc';
+        } else {
+          window.currentSort = '&sort=states%20desc';
+          window.reverseSort = 'contract-state';
+        }
+      }
+      window.highlightItem = '.contract-state';
     }
     sortHighlights();
     sortableNode.classList.add('highlit');

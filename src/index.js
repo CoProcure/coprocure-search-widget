@@ -39,7 +39,9 @@ class CoprocureSearch extends HTMLElement {
       if(document.querySelector('input[name="query"]').value != '') {
         trackEvent('search','query',document.querySelector('input[name="query"]').value);
       }
-      let searchUrl = 'https://nhhu21hyj1.execute-api.us-west-1.amazonaws.com/prod?size='+numResults+'&start='+start+'&q='+query+document.querySelector('input[name="query"]').value + window.currentSort; //+'&return='+fields;
+      let prodSearchUrl = 'https://nhhu21hyj1.execute-api.us-west-1.amazonaws.com/prod';
+      let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
+      let searchUrl = devSearchUrl+'?size='+numResults+'&start='+start+'&q='+query+document.querySelector('input[name="query"]').value + window.currentSort; //+'&return='+fields;
       fetch(searchUrl)
       .then(
         function(response) {
