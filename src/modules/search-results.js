@@ -9,7 +9,34 @@ function formatFilename(name) {
   return 'Contract document';
 }
 
+function offset() {
+  let timezone_offset_min = new Date().getTimezoneOffset() + 60,
+  offset_hrs = parseInt(Math.abs(timezone_offset_min/60)),
+  offset_min = Math.abs(timezone_offset_min%60),
+  timezone_standard;
+
+   if(offset_hrs < 10)
+  offset_hrs = '0' + offset_hrs;
+
+   if(offset_min < 10)
+  offset_min = '0' + offset_min;
+
+   // Add an opposite sign to the offset
+  // If offset is 0, it means timezone is UTC
+  if(timezone_offset_min < 0)
+  timezone_standard = '+' + offset_hrs + ':' + offset_min;
+  else if(timezone_offset_min > 0)
+  timezone_standard = '-' + offset_hrs + ':' + offset_min;
+  else if(timezone_offset_min == 0)
+  timezone_standard = 'Z';
+
+   // Timezone difference in hours and minutes
+  // String such as +5:30 or -6:00 or Z
+  return timezone_standard;
+}
+
 export function displayResults(data, numResults, showState) {
+  let currentOffset = offset();
   if(!window.trackEvent) {
     window.trackEvent = trackEvent;
   }
@@ -48,6 +75,13 @@ export function displayResults(data, numResults, showState) {
       })()}
     </li>
   ${data.hits.hit.map(function(result) {
+    if(isDate(result.fields.expiration)) {
+      if(result.fields.expiration < new Date().toISOString()) {
+        console.log('aint gonna happen')
+        console.log(result.fields.expiration)
+        return '';
+      }
+    }
     let contracts = [];
     if(result.fields.contract_files) {
       contracts = result.fields.contract_files;
@@ -87,7 +121,11 @@ export function displayResults(data, numResults, showState) {
       <span class="contract-expiration">
         ${(function() {
           if(isDate(result.fields.expiration)) {
-            return new Date(result.fields.expiration).toLocaleDateString();
+            let contractExpDate = result.fields.expiration;
+            if(result.fields.expiration.indexOf('Z') > -1) {
+              contractExpDate = result.fields.expiration.replace('Z',currentOffset);
+            }
+            return new Date(contractExpDate).toLocaleDateString();
           } else {
             return '';
           }
