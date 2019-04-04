@@ -16,7 +16,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "http://stash.aur.ziprealty.com:7990/projects/WBC/repos/coprocure-search/browse"
+    "url": "https://github.com/CoProcure/coprocure-search-widget"
   },
   "devDependencies": {
     "chai": "^4.2.0",
