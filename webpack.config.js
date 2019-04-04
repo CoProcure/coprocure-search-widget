@@ -8,21 +8,6 @@ const config = {
       {
         test: /\.html$/,
         use: [
-          {
-            loader: 'babel-loader',
-            options: {
-              presets: [
-                ["env", {
-                  "targets": {
-                    "browsers": ["> 0.2%", "not ie <= 10", "not ie_mob > 1"]
-                  },
-                  "debug": true
-                }]
-              ],
-              compact: "false",
-              comments: "false"
-            }
-          },
           'template-string-loader'
         ],
       },
@@ -52,27 +37,6 @@ const config = {
             }
           }
         ]
-      },
-      {
-        test: /\.js$/,
-        loader: 'babel-loader',
-        options: {
-          plugins: [
-            "transform-custom-element-classes",
-            "transform-es2015-classes",
-            "transform-es2015-for-of"
-          ],
-          presets: [
-            ["env", {
-              "targets": {
-                "browsers": ["> 0.2%", "not ie <= 10", "not ie_mob > 1"]
-              },
-              "debug": true
-            }]
-          ],
-          compact: "false",
-          comments: "false"
-        }
       }
     ]
   },

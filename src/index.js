@@ -1,9 +1,3 @@
-import 'whatwg-fetch';
-import 'nodelist-foreach-polyfill';
-import 'promise-polyfill/src/polyfill';
-import './modules/remove-polyfill';
-import 'document-register-element'
-
 import "./_index.scss";
 import template from "./index.html";
 import { displayResults } from './modules/search-results';
