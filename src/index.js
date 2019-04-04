@@ -9,7 +9,6 @@ class CoprocureSearch extends HTMLElement {
   connectedCallback() {
     let showState = parseInt(this.dataset.displayState);
     let numResults = parseInt(this.dataset.results);
-    console.log('num results '+numResults)
 
     const data = {};
     this.innerHTML = template(data);
