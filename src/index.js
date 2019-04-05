@@ -1,5 +1,5 @@
 import "./_index.scss";
-import template from "./index.html";
+import { template } from "./modules/template.js";
 import { displayResults } from './modules/search-results';
 import { handleExpansion } from './modules/expand-contract'
 import { handleSort } from './modules/sort';
