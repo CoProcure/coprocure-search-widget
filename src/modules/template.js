@@ -3,7 +3,7 @@ export function template() {
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
     <form method="GET" action="" class="search-form">
-      <input type="text" name="query" class="query" autocomplete="off" placeholder="Search all contracts">
+      <input type="text" name="query" class="query" autocomplete="off" placeholder="Search for cooperative contracts by keyword, vendor, lead agency, and more...">
       <i class="material-icons search-icon">search</i>
       <input type="submit" value="Search" id="submit-search" class="draw">
     </form>

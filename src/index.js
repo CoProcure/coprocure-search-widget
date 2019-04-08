@@ -11,7 +11,11 @@ class CoprocureSearch extends HTMLElement {
     let numResults = parseInt(this.dataset.results);
 
     const data = {};
-    this.innerHTML = template(data);
+    if(this.innerHTML.indexOf('<input') > -1) {
+      // no need to re-render if the search form was rendered on the server
+    } else {
+      this.innerHTML = template(data);
+    }
 
     document.getElementById('submit-search').addEventListener('click',function(e) {
       e.preventDefault();
