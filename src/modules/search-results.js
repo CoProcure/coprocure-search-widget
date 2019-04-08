@@ -77,8 +77,7 @@ export function displayResults(data, numResults, showState) {
   ${data.hits.hit.map(function(result) {
     if(isDate(result.fields.expiration)) {
       if(result.fields.expiration < new Date().toISOString()) {
-        console.log('aint gonna happen')
-        console.log(result.fields.expiration)
+        // hiding expired contracts here for now
         return '';
       }
     }
