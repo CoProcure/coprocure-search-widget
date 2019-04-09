@@ -74,7 +74,7 @@ function showModal(modalInfo) {
           activityData = JSON.parse(getLocalActivity());
         }
         activityData.forEach(function(item) {
-          postActivity(item.category, item.action, item.label);
+          postActivity(email, item.category, item.action, item.label);
         })
         document.querySelector('.modal-backdrop').remove();
         document.querySelector('.js-identityModal').remove();
