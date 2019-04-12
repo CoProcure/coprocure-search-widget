@@ -9,6 +9,8 @@ class CoprocureSearch extends HTMLElement {
   connectedCallback() {
     let showState = parseInt(this.dataset.displayState);
     let numResults = parseInt(this.dataset.results);
+    let prodSearchUrl = 'https://nhhu21hyj1.execute-api.us-west-1.amazonaws.com/prod';
+    let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
 
     const data = {};
     if(this.innerHTML.indexOf('<input') > -1) {
@@ -36,10 +38,28 @@ class CoprocureSearch extends HTMLElement {
       if(document.querySelector('input[name="query"]').value != '') {
         trackEvent('search','query',document.querySelector('input[name="query"]').value);
       }
-      let prodSearchUrl = 'https://nhhu21hyj1.execute-api.us-west-1.amazonaws.com/prod';
-      let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
       let searchUrl = devSearchUrl+'?size='+numResults+'&start='+start+'&q='+query+document.querySelector('input[name="query"]').value + window.currentSort; //+'&return='+fields;
       fetch(searchUrl)
+      .then(
+        function(response) {
+          if (response.status !== 200) {
+            console.log('Looks like there was a problem. Status Code: ' +
+              response.status);
+            return;
+          }
+          response.json().then((data) => {
+            displayResults(data, numResults, showState);
+            document.getElementById('submit-search').classList.remove('spinner')
+          });
+        }
+      )
+      .catch(function(err) {
+        console.log('Fetch Error :-S', err);
+      });
+    }
+
+    if(this.dataset.record) {
+      fetch(devSearchUrl+'?&q.parser=structured&q=_id:\''+window.location.search.replace('?id=','')+'\'')
       .then(
         function(response) {
           if (response.status !== 200) {

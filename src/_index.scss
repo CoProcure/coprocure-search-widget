@@ -56,6 +56,9 @@ coprocure-search {
   .results-list li:first-child {
     border: none;
   }
+  .share-link {
+    margin: 0 10px 0 0;
+  }
   .contract-name {
     width: 400px;
     color: #153269;
@@ -104,7 +107,7 @@ coprocure-search {
     margin: 20px;
     width: 250px;
   }
-  .additional-documents {
+  .additional-documents, .share-record {
     height: 48px;
     background: none;
     border: solid 1px #2456b4;
@@ -133,6 +136,9 @@ coprocure-search {
     background: no-repeat url("https://www.coprocure.us/img/icon-download.svg");
     text-indent: 32px;
     line-height: 20px;
+  }
+  .expandable-contract {
+    cursor: pointer;
   }
   .expandable-contract:hover,
   .expandable-contract.flipped {

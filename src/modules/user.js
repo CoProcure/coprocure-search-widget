@@ -66,7 +66,7 @@ function showModal(modalInfo) {
           console.log(data);
         });
         setUser(email);
-        trackEvent('user', 'login', modalInfo.contractId);
+        trackEvent('user', 'login', 'https://www.coprocure.us/search/record.html?id='+modalInfo.contractId);
     
         // clear their pasta ctivity and post it
         let activityData = [];
@@ -108,7 +108,7 @@ function showModal(modalInfo) {
         document.querySelector('.modal-backdrop').remove();
         document.querySelector('.js-identityModal').remove();
       });
-      trackEvent('user', 'contact-vendor', modalInfo.contractId);
+      trackEvent('user', 'contact-vendor', 'https://www.coprocure.us/search/record.html?id='+modalInfo.contractId);
     })
   }
 
@@ -135,7 +135,7 @@ function showModal(modalInfo) {
         document.querySelector('.modal-backdrop').remove();
         document.querySelector('.js-identityModal').remove();
       });
-      trackEvent('user', 'additional-documents', modalInfo.contractId);
+      trackEvent('user', 'additional-documents', 'https://www.coprocure.us/search/record.html?id='+modalInfo.contractId);
     })
   }
   
@@ -145,15 +145,18 @@ function showModal(modalInfo) {
 
     // if they clicked outside modal window, on background
     if(!checkParents(event, 'modal-dialog')) {
+      // if they aren't logged in will close modal
+      if(!getUser()) {
+        // close all open rows
+        let flippedRow = document.querySelector('.expandable-contract.flipped')
+        let contractId = flippedRow.dataset.hitId;
+        let expandedRow = document.querySelector('.contracts[data-hit-id="'+contractId+'"]');
+        flippedRow.classList.remove('flipped');
+        expandedRow.style.display = 'none';
+      }
       // close the modal
       document.querySelector('.modal-backdrop').remove();
       document.querySelector('.js-identityModal').remove();
-      // close all open rows
-      let flippedRow = document.querySelector('.expandable-contract.flipped')
-      let contractId = flippedRow.dataset.hitId;
-      let expandedRow = document.querySelector('.contracts[data-hit-id="'+contractId+'"]');
-      flippedRow.classList.remove('flipped');
-      expandedRow.style.display = 'none';
     }
 
   })
@@ -174,6 +177,25 @@ export function showIdentityModal(contractId) {
     contractId: contractId
   }
   showModal(modalInfo);
+}
+
+export function showShareModal(contractId) {  
+  let modalInfo = {
+    title: 'Success! Link copied to clipboard.',
+    body: `<p>You can also manually copy the link below to share:</p>
+    <form method="post" action="">
+        <label>
+          <input type="text" name="link" value="https://www.coprocure.us/search/record.html?id=${contractId}">
+        </label>
+      </form>`,
+    close: false,
+    contractId: contractId
+  }
+  showModal(modalInfo);
+
+  document.querySelector('.modal-body input[name="link"').select();
+  document.execCommand('copy');
+  
 }
 
 export function showContactVendorModal(contractId) {

@@ -109,13 +109,13 @@ export function displayResults(data, numResults, showState) {
     <li class="expandable-contract" data-hit-id="${result.id}">
       <span class="contract-name">
         <div>${result.fields.title}</div>
-        <div class="summary">${(function() {
+        ${(function() {
           if(result.fields.summary && result.fields.summary != 'undefined') { 
-            return `${result.fields.summary}`;
+            return `<div class="summary">${result.fields.summary}</div>`;
           } else {
             return '';
           }
-        })()}</div>
+        })()}
       </span>
       <span class="contract-expiration">
         ${(function() {
@@ -252,7 +252,8 @@ export function displayResults(data, numResults, showState) {
       </div>
       <div class="buttons">
         <button class="contact-vendor">Contact Vendor</button>
-        <button class="additional-documents">Request additional documents</button>
+        <button class="additional-documents">Request additional documents---</button>
+        <button class="share-record">Share this record</button>
       </div>
     </li>`;
   }).join('\n      ')}
