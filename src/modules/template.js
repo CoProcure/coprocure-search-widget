@@ -2,10 +2,13 @@ export function template() {
   return `
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
-    <form method="GET" action="" class="search-form">
-      <input type="text" name="query" class="query" autocomplete="off" placeholder="Search for cooperative contracts by keyword, vendor, lead agency, and more...">
-      <i class="material-icons search-icon">search</i>
-      <input type="submit" value="Search" id="submit-search" class="draw">
+    <form method="GET" action="">
+      <label for="contract-search" class="contract-search-label">Search for cooperative contracts by keyword, vendor, lead agency, and more...</label>
+      <div  class="search-form">
+        <input type="text" name="query" class="query" id="contract-search" autocomplete="off" placeholder="Search for contracts">
+        <i class="material-icons search-icon">search</i>
+        <input type="submit" value="Search" id="submit-search" class="draw">
+      </div>
       <span class="customize-results" style="display: none;">
         <span>
           <input type="checkbox" name="show-non-coop"> Show Non Cooperative Contracts
