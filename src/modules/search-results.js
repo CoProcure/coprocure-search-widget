@@ -266,7 +266,7 @@ export function displayResults(data, numResults, showState) {
       </div>
       <div class="buttons">
         <button class="contact-vendor">Contact Vendor</button>
-        <button class="additional-documents">Request additional documents---</button>
+        <button class="additional-documents">Request additional documents</button>
         <button class="share-record">Share this record</button>
       </div>
     </li>`;
