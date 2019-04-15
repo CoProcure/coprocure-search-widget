@@ -49,7 +49,7 @@ export function displayResults(data, numResults, showState) {
   }
   let clampWidth = '';
   if(!showState) {
-    clampWidth = 'style="max-width:748px; padding-inline-start:0px;"'
+    clampWidth = 'style="max-width:758px; padding:0px;"'
   }
   let html = `
   <ul class="results-list" ${clampWidth}>
