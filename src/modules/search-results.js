@@ -35,6 +35,13 @@ function offset() {
   return timezone_standard;
 }
 
+function isThisNonCooperative(record) {
+  if(record.fields.cooperative && (record.fields.cooperative.toLowerCase() == "false" || record.fields.cooperative)) {
+    return true;
+  }
+  return false;
+}
+
 export function displayResults(data, numResults, showState) {
   let currentOffset = offset();
   if(!window.trackEvent) {
@@ -76,10 +83,14 @@ export function displayResults(data, numResults, showState) {
     </li>
   ${data.hits.hit.map(function(result) {
     if(isDate(result.fields.expiration)) {
-      if(result.fields.expiration < new Date().toISOString()) {
+      if(result.fields.expiration < new Date().toISOString() && !document.querySelector('input[name="show-non-coop"]').checked) {
         // hiding expired contracts here for now
         return '';
       }
+    }
+    // also want to hide non cooperative contracts by default
+    if(isThisNonCooperative(result) && !document.querySelector('input[name="show-non-coop"]').checked) {
+      return;
     }
     let contracts = [];
     if(result.fields.contract_files) {
@@ -110,6 +121,9 @@ export function displayResults(data, numResults, showState) {
       <span class="contract-name">
         <div>${result.fields.title}</div>
         ${(function() {
+          if(isThisNonCooperative(result)) { 
+            result.fields.summary = "This contract does not include cooperative language";
+          }
           if(result.fields.summary && result.fields.summary != 'undefined') { 
             return `<div class="summary">${result.fields.summary}</div>`;
           } else {

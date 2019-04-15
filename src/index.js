@@ -26,6 +26,22 @@ class CoprocureSearch extends HTMLElement {
       getResults(false,0);
       this.classList.add('spinner');
     })
+
+    document.querySelector('.js-goto-request').addEventListener('click', (event) => {
+      if(document.querySelector('.submit-request').style.display == "none") {
+        document.querySelector('.submit-request').style.display = "block";
+      }
+    })
+    document.querySelector('input[name="show-non-coop"]').addEventListener('click', (event) => {
+      if(document.querySelector('input[name="query"]').value != '') {
+        window.getResults(false,0);
+      }
+    })
+    document.querySelector('input[name="show-expired"]').addEventListener('click', (event) => {
+      if(document.querySelector('input[name="query"]').value != '') {
+        window.getResults(false,0);
+      }
+    })
     
     window.currentSort = '';
     window.limit = false;
@@ -50,6 +66,7 @@ class CoprocureSearch extends HTMLElement {
           response.json().then((data) => {
             displayResults(data, numResults, showState);
             document.getElementById('submit-search').classList.remove('spinner')
+            document.querySelector('.customize-results').style.display = "block";
           });
         }
       )
