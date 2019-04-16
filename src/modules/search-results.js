@@ -36,7 +36,7 @@ function offset() {
 }
 
 function isThisNonCooperative(record) {
-  if(record.fields.cooperative && (record.fields.cooperative.toLowerCase() == "false" || record.fields.cooperative)) {
+  if(record.fields.cooperative && (record.fields.cooperative.toLowerCase() == "false" || record.fields.cooperative === 0)) {
     return true;
   }
   return false;
