@@ -49,10 +49,14 @@ function writeDocLink(doc) {
       <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
     </div>`;
   } else {
-    let olddoc = file[0];
-    return `<div class="fileset">
-      <a href="${olddoc.url}" target="_new" class="file-name-link">${formatFilename(olddoc.filename)}</a>
-    </div>`;
+    let olddocs = file;
+    let output = '';
+    olddocs.forEach(function(olddoc) {
+      output += `<div class="fileset">
+        <a href="${olddoc.url}" target="_new" class="file-name-link">${formatFilename(olddoc.filename)}</a>
+      </div>`;
+    })
+    return output;
   }
 }
 
