@@ -42,6 +42,20 @@ function isThisNonCooperative(record) {
   return false;
 }
 
+function writeDocLink(doc) {
+  let file = JSON.parse(doc);
+  if(file.url) {
+    return `<div class="fileset">
+      <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
+    </div>`;
+  } else {
+    let olddoc = file[0];
+    return `<div class="fileset">
+      <a href="${olddoc.url}" target="_new" class="file-name-link">${formatFilename(olddoc.filename)}</a>
+    </div>`;
+  }
+}
+
 export function displayResults(data, numResults, showState) {
   let currentOffset = offset();
   if(!window.trackEvent) {
@@ -182,10 +196,7 @@ export function displayResults(data, numResults, showState) {
         <div class="files">
           <p>Contract</p>
           ${contracts.map(function(doc) {
-            let file = JSON.parse(doc);
-            return `<div class="fileset">
-              <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
-            </div>`;
+            return writeDocLink(doc)
           }).join('\n      ')}
         </div>
         ${(function() {
@@ -193,10 +204,7 @@ export function displayResults(data, numResults, showState) {
             return `<div class="files">
               <p>Amendments</p>
               ${amendments.map(function(doc) {
-                let file = JSON.parse(doc);
-                return `<div class="fileset">
-                  <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
-                </div>`;
+                return writeDocLink(doc);
               }).join('\n      ')}
             </div>`;
           } else {
@@ -208,10 +216,7 @@ export function displayResults(data, numResults, showState) {
             return `<div class="files">
             <p>Pricing</p>
             ${pricing.map(function(doc) {
-              let file = JSON.parse(doc);
-              return `<div class="fileset">
-                <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
-              </div>`;
+              return writeDocLink(doc);
             }).join('\n      ')}
             </div>`;
           } else {
@@ -223,10 +228,7 @@ export function displayResults(data, numResults, showState) {
             return `<div class="files">
             <p>Bid Tabulation</p>
             ${bid_tabulation.map(function(doc) {
-              let file = JSON.parse(doc);
-              return `<div class="fileset">
-                <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
-              </div>`;
+              return writeDocLink(doc);
             }).join('\n      ')}
             </div>`;
           } else {
@@ -238,10 +240,7 @@ export function displayResults(data, numResults, showState) {
             return `<div class="files">
             <p>Bid Solicitation</p>
             ${bid_solicitation.map(function(doc) {
-              let file = JSON.parse(doc);
-              return `<div class="fileset">
-                <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
-              </div>`;
+              return writeDocLink(doc);
             }).join('\n      ')}
             </div>`;
           } else {
@@ -253,10 +252,7 @@ export function displayResults(data, numResults, showState) {
             return `<div class="files">
             <p>Other Documents</p>
             ${other_docs.map(function(doc) {
-              let file = JSON.parse(doc);
-              return `<div class="fileset">
-                <a href="${file.url}" target="_new" class="file-name-link">${formatFilename(file.name)}</a>
-              </div>`;
+              return writeDocLink(doc);
             }).join('\n      ')}
             </div>`;
           } else {
