@@ -4,6 +4,7 @@ import { displayResults } from './modules/search-results';
 import { handleExpansion } from './modules/expand-contract'
 import { handleSort } from './modules/sort';
 import { trackEvent } from './modules/tracking';
+import { asyncjsloader } from './modules/js-loader';
 
 class CoprocureSearch extends HTMLElement {
   connectedCallback() {
@@ -17,6 +18,7 @@ class CoprocureSearch extends HTMLElement {
       // no need to re-render if the search form was rendered on the server
     } else {
       this.innerHTML = template(data);
+      this.setupTracker();
     }
 
     document.getElementById('submit-search').addEventListener('click',function(e) {
@@ -101,5 +103,16 @@ class CoprocureSearch extends HTMLElement {
     });
     
   }
+
+  setupTracker() {
+    asyncjsloader("https://www.googletagmanager.com/gtag/js?id=UA-121612479-1", function() {
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-121612479-1');
+      // do I need to trigger page load now?
+    })
+  }
+
 }
 customElements.define("coprocure-search", CoprocureSearch);
