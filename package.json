@@ -1,6 +1,6 @@
 {
   "name": "@coprocure/search-widget",
-  "version": "2.1.13",
+  "version": "2.1.14",
   "description": "CoProcure search widget",
   "main": "src/index.js",
   "files": [
@@ -12,13 +12,11 @@
     "build": "webpack --progress --colors",
     "watch": "webpack --progress --colors --watch",
     "start:dev": "webpack-dev-server --open",
-
-    "getup": "npm version patch",    
+    "getup": "npm version patch",
     "prepublishOnly": "npm run build",
     "preversion": "npm test",
-    "postversion": "npm publish --access public",    
+    "postversion": "npm publish --access public",
     "postpublish": "git push origin --all; git push origin --tags",
-
     "test:watch": "karma start --auto-watch=true --single-run=false",
     "test:update-snapshots": "karma start --update-snapshots",
     "test:prune-snapshots": "karma start --prune-snapshots",
