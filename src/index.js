@@ -25,7 +25,7 @@ class CoprocureSearch extends HTMLElement {
       this.setupTracker();
     }
 
-    // want to fire custom events and have other files to respond to custom events
+    // ****want to fire custom events and have other files to respond to custom events****
     // get elements with id of 'submit-search'(input button on template.js), run function when user clicks
     document.getElementById('submit-search').addEventListener('click',function(e) {
       //prevent default
@@ -33,7 +33,7 @@ class CoprocureSearch extends HTMLElement {
       //set to empty string
       window.highlightItem = '';
       //set to empty string
-      window.reverseSort = '';
+      window.reverseSort = ''; 
       //getResults defined below
       getResults(false,0);
       //Adds 'spinner' class to custom element?

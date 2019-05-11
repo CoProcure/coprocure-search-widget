@@ -2,13 +2,16 @@ import { isDate } from './is-date';
 import { getUser } from './user';
 import { trackEvent } from './tracking';
 
+// formats files name
 function formatFilename(name) {
   if(name) {
+    //replace suffix with nothing
     return decodeURIComponent(name.replace('.php',''));
   }
   return 'Contract document';
 }
 
+// handles timezones
 function offset() {
   let timezone_offset_min = new Date().getTimezoneOffset() + 60,
   offset_hrs = parseInt(Math.abs(timezone_offset_min/60)),
@@ -33,8 +36,9 @@ function offset() {
    // Timezone difference in hours and minutes
   // String such as +5:30 or -6:00 or Z
   return timezone_standard;
-}
+} //end offset()
 
+// handles noncoop contracts
 function isThisNonCooperative(record) {
   if(record.fields.cooperative && (record.fields.cooperative.toLowerCase() == "false" || record.fields.cooperative === 0)) {
     return true;
@@ -42,6 +46,7 @@ function isThisNonCooperative(record) {
   return false;
 }
 
+//creates a link to the contract?
 function writeDocLink(doc) {
   let file = JSON.parse(doc);
   if(file.url) {
@@ -58,10 +63,12 @@ function writeDocLink(doc) {
     })
     return output;
   }
-}
+} //end writeDocLink()
 
 export function displayResults(data, numResults, showState) {
   let currentOffset = offset();
+
+  // ****Change window here as well?****
   if(!window.trackEvent) {
     window.trackEvent = trackEvent;
   }
@@ -69,15 +76,15 @@ export function displayResults(data, numResults, showState) {
   if(!showState) {
     clampWidth = 'style="max-width:758px; padding:0px;"'
   }
-  let html = `
+  let html = html`
   <ul class="results-list" ${clampWidth}>
     <li class="header">
       <span class="contract-name js-sortable">
-        Contract name 
+        Contract name
         <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
       </span>
       <span class="contract-expiration js-sortable">
-        Expiration 
+        Expiration
         <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
       </span>
       <span class="contract-agency js-sortable">
@@ -89,8 +96,8 @@ export function displayResults(data, numResults, showState) {
         <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
       </span>
       ${(function() {
-        if(showState) { 
-          return `<span class="contract-state js-sortable">
+        if(showState) {
+          return html`<span class="contract-state js-sortable">
           State
           <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
         </span>`;
@@ -134,15 +141,15 @@ export function displayResults(data, numResults, showState) {
     if(result.fields.other_docs_files) {
       other_docs = result.fields.other_docs_files;
     }
-    return `
+    return html`
     <li class="expandable-contract" data-hit-id="${result.id}">
       <span class="contract-name">
         <div>${result.fields.title}</div>
         ${(function() {
-          if(isThisNonCooperative(result)) { 
+          if(isThisNonCooperative(result)) {
             result.fields.summary = "This contract does not include cooperative language";
           }
-          if(result.fields.summary && result.fields.summary != 'undefined') { 
+          if(result.fields.summary && result.fields.summary != 'undefined') {
             return `<div class="summary">${result.fields.summary}</div>`;
           } else {
             return '';
@@ -163,7 +170,7 @@ export function displayResults(data, numResults, showState) {
         })()}
       </span>
       <span class="contract-agency">${(function() {
-        if(result.fields.buyer_lead_agency) { 
+        if(result.fields.buyer_lead_agency) {
           return `${result.fields.buyer_lead_agency}`;
         } else {
           return '';
@@ -171,10 +178,10 @@ export function displayResults(data, numResults, showState) {
       })()}
       </span>
       <span class="contract-vendor">${(function() {
-        if(result.fields.suppliers) { 
+        if(result.fields.suppliers) {
           return `${result.fields.suppliers.toString()}`;
         } else {
-          if(result.fields.vendor_info) { 
+          if(result.fields.vendor_info) {
             return `${result.fields.vendor_info.replace('undefined','')}`;
           } else {
             return '';
@@ -182,9 +189,9 @@ export function displayResults(data, numResults, showState) {
         }
       })()}</span>
       ${(function() {
-        if(showState) { 
+        if(showState) {
           return `<span class="contract-state">${(function() {
-            if(result.fields.states) { 
+            if(result.fields.states) {
               return `${result.fields.states}`;
             } else {
               return '';
@@ -300,7 +307,7 @@ export function displayResults(data, numResults, showState) {
       document.querySelector('.'+window.reverseSort).classList.add('reverse');
     }
   }
-  
+
   document.querySelector('.submit-request').style.display = 'block';
   let email = getUser();
   let emailField = document.querySelector('.submit-request input[name="email"]');
@@ -328,5 +335,8 @@ export function displayResults(data, numResults, showState) {
     return false;
 
   })
-}
+} //end displayResults()
 
+
+//Notes
+// Change window... here as well?

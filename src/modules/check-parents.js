@@ -1,3 +1,6 @@
+//Check elements/nodes or specific classes in order to do certain functions
+//ie: sort.js, expand-contract.js, 
+
 export function checkParents(event, targetClass) {
   let targetNode = event.target;
 /*
