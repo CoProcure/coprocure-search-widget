@@ -6,6 +6,7 @@ import { handleExpansion } from './modules/expand-contract'
 import { handleSort } from './modules/sort';
 import { trackEvent } from './modules/tracking';
 import { asyncjsloader } from './modules/js-loader';
+import { getResults } from './modules/get-results'
 
 // CoprocureSearch custom element
 class CoprocureSearch extends HTMLElement {
@@ -25,18 +26,20 @@ class CoprocureSearch extends HTMLElement {
       this.setupTracker();
     }
 
-    // ****want to fire custom events and have other files to respond to custom events****
+    // **** want to fire custom events and have other files to respond to custom events ****
     // get elements with id of 'submit-search'(input button on template.js), run function when user clicks
     document.getElementById('submit-search').addEventListener('click',function(e) {
       //prevent default
       e.preventDefault();
       //set to empty string
+      // ------ Get these off of the window
       window.highlightItem = '';
       //set to empty string
-      window.reverseSort = ''; 
+      // ------ Get these off of the window
+      window.reverseSort = '';
       //getResults defined below
       getResults(false,0);
-      //Adds 'spinner' class to custom element?
+      //Adds 'spinner' class to custom element
       this.classList.add('spinner');
     })
 
@@ -51,9 +54,7 @@ class CoprocureSearch extends HTMLElement {
     document.querySelector('input[name="show-non-coop"]').addEventListener('click', (event) => {
       // if input data value is empty
       if(document.querySelector('input[name="query"]').value != '') {
-        //run window.getResults(false, 0)
-        // getResults is defined below
-        //  ****instead of window instead of global, fire custom events****
+        //  ----- ****instead of calling window.getResults, fire custom events ---- ****
         window.getResults(false,0);
       }
     })
@@ -70,51 +71,6 @@ class CoprocureSearch extends HTMLElement {
     // set limit (associated with getResults function)to false
     window.limit = false;
 
-    // getResults function
-    window.getResults = (limit,start) => {
-      // set query to empty string
-      let query = '';
-
-      // if limit is true && input name value is empty
-      if(limit && document.querySelector('input[name="query"]').value == '') {
-        //then set query to this:
-        query = 'kcrpc%20and%20';
-      }
-
-      // if input name value is *not* empty
-      if(document.querySelector('input[name="query"]').value != '') {
-        // then run track event function (imported from tracking.js) with these parameters
-        trackEvent('search','query',document.querySelector('input[name="query"]').value);
-      }
-
-      // set searchUrl to this: (devSearchUrl, numResults declared above) (start is a parament of getResults) (query declared above)
-      let searchUrl = devSearchUrl+'?size='+numResults+'&start='+start+'&q='+query+document.querySelector('input[name="query"]').value + window.currentSort; //+'&return='+fields;
-      //get searchUrl
-      fetch(searchUrl)
-      .then(
-        function(response) {
-          //error handling
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-              response.status);
-            return;
-          }
-
-          response.json().then((data) => {
-            // display results to user (displayResults imported from search-results.js)
-            displayResults(data, numResults, showState);
-            //remove spinner class
-            document.getElementById('submit-search').classList.remove('spinner')
-            //change display settings
-            document.querySelector('.customize-results').style.display = "block";
-          });
-        }
-      )
-      .catch(function(err) {
-        //error handling
-        console.log('Fetch Error :-S', err);
-      });
-    } //end window.getResults
 
     // Not sure what s happening here...
     if(this.dataset.record) {
