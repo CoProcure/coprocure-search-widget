@@ -1,4 +1,4 @@
-    //Add getResults to another file modules/getResults.js, fire a custom event
+//Add getResults to another file modules/getResults.js, fire a custom event
 
 window.getResults = (limit,start) => {
   // set query to empty string

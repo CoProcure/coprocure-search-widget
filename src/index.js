@@ -26,16 +26,15 @@ class CoprocureSearch extends HTMLElement {
       this.setupTracker();
     }
 
-    // **** want to fire custom events and have other files to respond to custom events ****
     // get elements with id of 'submit-search'(input button on template.js), run function when user clicks
     document.getElementById('submit-search').addEventListener('click',function(e) {
       //prevent default
       e.preventDefault();
       //set to empty string
-      // ------ Get these off of the window
+      // ------ Get these off of the window, LATER
       window.highlightItem = '';
       //set to empty string
-      // ------ Get these off of the window
+      // ------ Get these off of the window, LATER
       window.reverseSort = '';
       //getResults defined below
       getResults(false,0);
@@ -54,6 +53,7 @@ class CoprocureSearch extends HTMLElement {
     document.querySelector('input[name="show-non-coop"]').addEventListener('click', (event) => {
       // if input data value is empty
       if(document.querySelector('input[name="query"]').value != '') {
+        // **** want to fire custom events and have other files to respond to custom events ****
         //  ----- ****instead of calling window.getResults, fire custom events ---- ****
         window.getResults(false,0);
       }
@@ -62,6 +62,8 @@ class CoprocureSearch extends HTMLElement {
     document.querySelector('input[name="show-expired"]').addEventListener('click', (event) => {
       //same code as above, lines 53-57
       if(document.querySelector('input[name="query"]').value != '') {
+        // **** want to fire custom events and have other files to respond to custom events ****
+        //  ----- ****instead of calling window.getResults, fire custom events ---- ****
         window.getResults(false,0);
       }
     })
@@ -72,7 +74,6 @@ class CoprocureSearch extends HTMLElement {
     window.limit = false;
 
 
-    // Not sure what s happening here...
     if(this.dataset.record) {
       fetch(devSearchUrl+'?&q.parser=structured&q=_id:\''+window.location.search.replace('?id=','')+'\'')
       .then(
@@ -108,8 +109,6 @@ class CoprocureSearch extends HTMLElement {
 
   } //end connectedCallback()
 
-
-  //What is this doing?
   setupTracker() {
     asyncjsloader("https://www.googletagmanager.com/gtag/js?id=UA-121612479-1", function() {
 
@@ -117,20 +116,8 @@ class CoprocureSearch extends HTMLElement {
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-121612479-1');
-      // do I need to trigger page load now?
     })
   } //end setupTracker()
 
 } //end CoProcureSearch html element
 customElements.define("coprocure-search", CoprocureSearch);
-
-
-////////////  Questions:  //////////////
-
-// Line 40: this.classList.add('spinner');
-// - does this add a class ('spinner') to the CoprocureSearch custom element?
-
-// Line 53: if(document.querySelector('input[name="query"]').value != '') {
-// - Is this line saying if the input data value is not empty (which would make the conditional statement 'true'), then run window.getResults?
-
-// Do custom elements have datasets? Curious about dataset.record, dataset.displayState, dataset.results.
