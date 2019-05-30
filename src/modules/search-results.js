@@ -36,7 +36,7 @@ function offset() {
 }
 
 function isThisNonCooperative(record) {
-  if(record.fields.cooperative && (record.fields.cooperative.toLowerCase() == "false" || record.fields.cooperative === 0)) {
+  if(typeof(record.fields.cooperative_language) != 'undefined' && (record.fields.cooperative_language.toLowerCase() == "false" || record.fields.cooperative_language == false)) {
     return true;
   }
   return false;
@@ -103,8 +103,9 @@ export function displayResults(data, numResults, showState) {
     </li>
   ${data.hits.hit.map(function(result) {
     if(isDate(result.fields.expiration)) {
-      if(result.fields.expiration < new Date().toISOString() && !document.querySelector('input[name="show-non-coop"]').checked) {
+      if(result.fields.expiration < new Date().toISOString() && !document.querySelector('input[name="show-expired"]').checked) {
         // hiding expired contracts here for now
+        console.log('got an expired contract')
         return '';
       }
     }
