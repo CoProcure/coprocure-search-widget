@@ -51,11 +51,13 @@ function writeDocLink(doc) {
   } else {
     let olddocs = file;
     let output = '';
-    olddocs.forEach(function(olddoc) {
-      output += `<div class="fileset">
-        <a href="${olddoc.url}" target="_new" class="file-name-link">${formatFilename(olddoc.filename)}</a>
-      </div>`;
-    })
+    if(olddocs.forEach) {
+      olddocs.forEach(function(olddoc) {
+        output += `<div class="fileset">
+          <a href="${olddoc.url}" target="_new" class="file-name-link">${formatFilename(olddoc.filename)}</a>
+        </div>`;
+      })
+    }
     return output;
   }
 }
@@ -164,7 +166,7 @@ export function displayResults(data, numResults, showState) {
       </span>
       <span class="contract-agency">${(function() {
         if(result.fields.buyer_lead_agency) { 
-          return `${result.fields.buyer_lead_agency}`;
+          return `${result.fields.buyer_lead_agency.replace('State of Arizonas','State of Arizona')}`;
         } else {
           return '';
         }

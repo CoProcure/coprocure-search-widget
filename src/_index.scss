@@ -358,5 +358,9 @@ coprocure-search {
     .modal textarea {
       max-width: 90%;
     }
+    .expandable-contract .summary { 
+      max-width: 90%;
+      word-break: break-word; 
+    }
   }
 }

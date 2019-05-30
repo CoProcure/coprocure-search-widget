@@ -10,8 +10,8 @@ class CoprocureSearch extends HTMLElement {
   connectedCallback() {
     let showState = parseInt(this.dataset.displayState);
     let numResults = parseInt(this.dataset.results);
-    let prodSearchUrl = 'https://nhhu21hyj1.execute-api.us-west-1.amazonaws.com/prod';
     let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
+    let prodSearchUrl = 'https://1lnhd57e8f.execute-api.us-west-1.amazonaws.com/prod'
 
     const data = {};
     if(this.innerHTML.indexOf('<input') > -1) {
@@ -36,6 +36,7 @@ class CoprocureSearch extends HTMLElement {
     })
     document.querySelector('input[name="show-non-coop"]').addEventListener('click', (event) => {
       if(document.querySelector('input[name="query"]').value != '') {
+        console.log('hi')
         window.getResults(false,0);
       }
     })
@@ -56,7 +57,7 @@ class CoprocureSearch extends HTMLElement {
       if(document.querySelector('input[name="query"]').value != '') {
         trackEvent('search','query',document.querySelector('input[name="query"]').value);
       }
-      let searchUrl = devSearchUrl+'?size='+numResults+'&start='+start+'&q='+query+document.querySelector('input[name="query"]').value + window.currentSort; //+'&return='+fields;
+      let searchUrl = prodSearchUrl+'?size='+numResults+'&start='+start+'&q='+query+document.querySelector('input[name="query"]').value + window.currentSort; //+'&return='+fields;
       fetch(searchUrl)
       .then(
         function(response) {
@@ -78,7 +79,7 @@ class CoprocureSearch extends HTMLElement {
     }
 
     if(this.dataset.record) {
-      fetch(devSearchUrl+'?&q.parser=structured&q=_id:\''+window.location.search.replace('?id=','')+'\'')
+      fetch(prodSearchUrl+'?&q.parser=structured&q=_id:\''+window.location.search.replace('?id=','')+'\'')
       .then(
         function(response) {
           if (response.status !== 200) {
@@ -101,7 +102,12 @@ class CoprocureSearch extends HTMLElement {
       handleExpansion(event);
       handleSort(event);
     });
-    
+
+    if(window.location.search.indexOf('coprocure_query=') > -1) {
+      document.querySelector('input[name="query"]').value = window.location.search.replace('?coprocure_query=','')
+      document.getElementById('submit-search').click();
+    }
+
   }
 
   setupTracker() {
