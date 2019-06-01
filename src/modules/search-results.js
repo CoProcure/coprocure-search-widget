@@ -76,7 +76,7 @@ export function displayResults(data, numResults, showState) {
   if(!showState) {
     clampWidth = 'style="max-width:758px; padding:0px;"'
   }
-  let html = html`
+  let html = `
   <ul class="results-list" ${clampWidth}>
     <li class="header">
       <span class="contract-name js-sortable">
@@ -97,7 +97,7 @@ export function displayResults(data, numResults, showState) {
       </span>
       ${(function() {
         if(showState) {
-          return html`<span class="contract-state js-sortable">
+          return `<span class="contract-state js-sortable">
           State
           <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
         </span>`;
@@ -141,7 +141,7 @@ export function displayResults(data, numResults, showState) {
     if(result.fields.other_docs_files) {
       other_docs = result.fields.other_docs_files;
     }
-    return html`
+    return `
     <li class="expandable-contract" data-hit-id="${result.id}">
       <span class="contract-name">
         <div>${result.fields.title}</div>

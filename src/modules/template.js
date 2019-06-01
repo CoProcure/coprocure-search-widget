@@ -1,5 +1,5 @@
 export function template() {
-  return html`
+  return `
     <form method="GET" action="">
       <label for="contract-search" class="contract-search-label">Search for cooperative contracts by keyword, vendor, lead agency, and more...</label>
       <div  class="search-form">

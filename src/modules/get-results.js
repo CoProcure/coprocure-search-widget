@@ -1,6 +1,31 @@
-//Add getResults to another file modules/getResults.js, fire a custom event
+import { trackEvent } from './tracking';
+import { displayResults } from './search-results';
 
-window.getResults = (limit,start) => {
+//Add getResults to another file modules/getResults.js, fire a custom event
+// Created custom event here
+// example:
+// let event = new CustomEvent('navigation',
+  // {'detail':{'chapter':this.currentChapter,'page':this.currentPage}});
+      // document.querySelector('at-header').dispatchEvent(event);
+
+
+      // this.addEventListener('navigation', function (e) {
+      //       console.log('event received by header')
+
+// let event = new CustomEvents('getResults')
+
+
+
+
+export function getResults(limit,start) {
+
+  //////// Will need to change this to reflect actual results. Currently throwing an error "Cannot read property 'dataset' of undefined" because of 'this' keyword. However, will need numResults variable in this function because of the searchUrl variable below. Hardcoding number to avoid error for now.
+  // let numResults = parseInt(this.dataset.results);
+  let numResults = 3
+  //the same goes for showState
+  // let showState = parseInt(this.dataset.displayState);
+  let showState = 3;
+  let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
   // set query to empty string
   let query = '';
 
