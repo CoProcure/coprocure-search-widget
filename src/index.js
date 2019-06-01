@@ -6,7 +6,7 @@ import { handleExpansion } from './modules/expand-contract'
 import { handleSort } from './modules/sort';
 import { trackEvent } from './modules/tracking';
 import { asyncjsloader } from './modules/js-loader';
-import { getResults } from './modules/get-results'
+import { getResults, helper } from './modules/get-results'
 
 // CoprocureSearch custom element
 class CoprocureSearch extends HTMLElement {
@@ -55,7 +55,9 @@ class CoprocureSearch extends HTMLElement {
       if(document.querySelector('input[name="query"]').value != '') {
         // **** want to fire custom events and have other files to respond to custom events ****
         //  ----- ****instead of calling window.getResults, fire custom events ---- ****
-        window.getResults(false,0);
+        // window.getResults(false,0);
+        console.log('non-coop radio clicked');
+        helper()
       }
     })
     // add click event to input
@@ -64,7 +66,8 @@ class CoprocureSearch extends HTMLElement {
       if(document.querySelector('input[name="query"]').value != '') {
         // **** want to fire custom events and have other files to respond to custom events ****
         //  ----- ****instead of calling window.getResults, fire custom events ---- ****
-        window.getResults(false,0);
+        console.log('expired radio clicked');
+        helper()
       }
     })
 

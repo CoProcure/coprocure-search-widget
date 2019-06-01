@@ -12,9 +12,15 @@ import { displayResults } from './search-results';
       // this.addEventListener('navigation', function (e) {
       //       console.log('event received by header')
 
-// let event = new CustomEvents('getResults')
 
+export function helper() {
+  let event = new Event('getResults', {'detail': getResults(false, 0)})
 
+  document.dispatchEvent(event)
+  document.addEventListener('getResults', function(e) {
+    console.log('event received');
+  })
+}
 
 
 export function getResults(limit,start) {
