@@ -18,7 +18,7 @@ export function handleExpansion(event) {
     } else {
       document.querySelector('.contracts[data-hit-id="'+item.dataset.hitId+'"]').style.display = 'none';
     }
-    
+
     trackEvent('contract', 'expand', 'https://www.coprocure.us/search/record.html?id='+item.dataset.hitId);
 
     if(getUser()) {

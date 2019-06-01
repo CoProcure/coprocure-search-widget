@@ -37,7 +37,8 @@ class CoprocureSearch extends HTMLElement {
       // ------ Get these off of the window, LATER
       window.reverseSort = '';
       //getResults defined below
-      getResults(false,0);
+      // getResults(false,0);
+      helper()
       //Adds 'spinner' class to custom element
       this.classList.add('spinner');
     })

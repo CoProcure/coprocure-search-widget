@@ -1,6 +1,7 @@
 //Imports
 import { checkParents } from './check-parents';
 import { trackEvent } from './tracking';
+import { getResults } from './get-results.js'
 
 
 export function handleSort(event) {

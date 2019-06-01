@@ -1,6 +1,7 @@
 import { isDate } from './is-date';
 import { getUser } from './user';
 import { trackEvent } from './tracking';
+import { getResults } from './get-results.js'
 
 // formats files name
 function formatFilename(name) {
@@ -291,6 +292,7 @@ export function displayResults(data, numResults, showState) {
     let moreLink = '';
     let lessLink = '';
     if(data.hits.found > startPoint + numResults) {
+      ////////// getResults function not working here? Why?
       moreLink = `<a href="javascript:trackEvent('search','next','${document.querySelector('input[name="query"]').value}');getResults(false,${data.hits.start + numResults});">>></a>`
     }
     if(data.hits.start > 0) {
