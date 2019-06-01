@@ -3,15 +3,6 @@ import { displayResults } from './search-results';
 
 //Add getResults to another file modules/getResults.js, fire a custom event
 // Created custom event here
-// example:
-// let event = new CustomEvent('navigation',
-  // {'detail':{'chapter':this.currentChapter,'page':this.currentPage}});
-      // document.querySelector('at-header').dispatchEvent(event);
-
-
-      // this.addEventListener('navigation', function (e) {
-      //       console.log('event received by header')
-
 
 export function helper() {
   let event = new CustomEvent('getResults', {detail: getResults(false, 0)})
@@ -86,4 +77,7 @@ I've imported the file in search-results.js, so I am not sure why it's not firin
 
 Timing -
 The console.log('event recieved'); only fires on the second click (or search entry), although the even seems to be firing the first time?
+
+The custom event is firing, but the search results aren't changing when radio buttons are clicked....But the getResults function is working.
+I even changed the function on line 41 of index.js to test. 
 */
