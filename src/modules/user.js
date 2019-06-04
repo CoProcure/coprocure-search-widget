@@ -27,7 +27,7 @@ export function setLocalActivity(data) {
 
 function showModal(modalInfo) {
   let modalBackdrop = `<div class="modal-backdrop fade"></div>`;
-  let modalHTML = `<div class="js-identityModal modal fade" tabindex="-1" role="dialog">
+  let modalHTML = html`<div class="js-identityModal modal fade" tabindex="-1" role="dialog">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -40,7 +40,7 @@ function showModal(modalInfo) {
       </div>
     </div>
   </div>`;
-  document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalBackdrop);  
+  document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalBackdrop);
   document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalHTML);
   setTimeout(function() {
     document.querySelector('.js-identityModal .modal-dialog').classList.add('show');
@@ -52,13 +52,13 @@ function showModal(modalInfo) {
       event.stopPropagation();
       let url = 'https://cncx06eah4.execute-api.us-east-1.amazonaws.com/production/signup';
       let email = document.querySelector('.modal-dialog form input[name="email"').value;
-  
+
       if(email.indexOf('@')>-1) {
         fetch(url, {
           method: 'post',
           headers: {
             "Content-Type": "application/json",
-          },    
+          },
           body: JSON.stringify({ email })
         }).then(function(response) {
           return response.text();
@@ -67,7 +67,7 @@ function showModal(modalInfo) {
         });
         setUser(email);
         trackEvent('user', 'login', 'https://www.coprocure.us/search/record.html?id='+modalInfo.contractId);
-    
+
         // clear their pasta ctivity and post it
         let activityData = [];
         if(getLocalActivity()) {
@@ -94,12 +94,12 @@ function showModal(modalInfo) {
       let description = document.querySelector('textarea[name="purchase-info"]').value;
       let contract = document.querySelector('input.contractId').value;
       let requestType = 'Vendor contact request';
-  
+
       fetch(url, {
         method: 'post',
         headers: {
           "Content-Type": "application/json",
-        },    
+        },
         body: JSON.stringify({ email, requestType, description, contract })
       }).then(function(response) {
         return response.text();
@@ -121,12 +121,12 @@ function showModal(modalInfo) {
       let description = document.querySelector('textarea[name="additional-documents"]').value;
       let contract = document.querySelector('input.contractId').value;
       let requestType = 'Request for additional documents';
-  
+
       fetch(url, {
         method: 'post',
         headers: {
           "Content-Type": "application/json",
-        },    
+        },
         body: JSON.stringify({ email, requestType, description, contract })
       }).then(function(response) {
         return response.text();
@@ -138,7 +138,7 @@ function showModal(modalInfo) {
       trackEvent('user', 'additional-documents', 'https://www.coprocure.us/search/record.html?id='+modalInfo.contractId);
     })
   }
-  
+
   // you can dismiss this modal but it will close all the expanded contract rows
   document.querySelector('.modal').addEventListener('click',function(event) {
     event.preventDefault();
@@ -164,8 +164,8 @@ function showModal(modalInfo) {
 
 export function showIdentityModal(contractId) {
   let modalInfo = {
-    title: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg> Unlock access to thousands of contracts`,
-    body: `<p>Enter your government email address to immediately get full free access - including contract downloads.</p>
+    title: html`<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg> Unlock access to thousands of contracts`,
+    body: html`<p>Enter your government email address to immediately get full free access - including contract downloads.</p>
       <form method="post" action="">
         <label>
           <span class="field-description">Your email address</span>
@@ -179,7 +179,7 @@ export function showIdentityModal(contractId) {
   showModal(modalInfo);
 }
 
-export function showShareModal(contractId) {  
+export function showShareModal(contractId) {
   let modalInfo = {
     title: 'Success! Link copied to clipboard.',
     body: `<p>You can also manually copy the link below to share:</p>
@@ -195,7 +195,7 @@ export function showShareModal(contractId) {
 
   document.querySelector('.modal-body input[name="link"').select();
   document.execCommand('copy');
-  
+
 }
 
 export function showContactVendorModal(contractId) {

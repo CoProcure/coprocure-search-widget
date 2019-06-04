@@ -1,6 +1,10 @@
 export function template() {
+<<<<<<< HEAD
   
   return `  
+=======
+  return `
+>>>>>>> 0c5b9679724f1853c7fe0c7a4ce577e66d241a3e
     <form method="GET" action="">
       <label for="contract-search" class="contract-search-label">Search for cooperative contracts by keyword, vendor, lead agency, and more...</label>
       <div  class="search-form">

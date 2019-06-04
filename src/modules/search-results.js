@@ -1,14 +1,18 @@
 import { isDate } from './is-date';
 import { getUser } from './user';
 import { trackEvent } from './tracking';
+import { getResults } from './get-results.js'
 
+// formats files name
 function formatFilename(name) {
   if(name) {
+    //replace suffix with nothing
     return decodeURIComponent(name.replace('.php',''));
   }
   return 'Contract document';
 }
 
+// handles timezones
 function offset() {
   let timezone_offset_min = new Date().getTimezoneOffset() + 60,
   offset_hrs = parseInt(Math.abs(timezone_offset_min/60)),
@@ -33,8 +37,9 @@ function offset() {
    // Timezone difference in hours and minutes
   // String such as +5:30 or -6:00 or Z
   return timezone_standard;
-}
+} //end offset()
 
+// handles noncoop contracts
 function isThisNonCooperative(record) {
   if(typeof(record.fields.cooperative_language) != 'undefined' && (record.fields.cooperative_language.toLowerCase() == "false" || record.fields.cooperative_language == false)) {
     return true;
@@ -42,6 +47,7 @@ function isThisNonCooperative(record) {
   return false;
 }
 
+//creates a link to the contract?
 function writeDocLink(doc) {
   let file = JSON.parse(doc);
   if(file.url) {
@@ -60,10 +66,12 @@ function writeDocLink(doc) {
     }
     return output;
   }
-}
+} //end writeDocLink()
 
 export function displayResults(data, numResults, showState) {
   let currentOffset = offset();
+
+  // ****Change window here as well?****
   if(!window.trackEvent) {
     window.trackEvent = trackEvent;
   }
@@ -75,11 +83,11 @@ export function displayResults(data, numResults, showState) {
   <ul class="results-list" ${clampWidth}>
     <li class="header">
       <span class="contract-name js-sortable">
-        Contract name 
+        Contract name
         <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
       </span>
       <span class="contract-expiration js-sortable">
-        Expiration 
+        Expiration
         <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
       </span>
       <span class="contract-agency js-sortable">
@@ -91,7 +99,7 @@ export function displayResults(data, numResults, showState) {
         <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
       </span>
       ${(function() {
-        if(showState) { 
+        if(showState) {
           return `<span class="contract-state js-sortable">
           State
           <svg class="icon icon-caret icon-caret--down" id="icon--dropdown-carrot" viewBox="0 0 9.7667 6.7638" ><title>Dropdown Caret</title><path d="M5.5819,6.4285,9.5683,1.4552A.8953.8953,0,0,0,8.87,0H.8969A.8953.8953,0,0,0,.1984,1.4552L4.1848,6.4285A.8953.8953,0,0,0,5.5819,6.4285Z"></path></svg>
@@ -142,10 +150,10 @@ export function displayResults(data, numResults, showState) {
       <span class="contract-name">
         <div>${result.fields.title}</div>
         ${(function() {
-          if(isThisNonCooperative(result)) { 
+          if(isThisNonCooperative(result)) {
             result.fields.summary = "This contract does not include cooperative language";
           }
-          if(result.fields.summary && result.fields.summary != 'undefined') { 
+          if(result.fields.summary && result.fields.summary != 'undefined') {
             return `<div class="summary">${result.fields.summary}</div>`;
           } else {
             return '';
@@ -166,18 +174,23 @@ export function displayResults(data, numResults, showState) {
         })()}
       </span>
       <span class="contract-agency">${(function() {
+<<<<<<< HEAD
         if(result.fields.buyer_lead_agency) { 
           return `${result.fields.buyer_lead_agency.replace('State of Arizonas','State of Arizona')}`;
+=======
+        if(result.fields.buyer_lead_agency) {
+          return `${result.fields.buyer_lead_agency}`;
+>>>>>>> 0c5b9679724f1853c7fe0c7a4ce577e66d241a3e
         } else {
           return '';
         }
       })()}
       </span>
       <span class="contract-vendor">${(function() {
-        if(result.fields.suppliers) { 
+        if(result.fields.suppliers) {
           return `${result.fields.suppliers.toString()}`;
         } else {
-          if(result.fields.vendor_info) { 
+          if(result.fields.vendor_info) {
             return `${result.fields.vendor_info.replace('undefined','')}`;
           } else {
             return '';
@@ -185,9 +198,9 @@ export function displayResults(data, numResults, showState) {
         }
       })()}</span>
       ${(function() {
-        if(showState) { 
+        if(showState) {
           return `<span class="contract-state">${(function() {
-            if(result.fields.states) { 
+            if(result.fields.states) {
               return `${result.fields.states}`;
             } else {
               return '';
@@ -287,6 +300,7 @@ export function displayResults(data, numResults, showState) {
     let moreLink = '';
     let lessLink = '';
     if(data.hits.found > startPoint + numResults) {
+      ////////// getResults function not working here? Why?
       moreLink = `<a href="javascript:trackEvent('search','next','${document.querySelector('input[name="query"]').value}');getResults(false,${data.hits.start + numResults});">>></a>`
     }
     if(data.hits.start > 0) {
@@ -303,7 +317,7 @@ export function displayResults(data, numResults, showState) {
       document.querySelector('.'+window.reverseSort).classList.add('reverse');
     }
   }
-  
+
   document.querySelector('.submit-request').style.display = 'block';
   let email = getUser();
   let emailField = document.querySelector('.submit-request input[name="email"]');
@@ -331,5 +345,8 @@ export function displayResults(data, numResults, showState) {
     return false;
 
   })
-}
+} //end displayResults()
 
+
+//Notes
+// Change window... here as well?

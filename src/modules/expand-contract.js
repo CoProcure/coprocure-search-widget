@@ -4,20 +4,23 @@ import { trackEvent } from './tracking';
 
 export function handleExpansion(event) {
   let item = checkParents(event, 'expandable-contract');
-  
+
   if(event.target.classList.contains('share-link')) {
     return;
   }
-  
+
   if(item) {
     item.classList.toggle('flipped')
     event.preventDefault();
+
     if(item.classList.contains('flipped')) {
       document.querySelector('.contracts[data-hit-id="'+item.dataset.hitId+'"]').style.display = 'flex';
     } else {
       document.querySelector('.contracts[data-hit-id="'+item.dataset.hitId+'"]').style.display = 'none';
     }
+
     trackEvent('contract', 'expand', 'https://www.coprocure.us/search/record.html?id='+item.dataset.hitId);
+
     if(getUser()) {
     } else {
       // if not display modal

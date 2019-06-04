@@ -9,6 +9,7 @@ export function trackEvent(category, action, label) {
       eventLabel: label
     });
   }
+  
   if(getUser()) {
     // post to dynamodb
     postActivity(getUser(), category, action, label);
