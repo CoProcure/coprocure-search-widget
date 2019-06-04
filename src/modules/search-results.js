@@ -187,8 +187,10 @@ export function displayResults(data, numResults, showState) {
       ${(function() {
         if(showState) { 
           return `<span class="contract-state">${(function() {
-            if(result.fields.states) { 
+            if(result.fields.states) {
               return `${result.fields.states}`;
+            } else if(result.fields.buyer_lead_agency_state) { 
+                return `${result.fields.buyer_lead_agency_state}`;
             } else {
               return '';
             }
