@@ -10,7 +10,7 @@ class CoprocureSearch extends HTMLElement {
   connectedCallback() {
     let showState = parseInt(this.dataset.displayState);
     let numResults = parseInt(this.dataset.results);
-    let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
+    // let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
     let prodSearchUrl = 'https://1lnhd57e8f.execute-api.us-west-1.amazonaws.com/prod'
 
     const data = {};
@@ -79,6 +79,8 @@ class CoprocureSearch extends HTMLElement {
     }
 
     if(this.dataset.record) {
+      document.querySelector('input[name="show-non-coop"]').checked = true;
+      document.querySelector('input[name="show-expired"]').checked = true;
       fetch(prodSearchUrl+'?&q.parser=structured&q=_id:\''+window.location.search.replace('?id=','')+'\'')
       .then(
         function(response) {

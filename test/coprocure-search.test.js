@@ -56,7 +56,7 @@ describe('<coprocure-search>', function() {
     expect(el.querySelectorAll('.results-list li')[1].innerHTML.indexOf('does not include cooperative')).to.be.below(0);
     // write test to make sure axon are flagged as non coop
   });
-
+/*
   it('We do have some axon non cooperative contracts', async function() {
     this.timeout(50000)
     const el = await fixture('<coprocure-search data-results="20"></coprocure-search>');    
@@ -68,5 +68,5 @@ describe('<coprocure-search>', function() {
     console.log(el.querySelectorAll('.results-list li')[1].innerHTML)
     expect(el.querySelectorAll('.results-list li')[1].innerHTML.indexOf('does not include cooperative')).to.be.above(0);
   });
-
+*/
 });
