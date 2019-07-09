@@ -174,13 +174,8 @@ export function displayResults(data, numResults, showState) {
         })()}
       </span>
       <span class="contract-agency">${(function() {
-<<<<<<< HEAD
         if(result.fields.buyer_lead_agency) { 
           return `${result.fields.buyer_lead_agency.replace('State of Arizonas','State of Arizona')}`;
-=======
-        if(result.fields.buyer_lead_agency) {
-          return `${result.fields.buyer_lead_agency}`;
->>>>>>> 0c5b9679724f1853c7fe0c7a4ce577e66d241a3e
         } else {
           return '';
         }

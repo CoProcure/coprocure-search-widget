@@ -11,6 +11,9 @@ import { getResults, helper } from './modules/get-results'
 // CoprocureSearch custom element
 class CoprocureSearch extends HTMLElement {
   connectedCallback() {
+    console.log('hello');
+    helper()
+
     let showState = parseInt(this.dataset.displayState);
     let numResults = parseInt(this.dataset.results);
     let devSearchUrl = 'https://9957n2ojug.execute-api.us-west-1.amazonaws.com/stage';
@@ -38,8 +41,10 @@ class CoprocureSearch extends HTMLElement {
       window.reverseSort = '';
       //getResults defined below
       // getResults(false,0);
+
+      let event = new CustomEvent('getResults', {limit: false, start: 0})
+      document.dispatchEvent(event)
       //  ----- ****instead of calling getResults, fire custom events ---- ****
-      helper()
       //Adds 'spinner' class to custom element
       this.classList.add('spinner');
     })
@@ -59,7 +64,6 @@ class CoprocureSearch extends HTMLElement {
         //  ----- ****instead of calling window.getResults, fire custom events ---- ****
         // window.getResults(false,0);
         console.log('non-coop radio clicked');
-        helper()
       }
     })
     // add click event to input
@@ -69,7 +73,6 @@ class CoprocureSearch extends HTMLElement {
         // **** want to fire custom events and have other files to respond to custom events ****
         //  ----- ****instead of calling window.getResults, fire custom events ---- ****
         console.log('expired radio clicked');
-        helper()
       }
     })
 
@@ -77,41 +80,10 @@ class CoprocureSearch extends HTMLElement {
     window.currentSort = '';
     // set limit (associated with getResults function)to false
     window.limit = false;
-<<<<<<< HEAD
-    
-    window.getResults = (limit,start) => {
-      let query = '';
-      if(limit && document.querySelector('input[name="query"]').value == '') {
-        query = 'kcrpc%20and%20';
-      }
-      if(document.querySelector('input[name="query"]').value != '') {
-        trackEvent('search','query',document.querySelector('input[name="query"]').value);
-      }
-      let searchUrl = prodSearchUrl+'?size='+numResults+'&start='+start+'&q='+query+document.querySelector('input[name="query"]').value + window.currentSort; //+'&return='+fields;
-      fetch(searchUrl)
-      .then(
-        function(response) {
-          if (response.status !== 200) {
-            console.log('Looks like there was a problem. Status Code: ' +
-              response.status);
-            return;
-          }
-          response.json().then((data) => {
-            displayResults(data, numResults, showState);
-            document.getElementById('submit-search').classList.remove('spinner')
-            document.querySelector('.customize-results').style.display = "block";
-          });
-        }
-      )
-      .catch(function(err) {
-        console.log('Fetch Error :-S', err);
-      });
-    }
-=======
-
->>>>>>> 0c5b9679724f1853c7fe0c7a4ce577e66d241a3e
 
     if(this.dataset.record) {
+      document.querySelector('input[name="show-non-coop"]').checked = true;
+      document.querySelector('input[name="show-expired"]').checked = true;
       fetch(prodSearchUrl+'?&q.parser=structured&q=_id:\''+window.location.search.replace('?id=','')+'\'')
       .then(
         function(response) {
