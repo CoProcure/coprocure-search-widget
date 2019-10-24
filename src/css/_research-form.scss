@@ -1,0 +1,63 @@
+coprocure-search {
+  section.contact-us.blue-back {
+    margin-top: 0;
+    padding: 9px;
+  }
+
+  .contact-us h2 {
+    margin-bottom: 20px;
+  }
+
+  .contact-us label {
+    text-align: center;
+  }
+
+  .contact-us p {
+    max-width: 500px;
+    margin: 10px 0;
+  }
+
+  .contact-us .fields {
+    width: 750px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px auto;
+    font-size: 14px;
+    line-height: 136.7%;
+    font-weight: normal;
+  }
+
+  .contact-us form .submitter-info, .contact-us form .message-info {
+    display: flex;
+    flex-flow: column;
+    align-items: flex-start;
+  }
+
+  .contact-us form .submitter-info {
+    margin-right: 30px;
+  }
+
+  .contact-us form input, .contact-us form textarea {
+    width: 360px;
+  }
+
+  .contact-us form label {
+    margin: 10px 0 4px 0;
+  }
+
+  .contact-us form textarea {
+    height: 97px;
+  }
+
+  .contact-us button {
+    margin-top: 1em;
+    background: transparent;
+    text-transform: uppercase;
+    font-style: normal;
+    text-align: center;
+    padding: 10px 35px;
+    transition: all .4s;
+    width: auto;
+  }
+}

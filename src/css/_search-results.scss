@@ -1,0 +1,171 @@
+coprocure-search {
+
+  .search-results-container {
+    margin: 75px auto;
+    background: #FAFAFA;
+    width: 1140px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .search-results {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #879EC0;
+
+    width: 850px;
+  }
+
+  .search-header {
+    display: flex;
+    margin-top: 24px;
+    position:relative;
+  }
+
+  .search-header-right {
+    width: 50%;
+    display: inline-block;
+    position:relative;
+  }
+
+  .search-header-left {
+    width: 50%;
+    display: inline-block;
+  }
+
+  .search-sort {
+    right: 0;
+    top: 10px;
+    font-weight: 600;
+    position: absolute;
+    color: #586C8A;
+  }
+
+  .search-results a {
+    color: #37A8EB;
+    text-decoration: none;
+  }
+
+  .search-results .result-title {
+    font-family: 'Poppins', sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+  .search-results .field-name {
+    color: #879EC0;
+    font-weight: 400;
+  }
+  .search-results .field-value {
+    font-size: 14px;
+    line-height: 140.1%;
+    color: #4F6481;
+    font-weight: 400;
+
+  }
+
+  .search-results ul {
+    display: block;
+    float: left;
+    width: 100%;
+  }
+
+  .search-filters {
+    background: #fff;
+    width: 290px;
+    padding: 30px 20px 10px;
+  }
+
+  .filter-section-title {
+    font-family: 'Lato', sans-serif;
+    color: #146798;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .search-filters .field-group-header {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 14px;
+    line-height: 150%;
+    color: #586C8A;
+  }
+  .search-filters label {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 18px;
+    color: #5D6782;
+  }
+  .show-filters {
+    display: none;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 136.7%;
+    color: #37A8EB;
+    position: absolute;
+    top: -10px;
+    left: 0;
+  }
+
+  select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    width: 220px;
+    height: 36px;
+    border: 1px solid #96A9C5;
+    border-radius: 0;
+
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+
+    padding: 10px 15px;
+    color: #146798;
+
+
+    background-color: #fff;
+    background-image: url(../../img/arrow-down-form.svg);
+    background-repeat: no-repeat, repeat;
+    background-position: right .7em top 15px, 0 0;
+    background-size: .65em auto, 100%;
+  }
+  select[multiple]:focus option:checked {
+    background: #37A8EB linear-gradient(0deg, #37A8EB 0%, #37A8EB 100%);
+  }
+
+  .search-filters select {
+    color: #586C8A;
+  }
+
+  .search-filters .field--select label {
+    color: #586C8A;
+    margin: 0 0 10px 0;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 768px) {
+  coprocure-search {
+    .show-filters {
+      display: block;
+    }
+
+    .search-header {
+      margin-top: 70px;
+    }
+
+    .search-sort{
+      width: 180px;
+      height: 38px;
+    }
+
+    .search-filters select {
+      color: #586C8A;
+      WIDTH: 100%;
+    }
+  }
+}
