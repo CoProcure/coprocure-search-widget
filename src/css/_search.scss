@@ -31,7 +31,9 @@ coprocure-search {
     font-size: 10px;
     align-items: center;
     width: 150px;
-    text-decoration: none;
+    text-decoration: none !important;
+    font-weight: normal !important;
+    border-bottom: none !important;
   }
   a.powered-by span {
     color: #4F6481;
@@ -39,12 +41,15 @@ coprocure-search {
     position: absolute;
     top: 34px;
   }
+  a.powered-by img {
+    background: none;
+  }
   a.powered-by:visited span {
     color: #4F6481;
   }
   .search-interior {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
     width: 100%;
     max-width: 1000px;
