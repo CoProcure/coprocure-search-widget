@@ -177,4 +177,12 @@ coprocure-search {
       width: 100%;
     }
   }
+  coprocure-search.offsite {
+    .search-header {
+      height: 160px;
+      .show-filters {
+        display: none;
+      }
+    }
+  }
 }

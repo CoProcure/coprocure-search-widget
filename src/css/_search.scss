@@ -85,6 +85,7 @@ coprocure-search {
     font-size: 14px;
     border: solid 1px #fff;
     box-shadow: none;
+    margin-bottom: 0;
   }
   .search-container button {
     background: #37A8EB;
@@ -118,11 +119,22 @@ coprocure-search {
     .search-container {
       flex-flow: column;
       box-shadow: none;
-      height: 76px;
+      height: auto;
+      max-width: 90%;
       input {
         max-width: 300px;
+        margin-bottom: 10px;
+      }
+      input.search-box {
+        width: 100%;
+        max-width: none;
+        min-height: 42px;
       }
     }
+    .search-icon {
+      top: 0;
+    }
+
     a.powered-by {
       position: relative;
     }

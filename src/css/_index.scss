@@ -250,6 +250,13 @@ coprocure-search {
       width: 100vw;
     }
 
+    .search-results .parties {
+      flex-flow: column;
+      .author, .buyer {
+        margin-bottom: 10px;
+      }
+    }
+
     .search-results-container {
       margin: 60px 0;
     }
@@ -282,7 +289,6 @@ coprocure-search {
 
     .show-filters {
       font-size: 16px;
-      display: none;
     }
 
     .card-details {
