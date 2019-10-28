@@ -18,7 +18,8 @@ coprocure-pagination {
     font-size: 14px;
     line-height: 40px;
     text-align: center;
-    cursor: pointer;
+    text-decoration: none !important;
+    border-bottom: none !important;
   }
   .page-links a.current {
     background: #EBF3FF;

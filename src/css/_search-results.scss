@@ -14,13 +14,14 @@ coprocure-search {
     line-height: 14px;
     color: #879EC0;
     width: 850px;
-    ul {
+    ul, li {
       list-style: none;
     }
   }
 
   .page-links a {
     text-decoration: none !important;
+    border-bottom: none !important;
   }
 
   .search-header {
@@ -50,7 +51,8 @@ coprocure-search {
 
   .search-results a {
     color: #37A8EB;
-    text-decoration: none;
+    text-decoration: none !important;
+    border-bottom: none !important;
   }
 
   .search-results .result-title {
@@ -62,7 +64,6 @@ coprocure-search {
   }
   .search-results .field-name {
     color: #879EC0;
-    font-weight: 400;
   }
   .search-results .field-value {
     font-size: 14px;
@@ -76,6 +77,7 @@ coprocure-search {
     display: block;
     float: left;
     width: 100%;
+    padding: 0;
   }
 
   .search-filters {
@@ -161,7 +163,8 @@ coprocure-search {
     }
 
     .search-header {
-      margin-top: 70px;
+      margin-top: 20px;
+      flex-flow: column;
     }
 
     .search-sort{
@@ -171,7 +174,7 @@ coprocure-search {
 
     .search-filters select {
       color: #586C8A;
-      WIDTH: 100%;
+      width: 100%;
     }
   }
 }

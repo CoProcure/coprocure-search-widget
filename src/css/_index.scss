@@ -254,6 +254,12 @@ coprocure-search {
       margin: 60px 0;
     }
 
+    .search-query-controls {
+      display: flex;
+      flex-flow: column;
+      margin: 0;
+    }
+    
     .search-filters {
       position: absolute;
       left: -300px;
@@ -276,6 +282,7 @@ coprocure-search {
 
     .show-filters {
       font-size: 16px;
+      display: none;
     }
 
     .card-details {

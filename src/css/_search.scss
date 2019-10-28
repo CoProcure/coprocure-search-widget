@@ -80,7 +80,7 @@ coprocure-search {
   }
   .search-container input {
     width: 630px;
-    height: 38px;
+    height: 42px;
     text-indent: 50px;
     font-size: 14px;
     border: solid 1px #fff;
@@ -104,5 +104,31 @@ coprocure-search {
     box-sizing: border-box;
     height: 42px;
     min-width: 120px;
+    font-weight: normal;
+  }
+}
+
+@media (max-width: 768px) {
+  coprocure-search {
+    .search-interior {
+      flex-flow: column;
+      padding: 10px;
+      height: auto;
+    }
+    .search-container {
+      flex-flow: column;
+      box-shadow: none;
+      height: 76px;
+      input {
+        max-width: 300px;
+      }
+    }
+    a.powered-by {
+      position: relative;
+    }
+    a.powered-by span {
+      top: -10px;
+    }
+
   }
 }
