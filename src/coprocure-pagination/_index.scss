@@ -1,0 +1,43 @@
+coprocure-pagination {
+  display: block;
+  text-align: center;
+}
+
+.page-links {
+  display: inline-block;
+  height: 40px;
+  background: #fff;
+  margin: 30px auto;
+  box-shadow: -1px -1px 4px rgba(209, 216, 250, 0.5), 2px 2px 4px rgba(209, 216, 250, 0.5);
+}
+.page-links a {
+  height: 40px;
+  width: 40px;
+  display: inline-block;
+  color: #146798;
+  font-size: 14px;
+  line-height: 40px;
+  text-align: center;
+  cursor: pointer;
+}
+.page-links a.current {
+  background: #EBF3FF;
+}
+.page-links .back, .page-links .forward {
+  display: inline-flex;
+  justify-content: center;
+}
+.page-links .back {
+  transform: rotateY(180deg)
+}
+
+@media (max-width: 410px) {
+  .page-links {
+    .back, .forward {
+      align-items: center;
+    }
+    a {
+      display: none;
+    }
+  }
+}

@@ -54,5 +54,7 @@
     "web component"
   ],
   "license": "ISC",
-  "dependencies": {}
+  "dependencies": {
+    "debounce": "^1.2.0"
+  }
 }

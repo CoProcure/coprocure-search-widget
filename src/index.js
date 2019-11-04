@@ -1,4 +1,4 @@
-import '../../coprocure.us/js/components/coprocure-search/index.js'
+import './search/index.js'
 import './css/_reset.scss'
 import './css/_search-results.scss'
 import './css/_index.scss'

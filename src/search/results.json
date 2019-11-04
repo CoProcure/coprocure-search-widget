@@ -1,0 +1,570 @@
+{
+  "status": {
+    "rid": "rK/mrcAtk4oCCr0E9A==",
+    "time-ms": 339
+  },
+  "hits": {
+    "found": 249,
+    "start": 0,
+    "hit": [
+      {
+        "id": "1d978726-486d-480a-a077-9e13d79a871a",
+        "fields": {
+          "buyer_lead_agency_state": "TX",
+          "bid_solicitation_files": [
+            "{\"name\":\"FS12-17 Final\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/undefined/1d978726-486d-480a-a077-9e13d79a871a/FS12-17%20Final.pdf\"}",
+            "{\"name\":\"FS12-17 Vendor Tab.xls\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/undefined/1d978726-486d-480a-a077-9e13d79a871a/FS12-17%20Vendor%20Tab.xls\"}",
+            "{\"name\":\"Houston Chronicle_Legal Ads_5.14.17\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/undefined/1d978726-486d-480a-a077-9e13d79a871a/Houston%20Chronicle_Legal%20Ads_5.14.17.pdf\"}",
+            "{\"name\":\"Legal AD_Houstion Chronicle FS12-17 5.7.17\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/undefined/1d978726-486d-480a-a077-9e13d79a871a/Legal%20AD_Houstion%20Chronicle%20FS12-17%205.7.17.pdf\"}",
+            "{\"name\":\"psc_Fire Service Apparatus\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/undefined/1d978726-486d-480a-a077-9e13d79a871a/psc_Fire%20Service%20Apparatus.pdf\"}"
+          ],
+          "contract_files": [
+            "{\"name\":\"Vests-Sales-Service\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/undefined/1d978726-486d-480a-a077-9e13d79a871a/Vests-Sales-Service.pdf\"}"
+          ],
+          "contract_number": "FS12-17",
+          "title": "Fire Apparatus",
+          "suppliers": "Vest’s Sales and Service, Inc.",
+          "source_key": "searchv1",
+          "buyer_lead_agency": "HGACBuy",
+          "expiration": "2019-11-30T08:00:00Z",
+          "summary": "These contracts cover a variety of manufacturers, and include all types of apparatus such as aerials, pumpers, tankers, heavy rescues, airport crash, hazmat, command and specialty."
+        }
+      },
+      {
+        "id": "recM1T6yLmRApe63R",
+        "fields": {
+          "buyer_lead_agency_state": "Missouri",
+          "cooperative_language": "true",
+          "title": "Tactical Vests",
+          "suppliers": "TYR Tactical, LLC",
+          "source_key": "searchv1",
+          "buyer_lead_agency": "Clay County",
+          "amendments_files": [
+            "{\"name\":\"Amendment\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/clay/docs/recM1T6yLmRApe63R/amendments_files_0.pdf\"}"
+          ],
+          "expiration": "2022-04-30T08:00:00Z",
+          "contract_files": [
+            "{\"name\":\"Contract\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/undefined/recM1T6yLmRApe63R/contract_files_0.pdf\"}"
+          ],
+          "contract_number": "2018-71"
+        }
+      },
+      {
+        "id": "4f1f17d1-c8f6-4957-be60-ed072e7b8037",
+        "fields": {
+          "buyer_lead_agency_state": "MO",
+          "contract_files": [
+            "{\"name\":\"2016-032/3R Ballistic Vests for Police\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/pipeline/files/city-of-lees-summit/4f1f17d1-c8f6-4957-be60-ed072e7b8037/2016-032-3R%2520FINAL%2520Contract%2520Document.pdf\"}"
+          ],
+          "effective": "2018-10-28T00:00:00Z",
+          "title": "2016-032/3R Ballistic Vests for Police",
+          "suppliers": "Southern Uniforms",
+          "source_key": "city-of-lees-summit",
+          "source_url": "https://cityofls.net/procurement-contract-services/contract-information/pgrid/2151/pageid/5",
+          "expiration": "2019-10-27T00:00:00Z",
+          "buyer_lead_agency": "City of Lees Summit (Police Department)"
+        }
+      },
+      {
+        "id": "8f8b7b50-afa7-42b3-a1f1-8d8f15670b84",
+        "fields": {
+          "buyer_lead_agency_state": "CA",
+          "cooperative_language": "true",
+          "contract_number": "1-18-68-19C",
+          "effective": "2018-02-10T07:00:00Z",
+          "title": "Gas, Liquefied Petroleum Gas (LPG)",
+          "other_docs_files": [
+            "{\"name\":\"User_Instructions-68-19C.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-68-19C/User_Instructions-68-19C.pdf\"}",
+            "{\"name\":\"Attachment_A_-_Contract_Pricing.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-68-19C/Attachment_A_-_Contract_Pricing.pdf\"}",
+            "{\"name\":\"Attachment_B_-_6810-4059.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-68-19C/Attachment_B_-_6810-4059.pdf\"}",
+            "{\"name\":\"Attachment_C_-_Delivery_Addition_New_Location_.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-68-19C/Attachment_C_-_Delivery_Addition_New_Location_.pdf\"}",
+            "{\"name\":\"Attachment_D-District_9_-_Delivery_Locations.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-68-19C/Attachment_D-District_9_-_Delivery_Locations.pdf\"}",
+            "{\"name\":\"Attachment_E_-_Calltrans_Districts_County_Defined.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-68-19C/Attachment_E_-_Calltrans_Districts_County_Defined.pdf\"}"
+          ],
+          "suppliers": "Amerigas Propane L.P.",
+          "source_key": "state-of-california",
+          "source_url": "https://caleprocure.ca.gov/PSRelay/ZZ_PO.ZZ_CTR_SUP_CMP.GBL?Page=ZZ_CTR_SUP_PG&Action=U&SETID=STATE&CNTRCT_ID=1-18-68-19C&VERSION_NBR=1",
+          "expiration": "2021-02-09T07:00:00Z",
+          "competitively_bid": "false",
+          "buyer_lead_agency": "State of California",
+          "govs_allowed": [
+            "[{\"department\":\"Statewide\"},{\"open_to_local_agencies\":\"Yes\"}]"
+          ]
+        }
+      },
+      {
+        "id": "b64a58b1-05b9-4dce-a358-8db5916c0174",
+        "fields": {
+          "buyer_lead_agency_state": "AZ",
+          "cooperative_language": "false",
+          "contract_number": "ADPS14-072663",
+          "effective": "2014-05-21T00:00:00Z",
+          "title": "Officer Safety Traffic Vests Blauer Brand Name Only Model 343",
+          "other_docs_files": [
+            "{\"name\":\"Section 3 Scope of Work~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677745&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Section 4 Special Terms~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677746&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Section 5 Uniform Terms~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677750&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Section 9 ProcureAZ Terms~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677759&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Offer and Acceptance ADPS14-00004045.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699294&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Executive Summary AdPS14-00004045.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699296&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Skaggs Email Clarification.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699298&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Skaggs Response to IFB Clarification.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699321&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Skaggs email backup on vest upgrade.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=1953977&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}"
+          ],
+          "supplier_contacts": [
+            "{\"name\":\"Skaggs Uniforms Mesa\",\"address\":\"2602 W Baseline Rd #12\",\"city\":\"Mesa\",\"state\":\"AZ\",\"zip\":\"85202\",\"phone\":\"(480)831-5199\",\"email\":\"lacey.smith@skaggscompanies.com\"}"
+          ],
+          "suppliers": "SKAGGS PUBLIC SAFETY UNIFORMS",
+          "source_key": "state-of-arizona",
+          "source_url": "https://procure.az.gov/bso/external/purchaseorder/poSummary.sdo?docId=ADPS14-072663&releaseNbr=0&parentUrl=contract",
+          "expiration": "2019-05-20T00:00:00Z",
+          "buyer_lead_agency": "State of Arizonas"
+        }
+      },
+      {
+        "id": "3f457d4c-47fe-451c-b9b8-c14cfe240c67",
+        "fields": {
+          "buyer_lead_agency_state": "AZ",
+          "cooperative_language": "false",
+          "effective": "2014-05-21T00:00:00Z",
+          "title": "Officer Safety Traffic Vests Blauer Brand Name Only Model 343",
+          "other_docs_files": [
+            "{\"name\":\"Section 3 Scope of Work~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677745&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Section 4 Special Terms~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677746&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Section 5 Uniform Terms~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677750&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Section 9 ProcureAZ Terms~2.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=677759&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Offer and Acceptance ADPS14-00004045.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699294&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Executive Summary AdPS14-00004045.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699296&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Skaggs Email Clarification.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699298&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Skaggs Response to IFB Clarification.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=699321&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}",
+            "{\"name\":\"Skaggs email backup on vest upgrade.pdf\",\"url\":\"https://procure.az.gov/bso/external/document/attachments/attachmentFileDetail.sdo?fileNbr=1953977&docId=ADPS14-072663&docType=P&releaseNbr=0&parentUrl=/external/purchaseorder/poSummary.sdo&external=true&searchType=contract\"}"
+          ],
+          "supplier_contacts": [
+            "{\"name\":\"Skaggs Uniforms Mesa\",\"address\":\"2602 W Baseline Rd #12\",\"city\":\"Mesa\",\"state\":\"AZ\",\"zip\":\"85202\",\"phone\":\"(480)831-5199\",\"email\":\"lacey.smith@skaggscompanies.com\"}"
+          ],
+          "suppliers": "SKAGGS PUBLIC SAFETY UNIFORMS",
+          "source_key": "state-of-arizona",
+          "source_url": "https://procure.az.gov/bso/external/purchaseorder/poSummary.sdo?docId=ADPS14-072663&releaseNbr=0&parentUrl=contract",
+          "buyer_lead_agency": "State of Arizonas",
+          "expiration": "2019-05-20T00:00:00Z",
+          "contract_number": "ADPS14-072663"
+        }
+      },
+      {
+        "id": "5c4f73c7-a5a7-4fed-857c-14c39837f645",
+        "fields": {
+          "buyer_lead_agency_state": "CA",
+          "cooperative_language": "true",
+          "contract_number": "1-18-84-07",
+          "effective": "2018-07-23T07:00:00Z",
+          "title": "Body Armor",
+          "other_docs_files": [
+            "{\"name\":\"Attachment_B_-_State_of_California_Bid_Specifications.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-84-07/Attachment_B_-_State_of_California_Bid_Specifications.pdf\"}",
+            "{\"name\":\"Attachment_C-_Product_Information.xls\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-84-07/Attachment_C-_Product_Information.xls\"}",
+            "{\"name\":\"Attachment_D_-_Training_Request_Form.doc\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-84-07/Attachment_D_-_Training_Request_Form.doc\"}",
+            "{\"name\":\"Attachment_E_-_Disposal_Request_Form_.doc\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-84-07/Attachment_E_-_Disposal_Request_Form_.doc\"}",
+            "{\"name\":\"User_Instructions_Supplement_1.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-84-07/User_Instructions_Supplement_1.pdf\"}",
+            "{\"name\":\"Attachment_A-Contract_Pricing_revised_8-1-18.pdf\",\"url\":\"https://s3.amazonaws.com/docs.coprocure.us/state-of-california/files/1-18-84-07/Attachment_A-Contract_Pricing_revised_8-1-18.pdf\"}"
+          ],
+          "suppliers": "Safariland",
+          "source_key": "state-of-california",
+          "source_url": "https://caleprocure.ca.gov/PSRelay/ZZ_PO.ZZ_CTR_SUP_CMP.GBL?Page=ZZ_CTR_SUP_PG&Action=U&SETID=STATE&CNTRCT_ID=1-18-84-07&VERSION_NBR=1",
+          "supplier_diversity_type": [
+            "Green"
+          ],
+          "expiration": "2021-07-20T07:00:00Z",
+          "competitively_bid": "false",
+          "buyer_lead_agency": "State of California",
+          "govs_allowed": [
+            "[{\"department\":\"Statewide\"},{\"open_to_local_agencies\":\"Yes\"}]"
+          ]
+        }
+      },
+      {
+        "id": "b5187d62-b48f-4275-97b7-7e74355a8164",
+        "fields": {
+          "cooperative_language": "True",
+          "contract_files": [
+            "{\"url\":\"https://www.gsaadvantage.gov/ref_text/GS07F0497T/GS07F0497T_online.htm\"}"
+          ],
+          "contract_number": "GS-07F-0497T",
+          "title": "Order-Level Materials (OLMs) - SUBJECT TO COOPERATIVE PURCHASING",
+          "supplier_contacts": [
+            "[{\"address\":\"11717 BEDFORD ST\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"zip\":\"77031-2111\",\"phone\":\"7139521983\",\"email\":\"david@texascoolvest.com\"}]"
+          ],
+          "suppliers": "COOL VEST LLC",
+          "source_key": "GSA-84-70",
+          "source_url": "https://www.gsaadvantage.gov/ref_text/GS07F0497T/GS07F0497T_online.htm",
+          "expiration": "2022-07-31T00:00:00Z",
+          "buyer_lead_agency": "General Services Administration"
+        }
+      },
+      {
+        "id": "80657956-1514-4820-9032-eb5292883d5b",
+        "fields": {
+          "cooperative_language": "True",
+          "contract_files": [
+            "{\"url\":\"https://www.gsaadvantage.gov/ref_text/GS07F0497T/GS07F0497T_online.htm\"}"
+          ],
+          "contract_number": "GS-07F-0497T",
+          "title": "Introduction of New Products/Services relating to Special Purpose Clothing",
+          "supplier_contacts": [
+            "[{\"address\":\"11717 BEDFORD ST\",\"city\":\"HOUSTON\",\"state\":\"TX\",\"zip\":\"77031-2111\",\"phone\":\"7139521983\",\"email\":\"david@texascoolvest.com\"}]"
+          ],
+          "suppliers": "COOL VEST LLC",
+          "source_key": "GSA-84-70",
+          "source_url": "https://www.gsaadvantage.gov/ref_text/GS07F0497T/GS07F0497T_online.htm",
+          "expiration": "2022-07-31T00:00:00Z",
+          "buyer_lead_agency": "General Services Administration"
+        }
+      },
+      {
+        "id": "9a26809d-0cac-4154-afd4-369d59087996",
+        "fields": {
+          "buyer_lead_agency_state": "OR",
+          "cooperative_language": "true",
+          "contract_files": [
+            "{\"url\":\"http://orpin.oregon.gov/open.dll/submitLogin?disID=2008406\"}"
+          ],
+          "contract_number": "257-1613-15",
+          "effective": "2015-12-31T00:00:00Z",
+          "title": "Load Bearing Ballistic Vest Carriers",
+          "supplier_contacts": [
+            "[{\"address\":\"2165 E. Colton Ave.\",\"city\":\"Mentone\",\"state\":\"CA\",\"zip\":\"92359\"}]"
+          ],
+          "suppliers": "BPS TACTICAL, INC.",
+          "source_key": "state-of-oregon",
+          "source_url": "http://orpin.oregon.gov/open.dll/submitLogin?disID=2008406",
+          "expiration": "2021-12-31T00:00:00Z",
+          "buyer_lead_agency": "State of Oregon (Police, Oregon State)"
+        }
+      },
+      {
+        "id": "f43264fa-ea91-4479-9468-c4c74510c23c",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "SAFARILAND, LLC",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "5010f793-e169-4b80-839e-859a4e950a53",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "POINT BLANK ENTERPRISES",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "fb4c43fa-b5db-4950-9738-28439bba1858",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "PROPPER INTERNATIONAL SALES, INC.",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "bf2456f5-c3a5-48cf-80a8-9036354aaaf1",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "SURVIVAL ARMOR, INC",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "d3f783ce-9e32-4c5a-9fa5-cffc8f05f998",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "US ARMOR CORPORATION",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "08376637-1dd6-472f-8061-b3da5733acc3",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "CENTRAL LAKE ARMOR EXPRESS, INC.",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "35fafe8f-a901-4cbd-8333-68d00d677f3a",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "GH ARMOR SYSTEMS INC.",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "c094a919-e0d3-447b-9f11-ad8076cf435f",
+        "fields": {
+          "buyer_lead_agency_state": "Washington",
+          "cooperative_language": "1",
+          "contract_files": [
+            "{\"name\":\"contract & amendments\",\"url\":\"https://apps.des.wa.gov/contracting/07115c.docx\"}",
+            "{\"name\":\"contract comments\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/ContractUpdates/07115\"}",
+            "{\"name\":\"vendor and contract performance feedback\",\"url\":\"https://apps.des.wa.gov/ContractEval/ContractFeedback.aspx?s=C&c=07115\"}"
+          ],
+          "contract_number": "07115",
+          "effective": "2018-03-16T00:00:00Z",
+          "title": "Body Armor NASPO",
+          "suppliers": "KDH DEFENSE SYSTEMS, INC",
+          "pricing_files": [
+            "{\"name\":\"armor express pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/367\"}",
+            "{\"name\":\"gh armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/360\"}",
+            "{\"name\":\"kdh pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/362\"}",
+            "{\"name\":\"point blank pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/366\"}",
+            "{\"name\":\"pricing & ordering\",\"url\":\"https://apps.des.wa.gov/contracting/07115p.docx\"}",
+            "{\"name\":\"propper pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/547\"}",
+            "{\"name\":\"safariland pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/368\"}",
+            "{\"name\":\"survival armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/364\"}",
+            "{\"name\":\"us armor pricing & distributors\",\"url\":\"http://www.naspovaluepoint.org/#/contract-details/66/contractor/365\"}"
+          ],
+          "source_key": "state-of-washington",
+          "summary": "NOTE: Renegade Armor has been purchased by Propper. Documentation was provided on 2/15/17 regarding the purchase. Vendor is suspended while review of purchase is approved by Lead State and NASPO. See letter in Pricing and Ordering. Contact Contract Administrator Melanie Williams with questions.  This is a NASPO ValuePoint contract led by the state of Colorado to provide personal body armor. The state of Washington has signed a participating addendum to use this contract. Customers have the option of utilizing any of the awarded vendors. Please note that pricing varies between vendors. Customers should utilize the vendor that best meets their needs.  - Ballistic Concealable Vest: Protection Level IIA, II, IIIA, III, and IV. - Ballistic Tactical Vest: Protection Level IIA, II, IIIA, III, and IV. - Stab Resistant Concealable Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Stab Resistant Tactical Vest: Spike or Edged Blade: Protection Level 1, 2, and 3. - Combination Concealable Vest: Ballistic and Spike and/or Edged Blade. - Combination Tactical Vest: Ballistic and Spike and/or Edged Blade. - K-9 Ballistic Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Stab Resistant Vest: Level IIA, II, IIIA, 2 and 3. - K-9 Combination Vest: Level IIA, II, IIIA, 2 and 3. - Ballistic Helmets: Level IIA, II, and IIIA. - Ballistic Shields: Hard and Soft: Level I, IIA, II, IIIA, III, and IV. - Accessories a) Ballistic: Hard and soft trauma plates; Groin, yoke, bicep, collar and throat protectors; Shield window b) Non-Ballistic: Carriers: Uniform Shirt, Concealable, and Tactical; Pouches; Replacement vest straps; ID patches; Carry bags; Concealed and Tactical vests, Shield, and Helmet; Helmet: face shield, equipment rails, pads, suspension; Shield: LED lights, shoulder straps, logos",
+          "expiration": "2020-03-15T00:00:00Z",
+          "source_url": "https://apps.des.wa.gov/DESContracts/Home/ContractSummary/07115",
+          "buyer_lead_agency": "State of Washington",
+          "govs_allowed": [
+            "[{\"name\":\"Organizations with Master Contract Usage Agreements\",\"url\":\"https://apps.des.wa.gov/DESContracts/Home/MCUAListing\"},{\"name\":\"MCUA Customer Communication Profile\",\"url\":\"https://apps.des.wa.gov/DESContracts/Subscribe\"},{\"name\":\"Oregon Coop Members\",\"url\":\"http://www.oregon.gov/das/Procurement/Pages/Orcppmember.aspx\"}]"
+          ]
+        }
+      },
+      {
+        "id": "d8a9db29-cb18-4525-ade8-2691a4be4ea5",
+        "fields": {
+          "cooperative_language": "True",
+          "contract_files": [
+            "{\"url\":\"https://www.gsaadvantage.gov/ref_text/GS07F194GA/GS07F194GA_online.htm\"}"
+          ],
+          "contract_number": "GS-07F-194GA",
+          "title": "Introduction of New Products/Services relating to Special Purpose Clothing",
+          "supplier_contacts": [
+            "[{\"address\":\"11420 FORTUNE CIR STE 12\",\"city\":\"WELLINGTON\",\"state\":\"FL\",\"zip\":\"33414-8743\",\"phone\":\"888-729-4442\",\"email\":\"info@pointtwousa.com\"}]"
+          ],
+          "suppliers": "POINT TWO AIR VESTS USA, LLC",
+          "source_key": "GSA-84-70",
+          "source_url": "https://www.gsaadvantage.gov/ref_text/GS07F194GA/GS07F194GA_online.htm",
+          "expiration": "2022-09-13T00:00:00Z",
+          "buyer_lead_agency": "General Services Administration"
+        }
+      },
+      {
+        "id": "d89275fb-2614-4121-9b04-189c2b72a32e",
+        "fields": {
+          "bid_solicitation_files": [
+            "{\"name\":\"Original RFP Document\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Original_RFP_Document_171695.pdf\"}",
+            "{\"name\":\"Vendor Notification of RFP\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Vendor%20notification%20list%20for%20Solicitation%20171695.pdf\"}",
+            "{\"name\":\"Proof of Publication\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Proof%20of%20Publication.pdf\"}",
+            "{\"name\":\"Proposal Tabulation\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Proposal%20Tabulation_REDACTED.pdf\"}",
+            "{\"name\":\"Prudential Response to RFP\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/score%20sheets_Redacted.pdf\"}",
+            "{\"name\":\"Score Sheet\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/AZ%20Compliance%20Questionnaire_Prudential_City%20of%20Tucson.pdf\"}",
+            "{\"name\":\"AZ Compliance Questionnaire\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Prudential_Respone.pdf\"}"
+          ],
+          "contract_files": [
+            "{\"name\":\"Official Signed Contract\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Official%20Signed%20Contract_Prudential.pdf\"}",
+            "{\"name\":\"2nd Year Renewal Letter\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Renewal_1_Prudential.pdf\"}",
+            "{\"name\":\"Award Letter\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Award%20Letter.pdf\"}"
+          ],
+          "title": "City of Tucson, AZ Contract: 171695 - Rental of Uniforms, Floor Mats, Mops, and Towels and Related Services",
+          "other_docs_files": [
+            "{\"name\":\"Pricing\",\"url\":\"https://www.omniapartners.com/hubfs/PUBLIC%20SECTOR/Supplier%20Information/Prudential%20Overall%20Supply/Pricing_171695.pdf\"}"
+          ],
+          "suppliers": "Prudential Overall Supply",
+          "source_key": "omnia",
+          "expiration": "2022-10-05T07:00:00Z",
+          "buyer_lead_agency": "City of Tucson - AZ"
+        }
+      }
+    ]
+  }
+}
