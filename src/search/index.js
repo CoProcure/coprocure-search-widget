@@ -37,9 +37,7 @@ export default class CoProcureSearch extends HTMLElement {
       }
     }
     if(attr === 'sort') {
-      if(newValue) {
-        this.sort = newValue;
-      }
+      this.sort = newValue;
     }
     if(attr === 'states') {
       if(newValue) {
