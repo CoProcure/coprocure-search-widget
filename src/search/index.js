@@ -58,7 +58,7 @@ export default class CoProcureSearch extends HTMLElement {
     }
     if(attr === 'search') {
     }
-    if(this.query) {
+    if(this.query || this.prepop) {
       window.searchThrottle();
     }
   }
@@ -143,15 +143,11 @@ export default class CoProcureSearch extends HTMLElement {
           } else {
             coprocureComponent.restrictedSearch = true;
           }
-          console.log(coprocureComponent.restrictedSearch)
         })
       }
     }
 
-    // if the prepop parameter is present we are going to perform a search right now
-    // query should stay blank
-    // need to populate buyers parameter, maybe not because that will limit all future searches
-    // could clear it when we check the all coprocure box...
+    // if the prepop parameter is present we are going to perform a search right nows
     if(this.prepop) {
       this.search();
     }
@@ -343,7 +339,12 @@ export default class CoProcureSearch extends HTMLElement {
       document.querySelector('coprocure-search .search-query').addEventListener('submit',function(event) {
         event.preventDefault();
         let searchString = this.querySelector('.search-box').value;
-        document.querySelector('coprocure-search').setAttribute('query',searchString);
+        if(searchString == document.querySelector('coprocure-search').getAttribute('query')) {
+          document.querySelector('coprocure-search').setAttribute('query','');
+        }
+        setTimeout(function() {
+          document.querySelector('coprocure-search').setAttribute('query',searchString);
+        },10);
       })
       let coprocureComponent = this;
       let releaseCheck = document.querySelector('coprocure-search input[name="release"]');
@@ -356,7 +357,6 @@ export default class CoProcureSearch extends HTMLElement {
           } else {
             coprocureComponent.restrictedSearch = true;
           }
-          console.log(coprocureComponent.restrictedSearch)
         })
       }
     }

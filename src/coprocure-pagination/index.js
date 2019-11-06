@@ -57,9 +57,11 @@ export default class CoProcurePagination extends HTMLElement {
         link.addEventListener('click', function(event) {
           event.preventDefault()
           let desiredPage = this.dataset.pageNum;
+          console.log(desiredPage);
           if(desiredPage > 0 && desiredPage <= numPages) {
             let navEvent = new CustomEvent('navigation', {'detail': {'page':desiredPage}});          
             document.querySelector('coprocure-pagination').dispatchEvent(navEvent);
+            console.log('sent event')
           }    
         })
       })
