@@ -87,6 +87,15 @@ export default class CoProcureSearch extends HTMLElement {
       this.searchSourceLimit = this.getAttribute('searchonly');
       this.restrictedSearch = true;
     }
+    this.prepop = '';
+    if(this.getAttribute('prepop')) {
+      this.prepop = this.getAttribute('prepop');
+    }
+    this.buyers = '';
+    if(this.getAttribute('buyers')) {
+      this.buyers = JSON.parse(this.getAttribute('buyers'))[0];
+    }
+
     this.headless = true;
     // we add a headles=true parameter to the custom element on coprocure.us. If this param is not present the search will display its own query box above the results. This version with an embedded search form is what is used on 3rd party partner sites
     if(!this.getAttribute('headless')) {
@@ -137,6 +146,15 @@ export default class CoProcureSearch extends HTMLElement {
         })
       }
     }
+
+    // if the prepop parameter is present we are going to perform a search right now
+    // query should stay blank
+    // need to populate buyers parameter, maybe not because that will limit all future searches
+    // could clear it when we check the all coprocure box...
+    if(this.prepop) {
+      this.search();
+    }
+
   }
 
   search() {
@@ -153,8 +171,8 @@ export default class CoProcureSearch extends HTMLElement {
     let url = `https://1lnhd57e8f.execute-api.us-west-1.amazonaws.com/prod?q.parser=structured&size=${numResults}&start=${start}`;
 
     // have to split the query into separate terms if it is not enclosed in quotes or the structured filters will fail
-    if(this.query) {
-      if(this.query.indexOf('"')<0) {
+    if(this.query || this.prepop) {
+      if(this.query && this.query.indexOf('"')<0) {
         url += `&q=(and `;
         decodeURIComponent(this.query).split(' ').forEach( (term) => {
           url += ` '${term}'`;
@@ -171,6 +189,9 @@ export default class CoProcureSearch extends HTMLElement {
       url += `)`
     }
     if( (this.buyers && this.buyers.length > 0)) {
+      if(typeof(this.buyers == "string")) {
+        this.buyers = [this.buyers];
+      }
       url += `(or buyer_lead_agency:`;
       this.buyers.forEach( (buyer) => {
         url += `'${encodeURIComponent(buyer)}' `;
@@ -204,7 +225,7 @@ export default class CoProcureSearch extends HTMLElement {
       url += `&fq=${encodeURIComponent(expParam)}`;
     }
     let component = this;
-    if(this.query) {
+    if(this.query || this.prepop) {
       fetch(url)
       .then(function(response) {
         return response.json();
