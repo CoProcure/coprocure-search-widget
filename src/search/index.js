@@ -136,9 +136,10 @@ export default class CoProcureSearch extends HTMLElement {
       let releaseCheck = document.querySelector('coprocure-search input[name="release"]');
       if(releaseCheck) {
         releaseCheck.addEventListener('click',function(event) {
-          console.log('clicked release checkbox')
           if(this.checked) {
             coprocureComponent.restrictedSearch = false;
+            coprocureComponent.buyers = '';
+            document.querySelector('coprocure-search').setAttribute('buyers','')
           } else {
             coprocureComponent.restrictedSearch = true;
           }
@@ -348,9 +349,10 @@ export default class CoProcureSearch extends HTMLElement {
       let releaseCheck = document.querySelector('coprocure-search input[name="release"]');
       if(releaseCheck) {
         releaseCheck.addEventListener('click',function(event) {
-          console.log('clicked release checkbox')
           if(this.checked) {
             coprocureComponent.restrictedSearch = false;
+            coprocureComponent.buyers = '';
+            document.querySelector('coprocure-search').setAttribute('buyers','')
           } else {
             coprocureComponent.restrictedSearch = true;
           }
