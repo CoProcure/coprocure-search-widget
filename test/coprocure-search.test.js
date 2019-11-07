@@ -42,8 +42,8 @@ describe('<coprocure-search>', function() {
     let searchBox = el.querySelector('.search-box')
     searchBox.value = 'play';
     document.querySelector('coprocure-search .search-now').click()
-    let results = await elementExists('.results-list');
-    expect(el.querySelectorAll('.results-list li').length).to.be.above(9);
+    let results = await elementExists('.search-results li');
+    expect(el.querySelectorAll('.search-results li').length).to.be.above(9);
   });
 
   it('KCRPC contracts are not non cooperative', async function() {
@@ -52,8 +52,8 @@ describe('<coprocure-search>', function() {
     let searchBox = el.querySelector('.search-box')
     searchBox.value = 'kcrpc';
     document.querySelector('coprocure-search .search-now').click()
-    let results = await elementExists('.results-list');    
-    expect(el.querySelectorAll('.results-list li')[1].innerHTML.indexOf('does not include cooperative')).to.be.below(0);
+    let results = await elementExists('.search-results');    
+    expect(el.querySelectorAll('.search-results li')[1].innerHTML.indexOf('does not include cooperative')).to.be.below(0);
     // write test to make sure axon are flagged as non coop
   });
 /*
