@@ -216,6 +216,10 @@ export default class CoProcureSearch extends HTMLElement {
       url += '&sort='+this.sort;
       trackEvent('search', 'sort', this.sort);
     }
+    // We want prepopulated, non query retrieved record sets to be title A-Z sorted
+    if(!this.sort && !this.query) {
+      url += '&sort=title%20asc'
+    }
     if(!this.showExpired) {
       url += `&fq=${encodeURIComponent(expParam)}`;
     }
