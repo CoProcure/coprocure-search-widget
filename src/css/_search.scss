@@ -115,6 +115,9 @@ coprocure-search {
       flex-flow: column;
       padding: 10px;
       height: auto;
+      form.search-query {
+        max-width: 100%;
+      }
     }
     .search-container {
       flex-flow: column;
@@ -126,13 +129,14 @@ coprocure-search {
         margin-bottom: 10px;
       }
       input.search-box {
-        width: 100%;
+        width: 90%;
         max-width: none;
         min-height: 42px;
       }
     }
     .search-icon {
-      top: 0;
+      top: 4px;
+      left: 20px;
     }
 
     a.powered-by {

@@ -148,6 +148,9 @@ coprocure-search {
   .search-filters select {
     color: #586C8A;
   }
+  .cooperative-agency {
+    min-width: 210px;
+  }
 
   .search-filters .field--select label {
     color: #586C8A;
@@ -179,7 +182,7 @@ coprocure-search {
   }
   coprocure-search.offsite {
     .search-header {
-      height: 160px;
+      height: 182px;
       .show-filters {
         display: none;
       }

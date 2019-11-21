@@ -34,4 +34,10 @@ You can install this component on your site if you would like to add the CoProcu
 ```
 <coprocure-search data-results="10" data-display-state="0" />
 ```
-      
+
+## Parameters
+
+- Control the number of results returned on each page: ```data-results="10"```
+- Limit the initial data set to a set of buyers: ```buyers='["State of Michigan"]'```
+- Load a set of results before any query is entered: ```prepop="true"```
+- Limit the scope of any query to results from a specific set of buyers: ```searchonly="State of Michigan"```

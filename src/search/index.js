@@ -37,9 +37,7 @@ export default class CoProcureSearch extends HTMLElement {
       }
     }
     if(attr === 'sort') {
-      if(newValue) {
-        this.sort = newValue;
-      }
+      this.sort = newValue;
     }
     if(attr === 'states') {
       if(newValue) {
@@ -58,7 +56,7 @@ export default class CoProcureSearch extends HTMLElement {
     }
     if(attr === 'search') {
     }
-    if(this.query) {
+    if(this.query || this.prepop) {
       window.searchThrottle();
     }
   }
@@ -87,6 +85,15 @@ export default class CoProcureSearch extends HTMLElement {
       this.searchSourceLimit = this.getAttribute('searchonly');
       this.restrictedSearch = true;
     }
+    this.prepop = '';
+    if(this.getAttribute('prepop')) {
+      this.prepop = this.getAttribute('prepop');
+    }
+    this.buyers = '';
+    if(this.getAttribute('buyers')) {
+      this.buyers = JSON.parse(this.getAttribute('buyers'))[0];
+    }
+
     this.headless = true;
     // we add a headles=true parameter to the custom element on coprocure.us. If this param is not present the search will display its own query box above the results. This version with an embedded search form is what is used on 3rd party partner sites
     if(!this.getAttribute('headless')) {
@@ -127,16 +134,22 @@ export default class CoProcureSearch extends HTMLElement {
       let releaseCheck = document.querySelector('coprocure-search input[name="release"]');
       if(releaseCheck) {
         releaseCheck.addEventListener('click',function(event) {
-          console.log('clicked release checkbox')
           if(this.checked) {
             coprocureComponent.restrictedSearch = false;
+            coprocureComponent.buyers = '';
+            document.querySelector('coprocure-search').setAttribute('buyers','')
           } else {
             coprocureComponent.restrictedSearch = true;
           }
-          console.log(coprocureComponent.restrictedSearch)
         })
       }
     }
+
+    // if the prepop parameter is present we are going to perform a search right nows
+    if(this.prepop) {
+      this.search();
+    }
+
   }
 
   search() {
@@ -153,8 +166,8 @@ export default class CoProcureSearch extends HTMLElement {
     let url = `https://1lnhd57e8f.execute-api.us-west-1.amazonaws.com/prod?q.parser=structured&size=${numResults}&start=${start}`;
 
     // have to split the query into separate terms if it is not enclosed in quotes or the structured filters will fail
-    if(this.query) {
-      if(this.query.indexOf('"')<0) {
+    if(this.query || this.prepop) {
+      if(this.query && this.query.indexOf('"')<0) {
         url += `&q=(and `;
         decodeURIComponent(this.query).split(' ').forEach( (term) => {
           url += ` '${term}'`;
@@ -171,6 +184,9 @@ export default class CoProcureSearch extends HTMLElement {
       url += `)`
     }
     if( (this.buyers && this.buyers.length > 0)) {
+      if(typeof(this.buyers == "string")) {
+        this.buyers = [this.buyers];
+      }
       url += `(or buyer_lead_agency:`;
       this.buyers.forEach( (buyer) => {
         url += `'${encodeURIComponent(buyer)}' `;
@@ -200,11 +216,15 @@ export default class CoProcureSearch extends HTMLElement {
       url += '&sort='+this.sort;
       trackEvent('search', 'sort', this.sort);
     }
+    // We want prepopulated, non query retrieved record sets to be title A-Z sorted
+    if(!this.sort && !this.query) {
+      url += '&sort=title%20asc'
+    }
     if(!this.showExpired) {
       url += `&fq=${encodeURIComponent(expParam)}`;
     }
     let component = this;
-    if(this.query) {
+    if(this.query || this.prepop) {
       fetch(url)
       .then(function(response) {
         return response.json();
@@ -321,19 +341,24 @@ export default class CoProcureSearch extends HTMLElement {
       document.querySelector('coprocure-search .search-query').addEventListener('submit',function(event) {
         event.preventDefault();
         let searchString = this.querySelector('.search-box').value;
-        document.querySelector('coprocure-search').setAttribute('query',searchString);
+        if(searchString == document.querySelector('coprocure-search').getAttribute('query')) {
+          document.querySelector('coprocure-search').setAttribute('query','');
+        }
+        setTimeout(function() {
+          document.querySelector('coprocure-search').setAttribute('query',searchString);
+        },10);
       })
       let coprocureComponent = this;
       let releaseCheck = document.querySelector('coprocure-search input[name="release"]');
       if(releaseCheck) {
         releaseCheck.addEventListener('click',function(event) {
-          console.log('clicked release checkbox')
           if(this.checked) {
             coprocureComponent.restrictedSearch = false;
+            coprocureComponent.buyers = '';
+            document.querySelector('coprocure-search').setAttribute('buyers','')
           } else {
             coprocureComponent.restrictedSearch = true;
           }
-          console.log(coprocureComponent.restrictedSearch)
         })
       }
     }
