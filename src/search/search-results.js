@@ -16,7 +16,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
         alignmentMod = 'margin-top: 33px;'
       }
       return `<div class="search-interior">
-      <a href="/" class="company-identifier powered-by" style="text-decoration: none;">
+      <a href="https://www.coprocure.us" class="company-identifier powered-by" style="text-decoration: none;">
         <span class="powered-by-text">Powered by</span>
         <img width="150px" src="https://www.coprocure.us/img/logo-svg.svg" alt="CoProcure logo">
       </a>
