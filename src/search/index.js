@@ -95,7 +95,9 @@ export default class CoProcureSearch extends HTMLElement {
     }
 
     this.headless = true;
-    // we add a headles=true parameter to the custom element on coprocure.us. If this param is not present the search will display its own query box above the results. This version with an embedded search form is what is used on 3rd party partner sites
+    // we add a headless=true parameter to the custom element on coprocure.us. If this param is not
+    // present the search will display its own query box above the results. This version with an
+    // embedded search form is what is used on 3rd party partner sites
     if(!this.getAttribute('headless')) {
       this.headless = false;
       let alignmentMod = '';
@@ -106,7 +108,7 @@ export default class CoProcureSearch extends HTMLElement {
       }
       this.innerHTML = `
         <div class="search-interior">
-        <a href="/" class="company-identifier powered-by" style="text-decoration: none;">
+        <a href="https://www.coprocure.us" class="company-identifier powered-by" style="text-decoration: none;">
           <span class="powered-by-text">Powered by</span>
           <img width="150px" src="https://www.coprocure.us/img/logo-svg.svg" alt="CoProcure logo">
         </a>
@@ -145,7 +147,9 @@ export default class CoProcureSearch extends HTMLElement {
       }
     }
 
-    // if the prepop parameter is present we are going to perform a search right nows
+    // if the prepop parameter is present we are going to perform a search right now and
+    // display the results with an empty search. This was a feature request from Michigan
+    // to emulate how their old site worked.
     if(this.prepop) {
       this.search();
     }
@@ -245,7 +249,7 @@ export default class CoProcureSearch extends HTMLElement {
       document.querySelector('a[href="#contactanchor"]').addEventListener('click', function() {
         document.querySelector('.message-info textarea[name="description"]').value = 'Please help with the following research request:'
       })
-    }    
+    }
 
     let component = this;
     // listen for custom events on the contained pagination element
@@ -331,7 +335,7 @@ export default class CoProcureSearch extends HTMLElement {
       if(lastSearch) {
         newSearch = lastSearch++;
       }
-      
+
       document.querySelector('coprocure-search').setAttribute('search',newSearch);
     })
     if(!this.headless) {
@@ -364,13 +368,13 @@ export default class CoProcureSearch extends HTMLElement {
     }
   }
 
-  setupTracker() {	
+  setupTracker() {
     let script = document.createElement('script');
     script.onload = function () {
-      window.dataLayer = window.dataLayer || [];	
-      function gtag(){dataLayer.push(arguments);}	
-      gtag('js', new Date());	
-      gtag('config', 'UA-121612479-1');	
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-121612479-1');
     };
     script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-121612479-1';
     document.head.appendChild(script);
