@@ -227,11 +227,6 @@ coprocure-search {
     background: rgba(0, 0, 0, 0.3);
   }
 
-  body.noscroll {
-    height: 100vh;
-    overflow: hidden;
-  }
-
   .background-hider {
     width: 100vw;
     height: 100vw;
@@ -242,6 +237,12 @@ coprocure-search {
     z-index: 3;
     display: none;
   }
+}
+
+
+body.noscroll {
+  height: 100vh;
+  overflow: hidden;
 }
 
 @media (max-width: 768px) {
@@ -301,6 +302,11 @@ coprocure-search {
 
     .search-results h1 {
       margin-bottom: 20px;
+    }
+  }
+  coprocure-search[headless="true"] {
+    .search-filters.active {
+      display: block;
     }
   }
 }
