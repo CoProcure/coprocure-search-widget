@@ -5,7 +5,8 @@
   "main": "src/index.js",
   "files": [
     "dist",
-    "src"
+    "src",
+    "img"
   ],
   "scripts": {
     "test": "karma start --coverage",
