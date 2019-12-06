@@ -276,6 +276,10 @@ body.noscroll {
       transition: left .3s;
     }
 
+    select[name="buyer_lead_agency_state"], select[name="buyer_lead_agency"] {
+      height: 30px;
+    }
+
     .search-filters.active {
       left: 0;
       overflow: scroll;
