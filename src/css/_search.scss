@@ -9,9 +9,6 @@ coprocure-search {
   .result-link.search-no-results {
     display: none;
   }
-  .search-filters {
-    display: none;
-  }
   .search-results {
     background: transparent;
   }
@@ -24,6 +21,9 @@ coprocure-search {
     max-width: 85%;
   }
 
+  .search-filters {
+    display: none;
+  }
 
   a.powered-by {
     display: flex;
@@ -145,6 +145,13 @@ coprocure-search {
     a.powered-by span {
       top: -10px;
     }
+  }
 
+  coprocure-search[headless="true"] {
+    .search-results-container {
+      background: transparent;
+      width: 100%;
+      margin: 0 auto;
+    }
   }
 }
