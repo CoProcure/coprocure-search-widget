@@ -69,7 +69,15 @@ export default class CoProcureSearch extends HTMLElement {
     window.searchThrottle = debounce(throttleSearch, 200);
 
     this.showExpired = false;
+    if(this.getAttribute('show-expired')) {
+      this.showExpired = this.getAttribute('show-expired').toLowerCase() == "true"
+    }
+
     this.showNonCoop = false;
+    if(this.getAttribute('show-non-coop')) {
+      this.showNonCoop = this.getAttribute('show-non-coop').toLowerCase() == "true";
+    }
+
     if(this.getAttribute('query')) {
       this.query = this.getAttribute('query');
     }
@@ -95,10 +103,11 @@ export default class CoProcureSearch extends HTMLElement {
     }
 
     this.headless = true;
-    // we add a headless=true parameter to the custom element on coprocure.us. If this param is not
-    // present the search will display its own query box above the results. This version with an
-    // embedded search form is what is used on 3rd party partner sites
     if(!this.getAttribute('headless')) {
+      // When headless=false, this version with an embedded search form is what is used on
+      // 3rd party partner sites. The search will display its own query box above the results.
+      // We add a headless=true parameter to the custom element on coprocure.us, where
+      // the query box would be redundant with the page header, which includes a search box.
       this.headless = false;
       let alignmentMod = '';
       let restrictCheckbox =  '';
@@ -176,8 +185,10 @@ export default class CoProcureSearch extends HTMLElement {
         decodeURIComponent(this.query).split(' ').forEach( (term) => {
           url += ` '${term}'`;
         })
-      } else {
+      } else if (this.query) {
         url += `&q=(and '${this.query}' `;
+      } else {
+        url += `&q=(and `;
       }
     }
     if(this.states && this.states.length > 0) {
