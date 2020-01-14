@@ -33,7 +33,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
       </form>
     </div>`
     }
-  })()}  
+  })()}
   <div class="search-results-container">
     <div class="search-filters">
       <form method="get" action="/contracts.html">
@@ -158,7 +158,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
                   ${(function() {
                     let output = '';
                     if(item.fields.cooperative_language == "false" || item.fields.cooperative_language == "False" ) {
-                        output += `<div class="warning"> <img src="img/exclamation-point.svg" class=""> Non-cooperative contract</div>`
+                        output += `<div class="warning"> <img src="https://www.coprocure.us/img/exclamation-point.svg" class=""> Non-cooperative contract</div>`
                     }
                     return output;
                     })()}
@@ -185,11 +185,16 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
                 <span class="field-name">Expires on</span>
                 <span class="field-value">${(function() {
                   if(isDate(item.fields.expiration)) {
-                    let contractExpDate = item.fields.expiration;
-                    if(item.fields.expiration.indexOf('Z') > -1) {
-                      contractExpDate = item.fields.expiration.replace('Z',currentOffset);
+                    // the replace might be a no-op
+                    let contractExpDate = new Date(
+                      item.fields.expiration.replace('Z',currentOffset)
+                    );
+                    let ret = '';
+                    if(contractExpDate < new Date()) {
+                      ret += `<div class="warning"> <img src="https://www.coprocure.us/img/exclamation-point.svg" class=""> </div>`;
                     }
-                    return new Date(contractExpDate).toLocaleDateString("en-US");
+                    ret += contractExpDate.toLocaleDateString("en-US");
+                    return ret;
                   } else {
                     return '';
                   }
@@ -213,7 +218,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
     </div>
   </div>
   <div class="overlay-background"></div>
-  
+
   ${(function() {
     let output = '';
     if(!headless) {
