@@ -6,7 +6,6 @@ coprocure-search {
     font-size: 12px;
     line-height: 14px;
     color: #879EC0;
-    width: 850px;
     ul, li {
       list-style: none;
     }
@@ -201,7 +200,7 @@ coprocure-search[headless="true"] {
       }
     }
   }
-  
+
   coprocure-search[headless="true"] {
     .search-header {
       margin-top: 70px;
