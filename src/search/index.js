@@ -27,7 +27,7 @@ export default class CoProcureSearch extends HTMLElement {
     if(attr === 'query') {
       if(newValue) {
         this.query = newValue;
-        this.setAttribute('page','');
+        this.setAttribute('page','1');
         this.setAttribute('sort','');
       }
     }
@@ -38,23 +38,25 @@ export default class CoProcureSearch extends HTMLElement {
     }
     if(attr === 'sort') {
       this.sort = newValue;
+      this.setAttribute('page','1');
     }
     if(attr === 'states') {
       if(newValue) {
         this.states = JSON.parse(newValue);
+        this.setAttribute('page','1');
       }
     }
     if(attr === 'buyers') {
       if(newValue) {
         this.buyers = JSON.parse(newValue);
+        this.setAttribute('page','1');
       }
     }
     if(attr === 'coops') {
       if(newValue) {
         this.coops = JSON.parse(newValue);
+        this.setAttribute('page','1');
       }
-    }
-    if(attr === 'search') {
     }
     if(this.query || this.prepop) {
       window.searchThrottle();
