@@ -4,7 +4,6 @@ import { spinner } from './spinner.js';
 import { states } from './states.js';
 import { buyers } from './buyers.js';
 import { coops } from './coops.js';
-import { showContactVendorModal, showShareModal, showAdditionalDocsModal } from './overlays.js';
 import { trackEvent } from './tracking.js';
 import { debounce } from "debounce";
 import { researchform } from './research-form.js';
@@ -178,7 +177,8 @@ export default class CoProcureSearch extends HTMLElement {
       start = (numResults * this.page) - numResults;
     }
     let expParam = `expiration:['${new Date().toISOString()}',}`;
-    let url = `https://1lnhd57e8f.execute-api.us-west-1.amazonaws.com/prod?q.parser=structured&size=${numResults}&start=${start}`;
+    let url = "https://1lnhd57e8f.execute-api.us-west-1.amazonaws.com/prod?";
+    url += `q.parser=structured&size=${numResults}&start=${start}`;
 
     // have to split the query into separate terms if it is not enclosed in quotes or the structured filters will fail
     if(this.query || this.prepop) {
@@ -228,7 +228,9 @@ export default class CoProcureSearch extends HTMLElement {
     if(!this.showNonCoop) {
       url += `(and cooperative_language:'true')`;
     }
+    // End of the query
     url += `)`
+
     if(this.sort) {
       url += '&sort='+this.sort;
       trackEvent('search', 'sort', this.sort);
@@ -240,6 +242,11 @@ export default class CoProcureSearch extends HTMLElement {
     if(!this.showExpired) {
       url += `&fq=${encodeURIComponent(expParam)}`;
     }
+
+    // This toggles the different weights of the fields. Ask Andrew if you want to update this.
+    const weightingOptions = "q.options=%7B%22defaultOperator%22%3A%22and%22%2C%22fields%22%3A%5B%22amendments_content%5E0.25%22%2C%22bid_solicitation_content%5E0.25%22%2C%22bid_solicitation_files%22%2C%22bid_tabulation_content%5E0.25%22%2C%22bid_tabulation_files%22%2C%22buyer_contacts%22%2C%22buyer_lead_agency%22%2C%22buyer_lead_agency_state%22%2C%22buyer_lead_agency_type%22%2C%22contract_content%5E0.25%22%2C%22contract_files%22%2C%22contract_number%22%2C%22cooperative_affiliation%22%2C%22other_docs_content%5E0.25%22%2C%22other_docs_files%22%2C%22piggybacking_gov_docs%22%2C%22piggybacking_govs%22%2C%22pricing_content%5E0.5%22%2C%22pricing_details%22%2C%22pricing_files%22%2C%22pricing_summary%22%2C%22summary%22%2C%22supplier_contacts%22%2C%22suppliers%5E2%22%2C%22title%5E1.5%22%5D%7D";
+    url += "&" + weightingOptions;
+
     let component = this;
     if(this.query || this.prepop) {
       fetch(url)
