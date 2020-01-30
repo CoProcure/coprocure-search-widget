@@ -74,6 +74,7 @@ coprocure-search {
   .search-filters {
     background: #fff;
     width: 290px;
+    min-width: 260px;  // No idea why both width and min-width needed but it was misrendering in IE
     padding: 30px 20px 10px;
   }
 
