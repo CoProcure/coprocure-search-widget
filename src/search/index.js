@@ -26,7 +26,6 @@ export default class CoProcureSearch extends HTMLElement {
     if(attr === 'query') {
       if(newValue) {
         this.query = newValue;
-        this.setAttribute('page','1');
         this.setAttribute('sort','');
       }
     }
@@ -34,27 +33,26 @@ export default class CoProcureSearch extends HTMLElement {
       if(newValue) {
         this.page = newValue;
       }
+    } else {
+      // For every other changed attribute, you'll want to reset the pagination to start at 1
+      this.setAttribute('page','1');
     }
     if(attr === 'sort') {
       this.sort = newValue;
-      this.setAttribute('page','1');
     }
     if(attr === 'states') {
       if(newValue) {
         this.states = JSON.parse(newValue);
-        this.setAttribute('page','1');
       }
     }
     if(attr === 'buyers') {
       if(newValue) {
         this.buyers = JSON.parse(newValue);
-        this.setAttribute('page','1');
       }
     }
     if(attr === 'coops') {
       if(newValue) {
         this.coops = JSON.parse(newValue);
-        this.setAttribute('page','1');
       }
     }
     if(this.query || this.prepop) {
@@ -300,6 +298,7 @@ export default class CoProcureSearch extends HTMLElement {
       } else {
         component.showExpired = false;
       }
+      component.page = '1';
       component.search();
     })
     document.getElementById('noncoop').addEventListener('change', function(event) {
@@ -309,6 +308,7 @@ export default class CoProcureSearch extends HTMLElement {
       } else {
         component.showNonCoop = false;
       }
+      component.page = '1';
       component.search();
     })
 
