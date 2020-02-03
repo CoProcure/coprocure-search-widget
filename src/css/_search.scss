@@ -147,6 +147,9 @@ coprocure-search {
   }
 
   coprocure-search[headless="true"] {
+    .search-results {
+      width: 100%;
+    }
     .search-results-container {
       background: transparent;
       width: 100%;
