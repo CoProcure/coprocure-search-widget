@@ -178,19 +178,33 @@ coprocure-search {
     margin: 0 0 20px 0;
     position: relative;
   }
+  // DUPLICATES!!
   .search-results {
+    background: #FAFAFA;
+    color: #879EC0;
+    display: block;
     font-style: normal;
     font-weight: normal;
     font-size: 12px;
     line-height: 14px;
-    color: #879EC0;
-    width: 850px;
+    margin: 8px 0px 8px 30px;
     ul, li {
       list-style: none;
     }
   }
+  .search-results .card-controls {
+    background: #F2F6FF;
+    padding: 10px 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  // DUPLICATES!!!
   .search-results .field-name {
     color: #879EC0;
+    display: block;
+    margin: 3px 0;
+    word-break: break-all;
   }
   .search-results .field-value {
     color: #4F6481;
@@ -198,17 +212,69 @@ coprocure-search {
     font-weight: 400;
     line-height: 140.1%;
   }
+  .search-results .parties {
+    display: flex;
+    margin: 10px 0 15px 0;
+    .author, .buyer {
+      margin-right: 40px;
+    }
+  }
+  .search-results .result-expiration {
+    display: flex;
+    flex-flow: column;
+    .field-name {
+      color: #4F6481;
+      font-size: 14px;
+      line-height: 15px;
+    }
+    .field-value {
+      color: #3ea8eb;
+      font-weight: 400;
+    }
+  }
+  .search-results .result-link {
+    background: #fff;
+    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-bottom: 15px;
+    padding: 20px 25px 35px 25px;
+    position: relative;
+    transition: all .4s;
+  }
+  .search-results .result-link:hover {
+    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0);
+    transition: all .4s;
+  }
+  .search-results .result-link:hover .result-title {
+    color: #4F6481;
+    transition: all .4s;
+  }
+  ///// DUPLICATES!
   .search-results .result-title {
+    display: block;
     font-family: 'Poppins', sans-serif;
     font-size: 14px;
     font-style: normal;
     font-weight: 600;
     line-height: 21px;
+    max-width: 660px;
   }
+  ///// DUPLICATES!
   .search-results a {
     border-bottom: none !important;
     color: #37A8EB;
+    height: 100;
     text-decoration: none !important;
+    width: 100%;
+  }
+  .search-results h1 {
+    margin-bottom: 0;
+    text-transform: capitalize;
+  }
+  .search-results p {
+    color: #879EC0;
+    font-size: 14px;
+    font-weight: 400;
   }
   .search-results ul {
     display: block;
@@ -256,86 +322,6 @@ coprocure-search {
   select[multiple]:focus option:checked {
     background: #37A8EB linear-gradient(0deg, #37A8EB 0%, #37A8EB 100%);
   }
-
-  ////////////////////////////////////////////
-  // from _index.scss
-
-
-
-  .search-results .card-controls {
-    background: #F2F6FF;
-    padding: 10px 24px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
-  .search-results .field-name {
-    display: block;
-    margin: 3px 0;
-    word-break: break-all;
-  }
-  .search-results .parties {
-    display: flex;
-    margin: 10px 0 15px 0;
-    .author, .buyer {
-      margin-right: 40px;
-    }
-  }
-  .search-results .result-expiration {
-    display: flex;
-    flex-flow: column;
-    .field-name {
-      color: #4F6481;
-      font-size: 14px;
-      line-height: 15px;
-    }
-    .field-value {
-      color: #3ea8eb;
-      font-weight: 400;
-    }
-  }
-  .search-results .result-title {
-    display: block;
-    max-width: 660px;
-  }
-  .search-results a {
-    height: 100;
-    width: 100%;
-  }
-  .search-results p {
-    color: #879EC0;
-    font-size: 14px;
-    font-weight: 400;
-  }
-
-
-
-  .search-results {
-    background: #FAFAFA;
-    display: block;
-    margin: 8px 0px 8px 30px;
-  }
-  .search-results .result-link {
-    background: #fff;
-    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0.1);
-    display: block;
-    margin-bottom: 15px;
-    padding: 20px 25px 35px 25px;
-    position: relative;
-    transition: all .4s;
-  }
-  .search-results .result-link:hover {
-    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0);
-    transition: all .4s;
-  }
-  .search-results .result-link:hover .result-title {
-    color: #4F6481;
-    transition: all .4s;
-  }
-  .search-results h1 {
-    margin-bottom: 0;
-    text-transform: capitalize;
-  }
   select[name="buyer_lead_agency_state"] option, select[name="buyer_lead_agency"] option {
     align-items: center;
     display: flex;
@@ -347,6 +333,11 @@ coprocure-search {
     height: 200px;
     padding: 0;
   }
+
+  ////////////////////////////////////////////
+  // from _index.scss
+
+
 
   ////////////////////////////////
   // from _search.scss
