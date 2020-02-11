@@ -1,0 +1,386 @@
+/*
+  This file is the styling of the search component that's shared between
+  the website coprocure.us and all the embedded widgets. It's a combination
+  of several other files that defined these styles. Any styling specific
+  to the widget should be in _search-widget.scss (in this repository), and
+  any styling specific to the website should be in _search-results-web.scss
+  in the coprocure.us repo.
+*/
+coprocure-search {
+  display: block;
+  .background-hider {
+    background: rgba(0,0,0,0.3);
+    display: none;
+    height: 100vw;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    z-index: 3;
+  }
+  .cooperative-agency {
+    min-width: 210px;
+  }
+  .field--checkbox {
+    display: flex;
+    margin-bottom: 1em;
+  }
+  .field--checkbox input[type="checkbox"] {
+    height: 0;
+    margin: 0;
+    opacity: 0;
+    width: 0;
+  }
+  .field--checkbox input[type="checkbox"]:checked+label::after {
+    content: "";
+  }
+  .field--checkbox input[type="checkbox"]:checked+label::before {
+    background: #37A8EB;
+  }
+  .field--checkbox input[type="checkbox"]:focus+label::before {
+    outline: rgb(59, 153, 252) auto 5px;
+  }
+  .field--checkbox input[type="checkbox"]+label::after {
+    content: none;
+  }
+  .field--checkbox label {
+    display: inline-block;
+    padding: 4px 0 0 26px;
+    position: relative;
+  }
+  .field--checkbox label::after {
+    border-bottom: 2px solid #fff;
+    border-left: 2px solid #fff;
+    height: 5px;
+    left: 4px;
+    top: 7px;
+    transform: rotate(-45deg);
+    width: 9px;
+  }
+  .field--checkbox label::before {
+    border: 1px solid #37A8EB;
+    height: 16px;
+    left: 0px;
+    top: 3px;
+    width: 16px;
+  }
+  .field--checkbox label::before,
+  .field--checkbox label::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+  }
+  .field-group-header {
+    margin: 30px 0 8px 0;
+  }
+  .field--select {
+    margin: 0 0 10px 0;
+  }
+  .filters-apply {
+    margin: 30px 0;
+    width: 221px;
+  }
+  .filter-section-title {
+    color: #146798;
+    font-family: 'Lato', sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .overlay-background {
+    display: none;
+  }
+  .overlay-background.active {
+    background: rgba(0, 0, 0, 0.3);
+    display: block;
+    height: 100vh;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+  }
+  .page-links a {
+    border-bottom: none !important;
+    text-decoration: none !important;
+  }
+  .remove-all {
+    float: right;
+    margin-top: -13px;
+  }
+  .research-help {
+    font-size: 14px;
+    line-height: 20px;
+  }
+  .search-container {
+    align-items: center;
+    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    font-size: 14px;
+    height: 38px;
+    height: 40px;
+    justify-content: center;
+    margin-top: 6px;
+    position: relative;
+    width: 530px;
+  }
+  .search-container button {
+    background: #37A8EB;
+    border: none;
+    box-sizing: border-box;
+    color: #FAFAFA;
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    font-weight: normal;
+    height: 42px;
+    letter-spacing: 0.75px;
+    line-height: 17px;
+    min-width: 120px;
+    padding: 10px 35px;
+    text-align: center;
+    text-transform: capitalize;
+    transition: all .4s;
+    width: auto;
+  }
+  .search-container input {
+    border: solid 1px #fff;
+    box-shadow: none;
+    font-size: 14px;
+    height: 42px;
+    margin-bottom: 0;
+    text-indent: 50px;
+    width: 630px;
+  }
+  .search-header {
+    display: flex;
+    margin-top: 24px;
+    position: relative;
+  }
+  .search-header-left {
+    display: inline-block;
+    width: 50%;
+  }
+  .search-header-right {
+    display: inline-block;
+    position: relative;
+    width: 50%;
+  }
+  .search-icon {
+    height: 33px;
+    left: 8px;
+    position: absolute;
+    top: 4px;
+    width: 30px;
+  }
+  .search-interior {
+    align-items: center;
+    background: #F2F6FF;
+    box-shadow: 0px 8.28px 20px rgba(0, 0, 0, 0.12);
+    display: flex;
+    height: 120px;
+    justify-content: space-around;
+    max-width: 1000px;
+    padding: 0 10px;
+    position: relative;
+    width: 100%;
+  }
+  .search-query-controls {
+    align-items: center;
+    display: flex;
+    height: 36px;
+    justify-content: space-between;
+    margin: 0 0 20px 0;
+    position: relative;
+  }
+  // DUPLICATES!!
+  .search-results {
+    background: transparent;
+    color: #879EC0;
+    display: block;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    margin: 8px 0px 8px 30px;
+    ul, li {
+      list-style: none;
+    }
+  }
+
+  // DUPLICATES!!!
+  .search-results .field-name {
+    color: #879EC0;
+    display: block;
+    margin: 3px 0;
+    word-break: break-all;
+  }
+  .search-results .field-value {
+    color: #4F6481;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 140.1%;
+  }
+  .search-results .parties {
+    display: flex;
+    margin: 10px 0 15px 0;
+    .author, .buyer {
+      margin-right: 40px;
+    }
+  }
+  .search-results .result-expiration {
+    display: flex;
+    flex-flow: column;
+    .field-name {
+      color: #4F6481;
+      font-size: 14px;
+      line-height: 15px;
+    }
+    .field-value {
+      color: #3ea8eb;
+      font-weight: 400;
+    }
+  }
+  .search-results .result-link {
+    background: #fff;
+    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0.1);
+    display: block;
+    margin-bottom: 15px;
+    padding: 20px 25px 35px 25px;
+    position: relative;
+    transition: all .4s;
+  }
+  .search-results .result-link:hover {
+    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0);
+    transition: all .4s;
+  }
+  .search-results .result-link:hover .result-title {
+    color: #4F6481;
+    transition: all .4s;
+  }
+  ///// DUPLICATES!
+  .search-results .result-title {
+    display: block;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+    max-width: 660px;
+  }
+  ///// DUPLICATES!
+  .search-results a {
+    border-bottom: none !important;
+    color: #37A8EB;
+    height: 100;
+    text-decoration: none !important;
+    width: 100%;
+  }
+  .search-results h1 {
+    margin-bottom: 0;
+    text-transform: capitalize;
+  }
+  .search-results p {
+    color: #879EC0;
+    font-size: 14px;
+    font-weight: 400;
+  }
+  .search-results ul {
+    display: block;
+    float: left;
+    padding: 0;
+    width: 100%;
+  }
+  // DUPLICATES!
+  .search-results-card-details {
+    width: 88%;
+    max-width: 85%;  /// @Andrew this makes no sense?
+  }
+  .search-results-card-controls {
+    background: #F2F6FF;
+    padding: 10px 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .search-results-container {
+    background: transparent;
+    margin: 0 auto;
+    width: 100%;
+  }
+  .search-sort {
+    color: #586C8A;
+    font-weight: 600;
+    position: absolute;
+    right: 0;
+    top: 10px;
+  }
+  .show-filters {
+    color: #37A8EB;
+    display: none;
+    font-size: 14px;
+    font-weight: 600;
+    left: 0;
+    line-height: 136.7%;
+    position: absolute;
+    top: -10px;
+  }
+  a.powered-by {
+    align-items: center;
+    border-bottom: none !important;
+    display: flex;
+    flex-flow: column;
+    font-size: 10px;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    width: 150px;
+  }
+  a.powered-by img {
+    background: none;
+  }
+  a.powered-by span {
+    color: #4F6481;
+    position: absolute;
+    text-decoration: none;
+    top: 34px;
+  }
+  a.powered-by:visited span {
+    color: #4F6481;
+  }
+  a.result-link:link {
+    text-decoration: none !important;
+  }
+  select {
+    appearance: none;
+    background-color: #fff;
+    background-image: url(../../img/arrow-down-form.svg);
+    background-position: right .7em top 15px, 0 0;
+    background-repeat: no-repeat, repeat;
+    background-size: .65em auto, 100%;
+    border: 1px solid #96A9C5;
+    border-radius: 0;
+    color: #146798;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: normal;
+    height: 36px;
+    line-height: 14px;
+    -moz-appearance: none;
+    padding: 10px 15px;
+    -webkit-appearance: none;
+    width: 220px;
+  }
+  select[multiple]:focus option:checked {
+    background: #37A8EB linear-gradient(0deg, #37A8EB 0%, #37A8EB 100%);
+  }
+  select[name="buyer_lead_agency_state"] option, select[name="buyer_lead_agency"] option {
+    align-items: center;
+    display: flex;
+    height: 30px;
+    text-align: left;
+    text-indent: 20px;
+  }
+  select[name="buyer_lead_agency_state"], select[name="buyer_lead_agency"] {
+    height: 200px;
+    padding: 0;
+  }
+}
