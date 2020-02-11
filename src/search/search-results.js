@@ -145,7 +145,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
           }
           return `<li>
           <a href="${contractUrl}" ${targetString} class="result-link">
-           <div class="card-details">
+           <div class="search-results-card-details">
               <div class="result-title">${(item.fields.title) ? item.fields.title : ''}</div>
               <div class="parties">
                 ${(item.fields.buyer_lead_agency) ? `<div class="author">
@@ -180,7 +180,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
                 return output;
               })()}
             </div>
-            <div class="card-controls">
+            <div class="search-results-card-controls">
               <div class="result-expiration">
                 <span class="field-name">Expires on</span>
                 <span class="field-value">${(function() {

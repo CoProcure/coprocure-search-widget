@@ -1,6 +1,5 @@
 coprocure-search {
-  ///////////////////////////////////////
-  // from _search-results.scss
+  display: block;
   .background-hider {
     background: rgba(0,0,0,0.3);
     display: none;
@@ -10,9 +9,6 @@ coprocure-search {
     top: 0;
     width: 100vw;
     z-index: 3;
-  }
-  .card-details {
-    width: 88%;
   }
   .cooperative-agency {
     min-width: 210px;
@@ -108,7 +104,6 @@ coprocure-search {
   }
   .search-filters {
     background: #fff;
-    font-family: "FOOBAZ";
     min-width: 260px;
     padding: 30px 20px 10px;
     width: 290px;
@@ -149,26 +144,6 @@ coprocure-search {
     position: relative;
     width: 50%;
   }
-  .search-no-results {
-    font-family: "lato";
-    text-align: center;
-  }
-  .search-no-results h6 {
-    color: #37A8EB;
-    font-size: 18px;
-    font-weight: 500;
-    line-height: 1.4em;
-    margin: .7em 0 .5em;
-  }
-  .search-no-results img {
-    width: 40px;
-  }
-  .search-no-results-text {
-    color: #586C8A;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.4em;
-  }
   .search-query-controls {
     align-items: center;
     display: flex;
@@ -192,13 +167,7 @@ coprocure-search {
       list-style: none;
     }
   }
-  .search-results .card-controls {
-    background: #F2F6FF;
-    padding: 10px 24px;
-    position: absolute;
-    right: 0;
-    top: 0;
-  }
+
   // DUPLICATES!!!
   .search-results .field-name {
     color: #879EC0;
@@ -282,6 +251,18 @@ coprocure-search {
     padding: 0;
     width: 100%;
   }
+  // DUPLICATES!
+  .search-results-card-details {
+    width: 88%;
+    max-width: 85%;  /// @Andrew this makes no sense?
+  }
+  .search-results-card-controls {
+    background: #F2F6FF;
+    padding: 10px 24px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
   .search-sort {
     color: #586C8A;
     font-weight: 600;
@@ -334,22 +315,7 @@ coprocure-search {
     padding: 0;
   }
 
-  ////////////////////////////////////////////
-  // from _index.scss
-
-
-
-  ////////////////////////////////
-  // from _search.scss
-
-  display: block;
   /* overrides defined after review on MARC page */
-  .card-details {
-    max-width: 85%;
-  }
-  .result-link.search-no-results {
-    display: none;
-  }
   .search-container {
     align-items: center;
     box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0.1);
