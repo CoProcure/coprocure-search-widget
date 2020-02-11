@@ -1,6 +1,3 @@
-/*
-WTF is this?
-*/
 coprocure-search {
   .search-query-controls {
     display: flex;
@@ -90,7 +87,7 @@ coprocure-search {
       right: 0;
       background: #F2F6FF;
       padding: 10px 24px;
-    }
+    }  
     .result-expiration {
       display: flex;
       flex-flow: column;
@@ -117,7 +114,7 @@ coprocure-search {
       .author, .buyer {
         margin-right: 40px;
       }
-    }
+    } 
   }
 
   .remove-all {
@@ -270,7 +267,7 @@ body.noscroll {
       flex-flow: column;
       margin: 0;
     }
-
+    
     .search-filters {
       position: absolute;
       left: -300px;
