@@ -357,9 +357,9 @@ coprocure-search {
     font-weight: normal;
     height: 36px;
     line-height: 14px;
-    moz-appearance: none;
+    -moz-appearance: none;
     padding: 10px 15px;
-    webkit-appearance: none;
+    -webkit-appearance: none;
     width: 220px;
   }
   select[multiple]:focus option:checked {
