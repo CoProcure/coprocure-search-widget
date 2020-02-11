@@ -102,33 +102,46 @@ coprocure-search {
     font-size: 14px;
     line-height: 20px;
   }
-  .search-filters {
-    background: #fff;
-    min-width: 260px;
-    padding: 30px 20px 10px;
-    width: 290px;
+  .search-container {
+    align-items: center;
+    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0.1);
+    display: flex;
+    font-size: 14px;
+    height: 38px;
+    height: 40px;
+    justify-content: center;
+    margin-top: 6px;
+    position: relative;
+    width: 530px;
   }
-  .search-filters .field-group-header {
-    color: #586C8A;
+  .search-container button {
+    background: #37A8EB;
+    border: none;
+    box-sizing: border-box;
+    color: #FAFAFA;
+    font-family: "Lato", sans-serif;
     font-size: 14px;
     font-style: normal;
-    font-weight: bold;
-    line-height: 150%;
-  }
-  .search-filters .field--select label {
-    color: #586C8A;
-    display: inline-block;
-    margin: 0 0 10px 0;
-  }
-  .search-filters label {
-    color: #5D6782;
-    font-size: 14px;
-    font-style: normal;
+    font-weight: 600;
     font-weight: normal;
-    line-height: 18px;
+    height: 42px;
+    letter-spacing: 0.75px;
+    line-height: 17px;
+    min-width: 120px;
+    padding: 10px 35px;
+    text-align: center;
+    text-transform: capitalize;
+    transition: all .4s;
+    width: auto;
   }
-  .search-filters select {
-    color: #586C8A;
+  .search-container input {
+    border: solid 1px #fff;
+    box-shadow: none;
+    font-size: 14px;
+    height: 42px;
+    margin-bottom: 0;
+    text-indent: 50px;
+    width: 630px;
   }
   .search-header {
     display: flex;
@@ -144,6 +157,25 @@ coprocure-search {
     position: relative;
     width: 50%;
   }
+  .search-icon {
+    height: 33px;
+    left: 8px;
+    position: absolute;
+    top: 4px;
+    width: 30px;
+  }
+  .search-interior {
+    align-items: center;
+    background: #F2F6FF;
+    box-shadow: 0px 8.28px 20px rgba(0, 0, 0, 0.12);
+    display: flex;
+    height: 120px;
+    justify-content: space-around;
+    max-width: 1000px;
+    padding: 0 10px;
+    position: relative;
+    width: 100%;
+  }
   .search-query-controls {
     align-items: center;
     display: flex;
@@ -155,7 +187,7 @@ coprocure-search {
   }
   // DUPLICATES!!
   .search-results {
-    background: #FAFAFA;
+    background: transparent;
     color: #879EC0;
     display: block;
     font-style: normal;
@@ -263,6 +295,11 @@ coprocure-search {
     right: 0;
     top: 0;
   }
+  .search-results-container {
+    background: transparent;
+    margin: 0 auto;
+    width: 100%;
+  }
   .search-sort {
     color: #586C8A;
     font-weight: 600;
@@ -279,6 +316,31 @@ coprocure-search {
     line-height: 136.7%;
     position: absolute;
     top: -10px;
+  }
+  a.powered-by {
+    align-items: center;
+    border-bottom: none !important;
+    display: flex;
+    flex-flow: column;
+    font-size: 10px;
+    font-weight: normal !important;
+    text-decoration: none !important;
+    width: 150px;
+  }
+  a.powered-by img {
+    background: none;
+  }
+  a.powered-by span {
+    color: #4F6481;
+    position: absolute;
+    text-decoration: none;
+    top: 34px;
+  }
+  a.powered-by:visited span {
+    color: #4F6481;
+  }
+  a.result-link:link {
+    text-decoration: none !important;
   }
   select {
     appearance: none;
@@ -313,103 +375,5 @@ coprocure-search {
   select[name="buyer_lead_agency_state"], select[name="buyer_lead_agency"] {
     height: 200px;
     padding: 0;
-  }
-
-  /* overrides defined after review on MARC page */
-  .search-container {
-    align-items: center;
-    box-shadow: 2px 2.28px 10px rgba(0, 0, 0, 0.1);
-    display: flex;
-    font-size: 14px;
-    height: 38px;
-    height: 40px;
-    justify-content: center;
-    margin-top: 6px;
-    position: relative;
-    width: 530px;
-  }
-  .search-container button {
-    background: #37A8EB;
-    border: none;
-    box-sizing: border-box;
-    color: #FAFAFA;
-    font-family: "Lato", sans-serif;
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 600;
-    font-weight: normal;
-    height: 42px;
-    letter-spacing: 0.75px;
-    line-height: 17px;
-    min-width: 120px;
-    padding: 10px 35px;
-    text-align: center;
-    text-transform: capitalize;
-    transition: all .4s;
-    width: auto;
-  }
-  .search-container input {
-    border: solid 1px #fff;
-    box-shadow: none;
-    font-size: 14px;
-    height: 42px;
-    margin-bottom: 0;
-    text-indent: 50px;
-    width: 630px;
-  }
-  .search-filters {
-    display: none;
-  }
-  .search-icon {
-    height: 33px;
-    left: 8px;
-    position: absolute;
-    top: 4px;
-    width: 30px;
-  }
-  .search-interior {
-    align-items: center;
-    background: #F2F6FF;
-    box-shadow: 0px 8.28px 20px rgba(0, 0, 0, 0.12);
-    display: flex;
-    height: 120px;
-    justify-content: space-around;
-    max-width: 1000px;
-    padding: 0 10px;
-    position: relative;
-    width: 100%;
-  }
-  .search-results {
-    background: transparent;
-  }
-  .search-results-container {
-    background: transparent;
-    margin: 0 auto;
-    width: 100%;
-  }
-  a.powered-by {
-    align-items: center;
-    border-bottom: none !important;
-    display: flex;
-    flex-flow: column;
-    font-size: 10px;
-    font-weight: normal !important;
-    text-decoration: none !important;
-    width: 150px;
-  }
-  a.powered-by img {
-    background: none;
-  }
-  a.powered-by span {
-    color: #4F6481;
-    position: absolute;
-    text-decoration: none;
-    top: 34px;
-  }
-  a.powered-by:visited span {
-    color: #4F6481;
-  }
-  a.result-link:link {
-    text-decoration: none !important;
   }
 }
