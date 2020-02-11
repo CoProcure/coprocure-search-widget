@@ -1,3 +1,11 @@
+/*
+  This file is the styling of the search component that's shared between
+  the website coprocure.us and all the embedded widgets. It's a combination
+  of several other files that defined these styles. Any styling specific
+  to the widget should be in _search-widget.scss (in this repository), and
+  any styling specific to the website should be in _search-results-web.scss
+  in the coprocure.us repo.
+*/
 coprocure-search {
   display: block;
   .background-hider {
@@ -179,7 +187,6 @@ coprocure-search {
   .search-query-controls {
     align-items: center;
     display: flex;
-    font-family: "SEARCH3SCSS";
     height: 36px;
     justify-content: space-between;
     margin: 0 0 20px 0;
