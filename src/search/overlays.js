@@ -17,7 +17,7 @@ function showModal(modalInfo) {
       </div>
     </div>
   </div>`;
-  document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalBackdrop);  
+  document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalBackdrop);
   document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalHTML);
   setTimeout(function() {
     document.querySelector('.js-identityModal .modal-dialog').classList.add('show');
@@ -39,9 +39,9 @@ function showModal(modalInfo) {
       let contract = document.querySelector('input.contractId').value;
       let requestType = 'Vendor contact request';
       if(document.querySelector('input[name="anonymous"]').checked) {
-        requestType = 'Anonymous '+requestType; 
+        requestType = 'Anonymous '+requestType;
       }
-      
+
       fetch(url, {
         method: 'post',
         headers: {
@@ -69,12 +69,12 @@ function showModal(modalInfo) {
       let description = document.querySelector('textarea[name="additional-documents"]').value;
       let contract = document.querySelector('input.contractId').value;
       let requestType = 'Request for additional documents';
-  
+
       fetch(url, {
         method: 'post',
         headers: {
           "Content-Type": "application/json",
-        },    
+        },
         body: JSON.stringify({ email, requestType, description, contract })
       }).then(function(response) {
         return response.text();
@@ -95,14 +95,14 @@ function showModal(modalInfo) {
       let email = document.querySelector('.modal-dialog form input[name="email"').value;
       setUser(email);
       let description = document.querySelector('textarea[name="general-question"]').value;
-      let contract = '';
+      let contract = document.querySelector('input.contractId').value;
       let requestType = 'General Question';
-  
+
       fetch(url, {
         method: 'post',
         headers: {
           "Content-Type": "application/json",
-        },    
+        },
         body: JSON.stringify({ email, requestType, description, contract })
       }).then(function(response) {
         return response.text();
@@ -112,7 +112,7 @@ function showModal(modalInfo) {
         document.querySelector('.js-identityModal').remove();
       });
     })
-  }  
+  }
 
   document.querySelector('.modal').addEventListener('click',function(event) {
     if(event.srcElement.name != 'anonymous') {
@@ -143,7 +143,7 @@ export function showIdentityModal(contractId) {
   showModal(modalInfo);
 }
 
-export function showShareModal(contractId) {  
+export function showShareModal(contractId) {
   let modalInfo = {
     title: 'Share this contract',
     body: `<form method="post" action="" class="share-modal">
@@ -162,7 +162,7 @@ export function showShareModal(contractId) {
 
   document.querySelector('.modal-body input[name="link"').select();
   document.execCommand('copy');
-  
+
 }
 
 export function showContactVendorModal(contractId) {
@@ -221,7 +221,7 @@ export function showAdditionalDocsModal(infoObject) {
       </form>`,
     close: false,
     contractId: infoObject.contractId
-  }      
+  }
 
   if(infoObject.type == 'questions') {
     modalInfo = {
@@ -238,8 +238,9 @@ export function showAdditionalDocsModal(infoObject) {
       </label>
       <button type="submit" class="general-question">Send</button>
     </form>`,
-      close: false
-    }      
+      close: false,
+      contractId: infoObject.contractId
+    }
   }
 
   showModal(modalInfo);
