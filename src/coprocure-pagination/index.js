@@ -1,3 +1,5 @@
+import { showFoundYesNoModal } from '../search/overlays.js';
+
 export default class CoProcurePagination extends HTMLElement {
   static get observedAttributes() {
     return ["current","total"];
@@ -8,6 +10,7 @@ export default class CoProcurePagination extends HTMLElement {
 
   connectedCallback() {
     this.paginationIncrement = 10;
+    this.pagesShown = 1;
     this.total = this.getAttribute('total');
     this.current = this.getAttribute('current');
     this.render();
@@ -54,16 +57,27 @@ export default class CoProcurePagination extends HTMLElement {
       `;
 
       document.querySelectorAll('.page-links a').forEach( (link) => {
-        link.addEventListener('click', function(event) {
+        link.addEventListener('click', function (event) {
           event.preventDefault()
           let desiredPage = this.dataset.pageNum;
           console.log(desiredPage);
+
+          const SESS_KEY = "test-coprocure-search-feedback-show";
+          console.log(window.sessionStorage.getItem(SESS_KEY));
+          if (desiredPage > 2 && true) {
+          //if (window.sessionStorage.getItem(SESS_KEY) === null) {
+            showFoundYesNoModal();
+            window.sessionStorage.setItem(SESS_KEY, "yes");
+            console.log(window.sessionStorage.getItem(SESS_KEY));
+            return;
+          }
+
+          console.log("TRIGGERING NAVIGATION");
           if(desiredPage > 0 && desiredPage <= numPages) {
-            let navEvent = new CustomEvent('navigation', {'detail': {'page':desiredPage}});          
+            let navEvent = new CustomEvent('navigation', {'detail': {'page':desiredPage}});
             document.querySelector('coprocure-pagination').dispatchEvent(navEvent);
-            console.log('sent event')
-          }    
-        })
+          }
+        });
       })
     }
   }
