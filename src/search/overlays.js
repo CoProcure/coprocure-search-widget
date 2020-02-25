@@ -3,7 +3,6 @@ import { getUser, setUser } from "./user.js";
 import { trackEvent } from "./tracking.js";
 
 function showModal(modalInfo) {
-  console.log("SHOW MODAL TYPE ", modalInfo.type);
   let modalBackdrop = `<div class="modal-backdrop fade"></div>`;
   let modalHTML = `<div class="js-identityModal modal fade ${modalInfo.type}" tabindex="-1" role="dialog">
     <div class="modal-dialog ${modalInfo.extraClass}" role="document">
@@ -48,7 +47,6 @@ function showModal(modalInfo) {
   }
 
   if (document.querySelector(".js-identityModal button.search-feedback")) {
-    console.log("THIS IS THE NEW CODE!");
     setupSearchFeedbackModal();
   }
 
@@ -308,7 +306,6 @@ export function showAdditionalDocsModal(infoObject) {
 }
 
 export function showGeneralQuestionModal(infoObject) {
-  console.log("SHOWING GENERAL QUESTIONS MODAL")
   let modalInfo = {
     type: "general-question",
     title: "Have a General Question?",
@@ -419,7 +416,6 @@ export function showProductModal() {
 }
 
 function setupSearchFeedbackModal() {
-  console.log("WEBSITE SETUP SEARCH FEEDBACK MODAL!")
   document
   .querySelector(".js-identityModal button.search-feedback")
   .addEventListener("click", function(event) {
@@ -429,7 +425,6 @@ function setupSearchFeedbackModal() {
     let url =
     "https://93flntoz36.execute-api.us-east-1.amazonaws.com/production/contact/";
     let email = document.querySelector('.modal input[name="email"]').value;
-    console.log("EMAIL: ", email)
     if (email) {
       setUser(email);
     } else {
@@ -438,12 +433,12 @@ function setupSearchFeedbackModal() {
       return;
     }
     let searchTerm = (new URLSearchParams(window.location.search)).get('query');
-    console.log("SEARCH TERM: ", searchTerm);
-    let description = `Search Term: ${searchTerm} Feedback: `;
+
+    const feedbackType = document.querySelector('.field-description').id;
+    let description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
     description += document.querySelector(
       'textarea[name="search-feedback"]'
     ).value;
-    console.log("DESCRIPTION: ", description);
     fetch(url, {
       method: "post",
       body: `fullname=${name}&email=${email}&description=${description}`,
@@ -463,16 +458,19 @@ function setupSearchFeedbackModal() {
   });
 }
 
-export function showSearchFeedbackModal() {
-  console.log("SHOW SEARCH FEEDBACK MODAL!")
+export function showSearchFeedbackModal(successfulSearch) {
+  let description = "We’re glad to help! Is there anything else you’d like to share with us?";
+  let feedbackType = "search-success"
+  if (!successfulSearch) {
+    description = "Sorry we couldn’t be more helpful with your search!<br><br>If you share a little more information about what you’re looking for, we may be able to provide additional support on your request."
+    feedbackType = "search-failure"
+  }
   let modalInfo = {
     type: "search-feedback",
     title: "Did you find what you were looking for today?",
     body: `<form method="post" action="">
-    <span class="field-description">
-      Sorry we couldn't be more helpful with your search!
-      <br><br>If you share a little more information
-      about what you're looking for, we may be able to provide additional support on your request.
+    <span class="field-description" id="${feedbackType}">
+      ${description}
     </span>
     <div id="errors"> </div>
     <label>
@@ -492,41 +490,36 @@ export function showSearchFeedbackModal() {
 }
 
 function setupFoundYesNoModal() {
-  console.log("@@ WEBSITE SETUP SHOW YES NO MODAL!");
   document
-  .querySelector(".js-identityModal button.found-yes-no")
-  .addEventListener("click", function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    // This is kind of disgusting. But will it work?
-    console.log("REMOVING BACKDROP AND EXISTING MODAL!");
-    document.querySelector(".modal-backdrop").remove();
-    document.querySelector(".js-identityModal").remove();
-    document.querySelector("body").classList.remove("noscroll");
-    console.log("SHOWING SEARCH FEEDBACK MODAL")
-    showSearchFeedbackModal();
-  });
+  .querySelector(".js-identityModal input.found-yes")
+  .addEventListener("click", yesNoOnClick);
+
+  document
+  .querySelector(".js-identityModal input.found-no")
+  .addEventListener("click", yesNoOnClick);
+}
+
+function yesNoOnClick(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  // This is kind of disgusting. But it works?
+  document.querySelector(".modal-backdrop").remove();
+  document.querySelector(".js-identityModal").remove();
+  document.querySelector("body").classList.remove("noscroll");
+  console.log("User clicked on", event.target.className);
+  showSearchFeedbackModal(event.target.className === "found-yes");
 }
 
 export function showFoundYesNoModal() {
-  console.log("SHOW FOUND YES NO MODAL!")
   let modalInfo = {
     type: "found-yes-no",
     title: "Did you find what you were looking for today?",
     body: `<form method="post" action="">
-    <span class="field-description">
-      Yes, No
-    </span>
     <div id="errors"> </div>
-    <label>
-      <span class="label-text">Email</span>
-      <input type="text" name="email"  value="${getUser()}" />
-    </label>
-    <label>
-      <span class="label-text">Feedback</span>
-      <textarea name="search-feedback"></textarea>
-    </label>
-    <button type="submit" class="found-yes-no">Send</button>
+    <div class="yes-no-container">
+      <input type="image" class="found-yes" src="img/check-circle-1-alternate.svg" alt="yes">
+      <input type="image" class="found-no" src="img/close-x.svg" alt="no">
+    </div>
   </form>`,
     close: false
   };

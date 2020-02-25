@@ -62,17 +62,19 @@ export default class CoProcurePagination extends HTMLElement {
           let desiredPage = this.dataset.pageNum;
           console.log(desiredPage);
 
-          const SESS_KEY = "test-coprocure-search-feedback-show";
-          console.log(window.sessionStorage.getItem(SESS_KEY));
-          if (desiredPage > 2 && true) {
-          //if (window.sessionStorage.getItem(SESS_KEY) === null) {
-            showFoundYesNoModal();
+          // If they are proceeding to the next page of results, show the search
+          // feedback modal.
+          const SESS_KEY = "coprocure-search-feedback-show";
+          if (desiredPage > 1 &&
+              window.sessionStorage.getItem(SESS_KEY) === null) {
             window.sessionStorage.setItem(SESS_KEY, "yes");
-            console.log(window.sessionStorage.getItem(SESS_KEY));
+            showFoundYesNoModal();
             return;
+          } else {
+            console.log(window.sessionStorage.getItem(SESS_KEY));
+            console.log("Search feedback modal already shown this session!");
           }
 
-          console.log("TRIGGERING NAVIGATION");
           if(desiredPage > 0 && desiredPage <= numPages) {
             let navEvent = new CustomEvent('navigation', {'detail': {'page':desiredPage}});
             document.querySelector('coprocure-pagination').dispatchEvent(navEvent);
