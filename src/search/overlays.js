@@ -481,14 +481,14 @@ function setupSearchFeedbackModal() {
 }
 
 export function showSearchFeedbackModal(successfulSearch) {
-  let title = "We’re glad to help!";
-  let description = "Is there anything else you’d like to share with us?";
+  let title = "We're glad to help!";
+  let description = "Is there anything else you'd like to share with us?";
   let feedbackType = "search-success";
   let feedbackLabel = "Feedback";
   let placeholder = "It would be great if...";
   if (!successfulSearch) {
-    title = "Sorry we couldn’t be more helpful";
-    description = "If you share a little more information about what you’re looking for, we may be able to provide additional support on your request.";
+    title = "Sorry we couldn't be more helpful";
+    description = "If you share a little more information about what you're looking for, we may be able to provide additional support on your request.";
     feedbackType = "search-failure";
     feedbackLabel = "Please tell us in more detail what you are looking for:";
     placeholder = "I'm looking for...";
