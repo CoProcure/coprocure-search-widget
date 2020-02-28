@@ -204,15 +204,6 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
             </a>
           </li>`
         }).join('\n      ')}
-        <div class="result-link search-no-results">
-        <img src="/img/question.svg">
-        <h6 class="">Not Seeing The Results You Are Looking For?</h6>
-        <div class="search-no-results-text">Try changing your search terms above or filters located to the left. </div>
-        <!--<div class=""> If you are still not seeing seeing results
-          <a href="">submit a research request</a> for extra help finding the contracts you need
-          </div>
-        </div>
-        -->
       </ul>
       <coprocure-pagination current="${(json.hits.start + 10) / 10}" total="${json.hits.found}"></coprocure-pagination>
     </div>

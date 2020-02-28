@@ -1,133 +1,100 @@
-import { checkParents } from './check-parents.js';
-import { getUser, setUser } from './user.js';
-import { trackEvent } from './tracking.js';
+import { getUser, setUser } from "./user.js";
+import { trackEvent } from "./tracking.js";
+
+const MODALTYPE = {
+  ADDITIONAL_DOCS: "additional-docs",
+  FOUND_YES_NO: "found-yes-no",
+  GENERAL_QUESTION: "general-question",
+  IDENTITY: "identity",
+  PRODUCT: "product",
+  SHARE: "share",
+  VENDOR_CONTACT: "vendor-contact"
+}
 
 function showModal(modalInfo) {
+  console.log('Showing', modalInfo.type, "modal");
   let modalBackdrop = `<div class="modal-backdrop fade"></div>`;
-  let modalHTML = `<div class="js-identityModal modal fade" tabindex="-1" role="dialog">
-    <div class="modal-dialog ${modalInfo.extraClass}" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">${modalInfo.title}</h5>
-        </div>
-        <div class="modal-body">
-          ${modalInfo.body}
-          <input type="hidden" class="contractId" name="contractId" value="${modalInfo.contractId}">
+  let modalHTML = `<div class="js-identityModal modal fade ${modalInfo.type}" tabindex="-1" role="dialog">
+      <div class="modal-dialog ${modalInfo.extraClass}" role="document">
+        <div class="modal-content">
+          <div class="close-modal">X</div>
+          <div class="modal-header">
+            <h5 class="modal-title">${modalInfo.title}</h5>
+          </div>
+          <div class="modal-body">
+            ${modalInfo.body}
+            <input type="hidden" class="contractId" name="contractId" value="${modalInfo.contractId}">
+          </div>
         </div>
       </div>
-    </div>
-  </div>`;
-  document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalBackdrop);  
-  document.body.querySelector('coprocure-search').insertAdjacentHTML('beforeend',modalHTML);
+    </div>`;
+  document.body
+    .querySelector("coprocure-search")
+    .insertAdjacentHTML("beforeend", modalBackdrop);
+  document.body
+    .querySelector("coprocure-search")
+    .insertAdjacentHTML("beforeend", modalHTML);
   setTimeout(function() {
-    document.querySelector('.js-identityModal .modal-dialog').classList.add('show');
-  },50);
+    document
+      .querySelector(".js-identityModal .modal-dialog")
+      .classList.add("show");
+  }, 50);
 
-  if(document.querySelector('.js-identityModal button.contact-vendor')) {
-    document.querySelector('.js-identityModal button.contact-vendor').addEventListener('click',function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      let url = 'https://cncx06eah4.execute-api.us-east-1.amazonaws.com/production/vendor-contact';
-      let email = document.querySelector('.modal input[name="email"]').value;
-      if(email) {
-        setUser(email);
-      } else {
-        document.querySelector('.modal input[name="email"]').focus();
-        return;
-      }
-      let description = document.querySelector('textarea[name="purchase-info"]').value;
-      let contract = document.querySelector('input.contractId').value;
-      let requestType = 'Vendor contact request';
-      if(document.querySelector('input[name="anonymous"]').checked) {
-        requestType = 'Anonymous '+requestType; 
-      }
-      
-      fetch(url, {
-        method: 'post',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, requestType, description, contract })
-      }).then(function(response) {
-        return response.text();
-      }).then(function(data) {
-        console.log(data);
-        document.querySelector('.modal-backdrop').remove();
-        document.querySelector('.js-identityModal').remove();
-      });
-      trackEvent('convert', 'foundSomething', 'vendor contact');
-    })
+  document
+  .querySelector(".js-identityModal .close-modal")
+  .addEventListener("click", function() {
+    const modalType = document.querySelector(".js-identityModal").classList;
+    if (modalType.contains('found-yes-no') || modalType.contains('search-feedback')) {
+      trackEvent("feedback-modal", "closed", "close circle");
+    }
+    closeModal('close-clicked');
+  });
+
+  // TODO: Change these to switch based on modalInfo.type
+  if (document.querySelector(".js-identityModal button.contact-vendor")) {
+    setupContactVendorModal();
   }
 
-  if(document.querySelector('.js-identityModal button.additional-documents')) {
-    document.querySelector('.js-identityModal button.additional-documents').addEventListener('click',function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      let url = 'https://cncx06eah4.execute-api.us-east-1.amazonaws.com/production/vendor-contact';
-      let email = document.querySelector('.modal-dialog form input[name="email"]').value;
-      setUser(email);
-      let description = document.querySelector('textarea[name="additional-documents"]').value;
-      let contract = document.querySelector('input.contractId').value;
-      let requestType = 'Request for additional documents';
-  
-      fetch(url, {
-        method: 'post',
-        headers: {
-          "Content-Type": "application/json",
-        },    
-        body: JSON.stringify({ email, requestType, description, contract })
-      }).then(function(response) {
-        return response.text();
-      }).then(function(data) {
-        console.log(data);
-        document.querySelector('.modal-backdrop').remove();
-        document.querySelector('.js-identityModal').remove();
-      });
-    })
-    trackEvent('convert', 'foundSomething', 'additional documents');
+  if (document.querySelector(".js-identityModal .product-request.button")) {
+    setupProductModal();
   }
 
-  if(document.querySelector('.js-identityModal button.general-question')) {
-    document.querySelector('.js-identityModal button.general-question').addEventListener('click',function(event) {
-      event.preventDefault();
-      event.stopPropagation();
-      let url = 'https://cncx06eah4.execute-api.us-east-1.amazonaws.com/production/vendor-contact';
-      let email = document.querySelector('.modal-dialog form input[name="email"').value;
-      setUser(email);
-      let description = document.querySelector('textarea[name="general-question"]').value;
-      let contract = '';
-      let requestType = 'General Question';
-  
-      fetch(url, {
-        method: 'post',
-        headers: {
-          "Content-Type": "application/json",
-        },    
-        body: JSON.stringify({ email, requestType, description, contract })
-      }).then(function(response) {
-        return response.text();
-      }).then(function(data) {
-        console.log(data);
-        document.querySelector('.modal-backdrop').remove();
-        document.querySelector('.js-identityModal').remove();
-      });
-    })
-  }  
+  if (document.querySelector(".js-identityModal button.additional-documents")) {
+    setupAdditionalDocumentsModal();
+  }
 
-  document.querySelector('.modal').addEventListener('click',function(event) {
-    if(event.srcElement.name != 'anonymous') {
+  if (document.querySelector(".js-identityModal button.general-question")) {
+    setupGeneralQuestionModal();
+  }
+
+  if (document.querySelector(".js-identityModal button.search-feedback")) {
+    setupSearchFeedbackModal();
+  }
+
+  if (modalInfo.type === "found-yes-no") {
+    setupFoundYesNoModal(modalInfo.trigger);
+  }
+
+  document.querySelector(".modal").addEventListener("click", function(event) {
+    if (event.srcElement.name != "anonymous") {
       event.preventDefault();
     }
-    // if they clicked outside modal window, on background
-    if(!checkParents(event, 'modal-dialog')) {
-      document.querySelector('.modal-backdrop').remove();
-      document.querySelector('.js-identityModal').remove();
-    }
-  })
+  });
+}
+
+function closeModal(source, modalInfo) {
+  console.log("Closing modal from", source);
+  document.querySelector(".modal-backdrop").remove();
+  document.querySelector(".js-identityModal").remove();
+  document.querySelector("body").classList.remove("noscroll");
+  if (modalInfo && modalInfo.type === "found-yes-no"){
+    trackEvent("feedback-modal", "closed", "clicked out");
+  }
 }
 
 export function showIdentityModal(contractId) {
   let modalInfo = {
+    type: MODALTYPE.IDENTITY,
     title: `<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M0 0h24v24H0z" fill="none"/><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg> Unlock access to thousands of contracts`,
     body: `<p>Enter your government email address to immediately get full free access - including contract downloads.</p>
       <form method="post" action="">
@@ -139,13 +106,14 @@ export function showIdentityModal(contractId) {
       </form>`,
     close: false,
     contractId: contractId
-  }
+  };
   showModal(modalInfo);
 }
 
-export function showShareModal(contractId) {  
+export function showShareModal(contractId) {
   let modalInfo = {
-    title: 'Share this contract',
+    type: MODALTYPE.SHARE,
+    title: "Share this contract",
     body: `<form method="post" action="" class="share-modal">
         <label>
           <span class="multi-labels">
@@ -157,18 +125,61 @@ export function showShareModal(contractId) {
       </form>`,
     close: false,
     contractId: contractId
-  }
+  };
   showModal(modalInfo);
 
   document.querySelector('.modal-body input[name="link"').select();
-  document.execCommand('copy');
-  
+  document.execCommand("copy");
+}
+
+function setupContactVendorModal() {
+  document
+  .querySelector(".js-identityModal button.contact-vendor")
+  .addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    let url =
+      "https://cncx06eah4.execute-api.us-east-1.amazonaws.com/production/vendor-contact";
+    let email = document.querySelector('.modal input[name="email"]').value;
+    if (email) {
+      setUser(email);
+    } else {
+      document.getElementById("errors").innerHTML = "Please enter an email*";;
+      document.querySelector('.modal input[name="email"]').focus();
+      return;
+    }
+    let description = document.querySelector(
+      'textarea[name="purchase-info"]'
+    ).value;
+    let contract = document.querySelector("input.contractId").value;
+    let requestType = "Vendor contact request";
+    if (document.querySelector('input[name="anonymous"]').checked) {
+      requestType = "Anonymous " + requestType;
+    }
+
+    fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, requestType, description, contract })
+    })
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(data) {
+      console.log(data);
+      closeModal('form-submitted');
+    });
+    trackEvent("convert", "foundSomething", "vendor contact");
+  });
 }
 
 export function showContactVendorModal(contractId) {
   let modalInfo = {
-    title: '',
-    extraClass: 'mega',
+    type: MODALTYPE.VENDOR_CONTACT,
+    title: "",
+    extraClass: "mega",
     body: `<form method="post" action="/" class="multisection-modal">
       <div class="modal-explanation-section">
         <span class="coprocure-logo--white">
@@ -178,14 +189,15 @@ export function showContactVendorModal(contractId) {
           </svg>
           <h5 class="coprocure-logo--text">CoProcure</h5>
         </span>
-        <p><strong>Get answers to your questions anonymously.</strong><br> Share Your information when you're ready, or not at all.</p>
+        <p><strong>Get answers to your questions anonymously.</strong><br> Share your information when you're ready, or not at all.</p>
         <p><strong>Save time.</strong><br> Let CoProcure find the right supplier contact to answer your questions and/or start a new purchase.</p>
       </div>
       <div class="modal-business-section">
         <h5 class="modal-title">Connect with a supplier through CoProcure</h5>
+        <div id="errors"> </div>
         <label>
           <span class="label-text">Email</span>
-          <input type="text" name="email" value="${getUser()}" />
+          <input type="text"  name="email" value="${getUser()}" />
         </label>
         <label>
           <span class="field-description">Inquiry</span>
@@ -200,18 +212,107 @@ export function showContactVendorModal(contractId) {
     </form>`,
     close: false,
     contractId: contractId
-  }
+  };
   showModal(modalInfo);
+}
+
+function setupAdditionalDocumentsModal() {
+  document
+  .querySelector(".js-identityModal button.additional-documents")
+  .addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    let url =
+      "https://cncx06eah4.execute-api.us-east-1.amazonaws.com/production/vendor-contact";
+    let email = document.querySelector(
+      '.modal-dialog form input[name="email"]'
+    ).value;
+    if (email) {
+      setUser(email);
+    } else {
+      document.getElementById("errors").innerHTML = "Please enter an email*";;
+      document.querySelector('.modal input[name="email"]').focus();
+      return;
+    }
+    let description = document.querySelector(
+      'textarea[name="additional-documents"]'
+    ).value;
+    let contract = document.querySelector("input.contractId").value;
+    let requestType = "Request for additional documents";
+
+    fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, requestType, description, contract })
+    })
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(data) {
+      console.log(data);
+      closeModal('form-submitted');
+    });
+  });
+  trackEvent("convert", "foundSomething", "additional documents");
+}
+
+function setupGeneralQuestionModal() {
+  document
+  .querySelector(".js-identityModal button.general-question")
+  .addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    let url =
+      "https://cncx06eah4.execute-api.us-east-1.amazonaws.com/production/vendor-contact";
+    let email = document.querySelector(
+      '.modal-dialog form input[name="email"'
+    ).value;
+    if (email) {
+      setUser(email);
+    } else {
+      document.getElementById("errors").innerHTML = "Please enter an email*";;
+      document.querySelector('.modal input[name="email"]').focus();
+      return;
+    }
+    let description = document.querySelector(
+      'textarea[name="general-question"]'
+    ).value;
+    let contract = document.querySelector("input.contractId").value;
+    let requestType = "General Question";
+
+    fetch(url, {
+      method: "post",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, requestType, description, contract })
+    })
+      .then(function(response) {
+        return response.text();
+      })
+      .then(function(data) {
+        console.log(data);
+        closeModal('form-submitted');
+      });
+  });
 }
 
 export function showAdditionalDocsModal(infoObject) {
   let modalInfo = {
-    title: 'Missing Documents? Let Us Know',
+    type: MODALTYPE.ADDITIONAL_DOCS,
+    title: "Missing Documents? Let Us Know",
     body: `<form method="post" action="">
-        <span class="field-description">Thanks for letting us know that you'd like some additional documentation for this record. What documents would you like to request? Contract, bid tabulation, bid solicitation, amendments, other (please explain)</span>
+        <span class="field-description">
+          Thanks for letting us know that you'd like some additional documentation for this record.
+          What documents would you like to request? Contract, bid tabulation, bid solicitation,
+          amendments, other (please explain)
+        </span>
+        <div id="errors"> </div>
         <label>
           <span class="label-text">Email</span>
-          <input type="text" name="email" value="${getUser()}" />
+          <input type="text" name="email"  value="${getUser()}" />
         </label>
         <label>
           <span class="label-text">Inquiry</span>
@@ -221,26 +322,262 @@ export function showAdditionalDocsModal(infoObject) {
       </form>`,
     close: false,
     contractId: infoObject.contractId
-  }      
+  };
 
-  if(infoObject.type == 'questions') {
-    modalInfo = {
-      title: 'Have a General Question?',
-      body: `<form method="post" action="">
-      <span class="field-description">We'd love to hear from you. Send us a message and we will get back to you as soon as we can.</span>
-      <label>
-        <span class="label-text">Email</span>
-        <input type="text" name="email" value="${getUser()}" />
-      </label>
-      <label>
-        <span class="label-text">Inquiry</span>
-        <textarea name="general-question"></textarea>
-      </label>
-      <button type="submit" class="general-question">Send</button>
-    </form>`,
-      close: false
-    }      
+  showModal(modalInfo);
+}
+
+export function showGeneralQuestionModal(infoObject) {
+  let modalInfo = {
+    type: MODALTYPE.GENERAL_QUESTION,
+    title: "Have a General Question?",
+    body: `<form method="post" action="">
+    <span class="field-description">We'd love to hear from you. Send us a message and we will get back to you as soon as we can.</span>
+    <div id="errors"> </div>
+    <label>
+      <span class="label-text">Email</span>
+      <input type="text" name="email"  value="${getUser()}" />
+    </label>
+    <label>
+      <span class="label-text">Inquiry</span>
+      <textarea name="general-question"></textarea>
+    </label>
+    <button type="submit" class="general-question">Send</button>
+  </form>`,
+    close: false,
+    contractId: infoObject.contractId
+  };
+
+  showModal(modalInfo);
+}
+
+function setupProductModal() {
+  document
+  .querySelector(".js-identityModal .button.product-request")
+  .addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    let url =
+      "https://93flntoz36.execute-api.us-east-1.amazonaws.com/production/contact/";
+    let email = document.querySelector('.modal input[name="email"]').value;
+    let name = document.querySelector('input[name="fullname"]').value;
+    let workplace = document.querySelector(
+      'input[name="agency/government"]'
+    ).value;
+    let want = document.querySelector('select[name="product-want"]').value;
+    let description = `Jurisdiction: ${workplace}\nRequest: ${want}`
+    document.getElementById("errors").innerHTML = "";
+    if (name == "") {
+      document.getElementById("errors").innerHTML =
+        "Please enter your name*";
+      return false;
+    }
+    if (email == "") {
+      document.getElementById("errors").innerHTML =
+        "Please enter an email*";
+      return false;
+    }
+    fetch(url, {
+      method: "post",
+      body: `fullname=${name}&email=${email}&description=${description}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(data) {
+      console.log(data);
+      closeModal('form-submitted');
+    });
+  });
+}
+
+export function showProductModal() {
+  let modalInfo = {
+    type: MODALTYPE.PRODUCT,
+    title: "Learn how CoProcure can be used on your website",
+    body: `<form method="post" class="product-overlay" action="">
+    <span class="field-description">Our team will follow up to connect with you</span>
+    <div class="expert-photo">
+      <img src="img/about/mariel.png" class="">
+      <img src="img/about/andrew.png" class="">
+    </div>
+    <div id="errors"> </div>
+    <label>
+      <span class="label-text">Full Name</span>
+      <input type="text"  name="fullname"/>
+    </label>
+    <label>
+      <span class="label-text">Government/Agency Name</span>
+      <input type="text" name="agency/government"/>
+    </label>
+    <label>
+      <span class="label-text">Work Email</span>
+      <input type="text"  name="email" value="${getUser()}" />
+    </label>
+    <label>
+    <span class="label-text">What free tool are you interested in?</span>
+    <select name="product-want" id="products">
+      <option value="I want to publish my agency's contracts using CoProcure">I want to publish my agency's contracts using CoProcure</option>
+      <option value="I want to add CoProcure search to my website">I want to add CoProcure search to my website</option>
+      <option value="Interested in both">Interested in both</option>
+      <option value="I'm looking for more information">I'm looking for more information</option>
+    </select>
+    </label>
+    <input type="submit" class="product-request button" value="Submit">
+  </form>
+  `,
+    close: false
+  };
+  showModal(modalInfo);
+}
+
+function setupSearchFeedbackModal() {
+  document
+  .querySelector(".js-identityModal button.search-feedback")
+  .addEventListener("click", function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+
+    let url =
+    "https://93flntoz36.execute-api.us-east-1.amazonaws.com/production/contact/";
+    let email = document.querySelector('.modal input[name="email"]').value;
+    if (email) {
+      setUser(email);
+    } else {
+      document.getElementById("errors").innerHTML = "Please enter an email*";;
+      document.querySelector('.modal input[name="email"]').focus();
+      return;
+    }
+    let searchTerm = (new URLSearchParams(window.location.search)).get('query');
+
+    const feedbackType = document.querySelector('.field-description').id;
+    let description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
+    description += document.querySelector(
+      'textarea[name="search-feedback"]'
+    ).value;
+    fetch(url, {
+      method: "post",
+      body: `fullname=${name}&email=${email}&description=${description}`,
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      }
+    })
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(data) {
+      console.log(data);
+      if (feedbackType == 'search-failure'){
+        trackEvent("feedback-modal", "modal 2 response", "modal 2 failure details");
+      } else {
+        trackEvent("feedback-modal", "modal 2 response", "modal 2 feedback");
+      }
+      closeModal('form-submitted');
+    });
+  });
+}
+
+export function showSearchFeedbackModal(successfulSearch) {
+  let title = "We’re glad to help!";
+  let description = "Is there anything else you’d like to share with us?";
+  let feedbackType = "search-success";
+  let feedbackLabel = "Feedback";
+  let placeholder = "It would be great if...";
+  if (!successfulSearch) {
+    title = "Sorry we couldn’t be more helpful";
+    description = "If you share a little more information about what you’re looking for, we may be able to provide additional support on your request.";
+    feedbackType = "search-failure";
+    feedbackLabel = "Please tell us in more detail what you are looking for:";
+    placeholder = "I'm looking for...";
   }
+  let modalInfo = {
+    type: "search-feedback",
+    title: `${title}`,
+    body: `<form method="post" action="">
+    <span class="field-description" id="${feedbackType}">
+      ${description}
+    </span>
+    <div id="errors"> </div>
+    <label>
+      <span class="label-text">Email</span>
+      <input type="text" name="email"  value="${getUser()}" />
+      <div class='email-disclaimer'>We're committed to keeping your information secure. We will not share your email with any third party.</div>
+    </label>
+    <label>
+      <span class="label-text">${feedbackLabel}</span>
+      <textarea name="search-feedback" placeholder="${placeholder}"></textarea>
+    </label>
+    <button type="submit" class="search-feedback">Send</button>
+  </form>`,
+    close: false
+  };
+
+  showModal(modalInfo);
+}
+
+function setupFoundYesNoModal(trigger) {
+  document
+  .querySelector(".js-identityModal .found-yes")
+  .addEventListener("click", yesNoOnClick);
+
+  document
+  .querySelector(".js-identityModal .found-no")
+  .addEventListener("click", yesNoOnClick);
+
+  document
+  .querySelector(".still-searching")
+  .addEventListener("click", function(){
+    console.log('clicked on still searching');
+    closeModal('still-searching');
+    trackEvent("feedback-modal", "closed", "still searching");
+  });
+
+  trackEvent("feedback-modal", "triggered", trigger);
+}
+
+function yesNoOnClick(event) {
+  event.preventDefault();
+  event.stopPropagation();
+  // GA event tracking:
+  const clickedYes = (
+    event.target.className === "found-yes" ||
+    event.target.className === "yes-img" ||
+    event.target.className === "yes-text");
+  if (clickedYes) {
+    trackEvent("feedback-modal", "modal 1 response", "modal 1 yes");
+  } else{
+    trackEvent("feedback-modal", "modal 1 response", "modal 1 no");
+  }
+  // This is kind of a disgusting way to show the next modal. But it works?
+  closeModal('search-feedback-next-modal');
+  console.log("User clicked on", event.target.className);
+  showSearchFeedbackModal(clickedYes);
+}
+
+export function showFoundYesNoModal(trigger) {
+  let modalInfo = {
+    type: MODALTYPE.FOUND_YES_NO,
+    trigger: trigger,
+    title: "Did you find what you were looking for today?",
+    body: `<form method="post" action="">
+    <div id="errors"> </div>
+    <div class="yes-no-container">
+      <div class="found-no">
+        <img class="no-img" src="img/thumbs.png">
+        <div class="no-text">No</div>
+      </div>
+      <div class="found-yes">
+        <img class="yes-img" src="img/thumbs.png">
+        <div class="yes-text">Yes</div>
+      </div>
+    </div>
+    <div class="still-searching">I'm still searching...</div>
+  </form>`,
+    close: false
+  };
 
   showModal(modalInfo);
 }

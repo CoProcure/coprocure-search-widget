@@ -1,14 +1,21 @@
 import { checkParents } from './check-parents';
-import { getUser, showIdentityModal, showContactVendorModal, showAdditionalDocsModal, showShareModal } from './user';
+import {
+  getUser,
+  showIdentityModal,
+  showContactVendorModal,
+  showAdditionalDocsModal,
+  showGeneralQuestionModal,
+  showShareModal
+} from './user';
 import { trackEvent } from './tracking';
 
 export function handleExpansion(event) {
   let item = checkParents(event, 'expandable-contract');
-  
+
   if(event.target.classList.contains('share-link')) {
     return;
   }
-  
+
   if(item) {
     item.classList.toggle('flipped')
     event.preventDefault();
@@ -32,6 +39,10 @@ export function handleExpansion(event) {
 
   if(checkParents(event, 'additional-documents')) {
     showAdditionalDocsModal(checkParents(event, 'contracts').dataset.hitId);
+  }
+
+  if(checkParents(event, 'general-questions')) {
+    showGeneralQuestionModal(checkParents(event, 'contracts').dataset.hitId);
   }
 
   if(checkParents(event, 'share-record')) {
