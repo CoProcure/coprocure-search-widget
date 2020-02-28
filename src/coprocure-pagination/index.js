@@ -5,9 +5,6 @@ export default class CoProcurePagination extends HTMLElement {
     return ["current","total"];
   }
 
-  attributeChangedCallback(attr, oldValue, newValue) {
-  }
-
   connectedCallback() {
     this.paginationIncrement = 10;
     this.pagesShown = 1;
@@ -62,17 +59,18 @@ export default class CoProcurePagination extends HTMLElement {
           let desiredPage = this.dataset.pageNum;
           console.log(desiredPage);
 
-          // If they are proceeding to the next page of results, show the search
+          // If they are proceeding to the next page of results on the website, show the search
           // feedback modal.
-          const SESS_KEY = "coprocure-search-feedback-show";
-          if (desiredPage > 1 &&
-              window.sessionStorage.getItem(SESS_KEY) === null) {
-            window.sessionStorage.setItem(SESS_KEY, "yes");
-            showFoundYesNoModal();
-            return;
-          } else {
-            console.log(window.sessionStorage.getItem(SESS_KEY));
-            console.log("Search feedback modal already shown this session!");
+          let headless = document.querySelector('coprocure-search').headless;
+          const SESS_KEY = "coprocure-search-feedback-shown";
+          if (headless && desiredPage > 1) {
+            if (window.sessionStorage.getItem(SESS_KEY) === null) {
+              window.sessionStorage.setItem(SESS_KEY, "yes");
+              showFoundYesNoModal("pagination");
+              return;
+            } else {
+              console.log("Search feedback modal already shown this session!");
+            }
           }
 
           if(desiredPage > 0 && desiredPage <= numPages) {
