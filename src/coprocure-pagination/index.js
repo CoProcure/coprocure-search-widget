@@ -67,6 +67,8 @@ export default class CoProcurePagination extends HTMLElement {
             if (window.sessionStorage.getItem(SESS_KEY) === null) {
               window.sessionStorage.setItem(SESS_KEY, "yes");
               showFoundYesNoModal("pagination");
+              // return to avoid finishing the pagination, which would render the next page
+              // over the modal
               return;
             } else {
               console.log("Search feedback modal already shown this session!");
