@@ -451,7 +451,7 @@ function setupSearchFeedbackModal() {
       document.querySelector('.modal input[name="email"]').focus();
       return;
     }
-    let searchTerm = (new URLSearchParams(window.location.search)).get('query');
+    let searchTerm = window.location.search.split('=')[1];
 
     const feedbackType = document.querySelector('.field-description').id;
     let description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
