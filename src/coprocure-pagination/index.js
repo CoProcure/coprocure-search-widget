@@ -64,7 +64,7 @@ export default class CoProcurePagination extends HTMLElement {
           let headless = document.querySelector('coprocure-search').headless;
           const SESS_KEY = "coprocure-search-feedback-shown";
           if (headless && desiredPage > 1) {
-            if (window.sessionStorage.getItem(SESS_KEY) === null) {
+            if (true) {//window.sessionStorage.getItem(SESS_KEY) === null) {
               window.sessionStorage.setItem(SESS_KEY, "yes");
               showFoundYesNoModal("pagination");
               // return to avoid finishing the pagination, which would render the next page
