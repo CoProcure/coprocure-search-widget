@@ -389,15 +389,30 @@ export default class CoProcureSearch extends HTMLElement {
   }
 
   setupTracker() {
-    let script = document.createElement('script');
-    script.onload = function () {
+    let script1 = document.createElement('script');
+
+    // TODO: Remove this onload function? Not sure it's accomplishing anything. GA might not
+    // have been working correctly before because we need to declare the gtag function globally
+    // for other js functions to use, not just run it here onload.
+    script1.onload = function () {
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'UA-121612479-1');
     };
-    script.src = 'https://www.googletagmanager.com/gtag/js?id=UA-121612479-1';
-    document.head.appendChild(script);
+    script1.src = 'https://www.googletagmanager.com/gtag/js?id=UA-121612479-1';
+    script1.setAttribute('async', '');
+    let script2 = document.createElement('script');
+    script2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'UA-121612479-1');`
+    document.head.appendChild(script1);
+    document.head.appendChild(script2);
   }
 
 }
