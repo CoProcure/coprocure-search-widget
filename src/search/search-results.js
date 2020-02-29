@@ -1,6 +1,6 @@
 import { isDate } from './is-date';
 import { offset } from './offset.js';
-import { getUser, setUser } from "./user.js";
+import { getSearchFeedbackEmbed } from './search-feedback.js';
 
 export function resultLayout(json, query, sort, expired, noncoop, states, buyers, coops, selectedStates, selectedBuyers, selectedCoops, headless, restrictedSearch, restrictionLifted) {
   let stateList = states();
@@ -208,30 +208,9 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
         ${(function() {
           // Show the search feedback modal if no results
           if (json.hits.found === 0) {
-            return `
-            <div class="result-link search-no-results">
-            <div class="search-feedback-embedded">
-            <form method="post" action="">
-              <h5 class="">Sorry, we don't have results for your search yet</h5>
-              <span class="field-description" id="search-failure">
-                If you share a little more information about what you're looking for, we may be able to provide additional support on your request.
-              </span>
-              <div id="errors"> </div>
-              <label>
-                <span class="label-text">Email</span>
-                <input type="text" name="email"  value="${getUser()}" />
-                <div class='email-disclaimer'>We're committed to keeping your information secure. We will not share your email with any third party.</div>
-              </label>
-              <label>
-                <span class="label-text">Please tell us in more detail what you are looking for:</span>
-                <textarea name="search-feedback" placeholder="I'm looking for..."></textarea>
-              </label>
-              <button class="highlight">Send</button>
-            </form>
-            </div>
-            </div>`
+            return getSearchFeedbackEmbed();
           } else {
-            return ""
+            return "";
           }
         })()}
       </ul>

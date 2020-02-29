@@ -255,17 +255,6 @@ coprocure-search {
     color: #4F6481;
     transition: all .4s;
   }
-  .search-results .result-link.search-no-results {
-    display: block;
-    text-align: center;
-    font-family: "lato";
-
-    .search-feedback-embedded {
-      width: 550px;
-      display: inline-block;
-      text-align: left;
-    }
-  }
   .search-results .result-title {
     display: block;
     font-family: 'Poppins', sans-serif;

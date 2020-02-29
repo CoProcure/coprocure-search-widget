@@ -1,3 +1,7 @@
+// TODO: Aggregate all these styles into a single file?
+// This used to be a file that defined some CSS for search results, but overlapping styles got
+// defined elsewhere, causing havoc. The styles for the normal width widget were aggregated into
+// _search-base.scss, but haven't gotten around to aggregating and deduping the styles for mobile
 @media (max-width: 768px) {
   coprocure-search, coprocure-search[headless="true"] {
     .show-filters {

@@ -1,3 +1,4 @@
+import { connectSearchFeedback } from './search-feedback.js';
 import { resultLayout } from './search-results.js';
 import '../coprocure-pagination/index.js';
 import { spinner } from './spinner.js';
@@ -260,6 +261,7 @@ export default class CoProcureSearch extends HTMLElement {
 
   renderResults(json) {
     this.innerHTML = resultLayout(json, this.query, this.sort, this.showExpired, this.showNonCoop, states, buyers, coops, this.states, this.buyers, this.coops, this.headless, this.searchSourceLimit, this.restrictedSearch);
+    connectSearchFeedback(this.query);
     window.lastSearch = window.location.toString();
     trackEvent('search', 'results', json.hits.found.toString());
 
