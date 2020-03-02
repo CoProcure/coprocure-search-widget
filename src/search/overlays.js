@@ -1,3 +1,4 @@
+import { checkParents } from "./check-parents.js";
 import { getUser, setUser } from "./user.js";
 import { trackEvent } from "./tracking.js";
 
@@ -78,6 +79,11 @@ function showModal(modalInfo) {
   document.querySelector(".modal").addEventListener("click", function(event) {
     if (event.srcElement.name != "anonymous") {
       event.preventDefault();
+    }
+
+    // if they clicked outside modal window, on background
+    if (!checkParents(event, "modal-dialog")) {
+      closeModal('background-click', modalInfo);
     }
   });
 }
