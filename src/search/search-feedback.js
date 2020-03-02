@@ -1,8 +1,16 @@
 import { getUser, setUser } from "./user.js";
 import { trackEvent } from './tracking.js';
 
-export function getSearchFeedbackEmbed() {
-  return `
+const SEARCH_FEEDBACK_SHOW_STORAGE_KEY = "coprocure-search-feedback-shown";
+
+export function getSearchFeedbackEmbed(numHits) {
+  if (numHits === 0) {
+    // Set this key so we don't show them the popup later
+    window.sessionStorage.setItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY, "yes");
+
+    // Show a version of the search feedback modal embedded where the search results would
+    // usually be.
+    return `
   <div class="result-link search-no-results">
   <div class="search-feedback-embedded">
   <form method="post" action="">
@@ -24,11 +32,16 @@ export function getSearchFeedbackEmbed() {
   </form>
   </div>
   </div>`;
+  } else {
+    return "";
+  }
 }
 
-export function connectSearchFeedback(searchTerm) {
-  console.log(document
-    .querySelector(".search-no-results button.search-feedback"));
+export function connectSearchFeedback(json, searchTerm) {
+  if (json.hits.found !== 0) {
+    // the search feedback embed isn't showing anyway
+    return;
+  }
   document
   .querySelector(".search-no-results button.search-feedback")
   .addEventListener("click", function(event) {

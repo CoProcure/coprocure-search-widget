@@ -1,4 +1,5 @@
 import { showFoundYesNoModal } from '../search/overlays.js';
+import { SEARCH_FEEDBACK_SHOW_STORAGE_KEY } from '../search/search-feedback.js';
 
 export default class CoProcurePagination extends HTMLElement {
   static get observedAttributes() {
@@ -62,10 +63,9 @@ export default class CoProcurePagination extends HTMLElement {
           // If they are proceeding to the next page of results on the website, show the search
           // feedback modal.
           let headless = document.querySelector('coprocure-search').headless;
-          const SESS_KEY = "coprocure-search-feedback-shown";
           if (headless && desiredPage > 1) {
-            if (true) {//window.sessionStorage.getItem(SESS_KEY) === null) {
-              window.sessionStorage.setItem(SESS_KEY, "yes");
+            if (true) {//window.sessionStorage.getItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY) === null) {
+              window.sessionStorage.setItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY, "yes");
               showFoundYesNoModal("pagination");
               // return to avoid finishing the pagination, which would render the next page
               // over the modal

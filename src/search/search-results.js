@@ -33,6 +33,8 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
           ${restrictCheckbox}
       </form>
     </div>`
+    } else {
+      return ''
     }
   })()}
   <div class="search-results-container">
@@ -207,11 +209,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
         }).join('\n      ')}
         ${(function() {
           // Show the search feedback modal if no results
-          if (json.hits.found === 0) {
-            return getSearchFeedbackEmbed();
-          } else {
-            return "";
-          }
+          return getSearchFeedbackEmbed(json.hits.found);
         })()}
       </ul>
       <coprocure-pagination current="${(json.hits.start + 10) / 10}" total="${json.hits.found}"></coprocure-pagination>
@@ -221,7 +219,8 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
 
   ${(function() {
     let output = '';
-    if(!headless) {
+    // if numHits is zero, we will show the search feedback
+    if (!headless && json.hits.found !== 0) {
       output = `<section class="contact-us blue-back">
       <a name="contactanchor"></a>
       <div class="section-interior">
