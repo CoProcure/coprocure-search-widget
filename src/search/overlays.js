@@ -563,7 +563,16 @@ function yesNoOnClick(event) {
   showSearchFeedbackModal(clickedYes);
 }
 
-export function showFoundYesNoModal(trigger) {
+const SEARCH_FEEDBACK_SHOW_STORAGE_KEY = "coprocure-search-feedback-shown";
+
+export function maybeShowFoundYesNoModal(trigger) {
+  // This will not show the modal if the user's already seen it this session. It returns
+  // true if modal pops up, false if already shown.
+  if (window.sessionStorage.getItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY) !== null) {
+    console.log("Search feedback modal already shown this session!");
+    return false;
+  }
+  window.sessionStorage.setItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY, "yes");
   let modalInfo = {
     type: MODALTYPE.FOUND_YES_NO,
     trigger: trigger,
@@ -586,4 +595,6 @@ export function showFoundYesNoModal(trigger) {
   };
 
   showModal(modalInfo);
+
+  return true;
 }

@@ -1,8 +1,6 @@
 import { getUser, setUser } from "./user.js";
 import { trackEvent } from './tracking.js';
 
-const SEARCH_FEEDBACK_SHOW_STORAGE_KEY = "coprocure-search-feedback-shown";
-
 export function getSearchFeedbackEmbed(numHits) {
   if (numHits === 0) {
     // Set this key so we don't show them the popup later
