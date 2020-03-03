@@ -257,7 +257,7 @@ export default class CoProcureSearch extends HTMLElement {
         component.renderResults(json);
         trackEvent('search', 'query', component.query);
 
-        if (component.page && component.page > 1) {
+        if (component.headless && component.page && component.page > 1) {
           // Show the search feedback modal
           maybeShowFoundYesNoModal("pagination");
         }

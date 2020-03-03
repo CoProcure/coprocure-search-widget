@@ -219,7 +219,8 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
 
   ${(function() {
     let output = '';
-    // if numHits is zero, we will show the search feedback
+    // if search returned no results, we will show the search feedback form. Showing
+    // the contact form is redundant so we hide it.
     if (!headless && json.hits.found !== 0) {
       output = `<section class="contact-us blue-back">
       <a name="contactanchor"></a>
