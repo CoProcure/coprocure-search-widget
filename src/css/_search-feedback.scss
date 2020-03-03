@@ -5,6 +5,7 @@ coprocure-search .search-results .result-link.search-no-results {
   display: block;
   text-align: center;
   font-family: "lato";
+  padding: 50px 0px;
 
   .search-feedback-embedded {
     width: 550px;
@@ -56,5 +57,5 @@ coprocure-search .search-no-results label .email-disclaimer {
 coprocure-search .search-no-results h5 {
   font-size: 20px;
   line-height: 128.4%;
-  margin-bottom: 5px;
+  margin: 20px 0px;
 }

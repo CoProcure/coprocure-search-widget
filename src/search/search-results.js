@@ -9,7 +9,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
   let currentOffset = offset();
   return `
   ${(function() {
-    if(!headless) {
+    if (!headless) {
       let alignmentMod = '';
       let restrictCheckbox =  '';
       if(restrictedSearch) {

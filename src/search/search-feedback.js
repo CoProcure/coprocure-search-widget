@@ -1,11 +1,12 @@
 import { getUser, setUser } from "./user.js";
 import { trackEvent } from './tracking.js';
+import { SEARCH_FEEDBACK_SHOW_STORAGE_KEY } from './overlays.js';
 
 export function getSearchFeedbackEmbed(numHits) {
   if (numHits === 0) {
     // Set this key so we don't show them the popup later
     window.sessionStorage.setItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY, "yes");
-
+    trackEvent("feedback-modal", "triggered", "zero-results");
     // Show a version of the search feedback modal embedded where the search results would
     // usually be.
     return `
@@ -57,7 +58,7 @@ export function connectSearchFeedback(json, searchTerm) {
       return;
     }
 
-    const feedbackType = document.querySelector('.search-no-results .field-description').id;
+    const feedbackType = 'search-failure';
     let description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
     description += document.querySelector(
       'textarea[name="search-feedback"]'

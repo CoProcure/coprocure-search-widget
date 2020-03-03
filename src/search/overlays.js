@@ -563,7 +563,7 @@ function yesNoOnClick(event) {
   showSearchFeedbackModal(clickedYes);
 }
 
-const SEARCH_FEEDBACK_SHOW_STORAGE_KEY = "coprocure-search-feedback-shown";
+export const SEARCH_FEEDBACK_SHOW_STORAGE_KEY = "coprocure-search-feedback-shown";
 
 export function maybeShowFoundYesNoModal(trigger) {
   // This will not show the modal if the user's already seen it this session. It returns
