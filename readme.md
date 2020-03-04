@@ -91,7 +91,7 @@ You can install this component on your site if you would like to add the CoProcu
     - `cp dist/search/v2/index.js dist/index2.js`
     - `cp dist/search/v2/index.js.map dist/index2.js.map`
     - `npm run deploy` again
-    - <a href="https://www.dropbox.com/scl/fi/m3fz75knz4nda47g2cdhr/Software-Engineer-Documentation.paper?dl=0">Clear the cloudfront cache.</a>
+    - <a href="https://www.dropbox.com/scl/fi/m3fz75knz4nda47g2cdhr/Software-Engineer-Documentation.paper?dl=0&rlkey=1n3y7cjsgddustdjgx2m9v1jj#:uid=188852806138254769823627&h2=Clearing-the-Cloudfront-cache">Clear the cloudfront cache.</a>
     - Test the Portland embedded widget. (shift+Cmd+R to bypass your browser cache)
 - To update KCRPC
     - `cp dist/search/v2/index.js dist/index.js`
