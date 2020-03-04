@@ -4,7 +4,7 @@
 coprocure-search .search-results .result-link.search-no-results {
   display: block;
   text-align: center;
-  font-family: "lato";
+  font-family: lato, 'Lucida Grande', Tahoma, sans-serif;
   padding: 50px 0px;
 
   .search-feedback-embedded {
@@ -33,7 +33,7 @@ coprocure-search .search-no-results textarea {
   width: 100%;
   height: 115px;
   margin: 0 0 20px 0;
-  font-family: "lato";
+  font-family: lato, 'Lucida Grande', Tahoma, sans-serif;
 }
 
 coprocure-search .search-no-results button {
