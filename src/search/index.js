@@ -1,3 +1,4 @@
+import { connectSearchFeedback } from './search-feedback.js';
 import { resultLayout } from './search-results.js';
 import '../coprocure-pagination/index.js';
 import { spinner } from './spinner.js';
@@ -7,6 +8,7 @@ import { coops } from './coops.js';
 import { trackEvent } from './tracking.js';
 import { debounce } from "debounce";
 import { researchform } from './research-form.js';
+import { maybeShowFoundYesNoModal } from '../search/overlays.js';
 
 function getParams() {
   let paramsObj = {};
@@ -171,7 +173,7 @@ export default class CoProcureSearch extends HTMLElement {
     }
     let numResults = 10;
     let start = 0;
-    if(this.page && this.page > 1) {
+    if (this.page && this.page > 1) {
       start = (numResults * this.page) - numResults;
     }
     let expParam = `expiration:['${new Date().toISOString()}',}`;
@@ -254,12 +256,18 @@ export default class CoProcureSearch extends HTMLElement {
       .then(function(json) {
         component.renderResults(json);
         trackEvent('search', 'query', component.query);
+
+        if (component.headless && component.page && component.page > 1) {
+          // Show the search feedback modal
+          maybeShowFoundYesNoModal("pagination");
+        }
       });
     }
   }
 
   renderResults(json) {
     this.innerHTML = resultLayout(json, this.query, this.sort, this.showExpired, this.showNonCoop, states, buyers, coops, this.states, this.buyers, this.coops, this.headless, this.searchSourceLimit, this.restrictedSearch);
+    connectSearchFeedback(json, this.query);
     window.lastSearch = window.location.toString();
     trackEvent('search', 'results', json.hits.found.toString());
 

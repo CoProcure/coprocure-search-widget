@@ -1,5 +1,6 @@
 import { isDate } from './is-date';
 import { offset } from './offset.js';
+import { getSearchFeedbackEmbed } from './search-feedback.js';
 
 export function resultLayout(json, query, sort, expired, noncoop, states, buyers, coops, selectedStates, selectedBuyers, selectedCoops, headless, restrictedSearch, restrictionLifted) {
   let stateList = states();
@@ -8,7 +9,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
   let currentOffset = offset();
   return `
   ${(function() {
-    if(!headless) {
+    if (!headless) {
       let alignmentMod = '';
       let restrictCheckbox =  '';
       if(restrictedSearch) {
@@ -32,6 +33,8 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
           ${restrictCheckbox}
       </form>
     </div>`
+    } else {
+      return ''
     }
   })()}
   <div class="search-results-container">
@@ -204,6 +207,10 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
             </a>
           </li>`
         }).join('\n      ')}
+        ${(function() {
+          // Show the search feedback modal if no results
+          return getSearchFeedbackEmbed(json.hits.found);
+        })()}
       </ul>
       <coprocure-pagination current="${(json.hits.start + 10) / 10}" total="${json.hits.found}"></coprocure-pagination>
     </div>
@@ -212,7 +219,9 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
 
   ${(function() {
     let output = '';
-    if(!headless) {
+    // if search returned no results, we will show the search feedback form. Showing
+    // the contact form is redundant so we hide it.
+    if (!headless && json.hits.found !== 0) {
       output = `<section class="contact-us blue-back">
       <a name="contactanchor"></a>
       <div class="section-interior">

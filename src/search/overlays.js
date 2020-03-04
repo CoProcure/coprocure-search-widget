@@ -1,3 +1,4 @@
+import { checkParents } from "./check-parents.js";
 import { getUser, setUser } from "./user.js";
 import { trackEvent } from "./tracking.js";
 
@@ -78,6 +79,11 @@ function showModal(modalInfo) {
   document.querySelector(".modal").addEventListener("click", function(event) {
     if (event.srcElement.name != "anonymous") {
       event.preventDefault();
+    }
+
+    // if they clicked outside modal window, on background
+    if (!checkParents(event, "modal-dialog")) {
+      closeModal('background-click', modalInfo);
     }
   });
 }
@@ -557,7 +563,16 @@ function yesNoOnClick(event) {
   showSearchFeedbackModal(clickedYes);
 }
 
-export function showFoundYesNoModal(trigger) {
+export const SEARCH_FEEDBACK_SHOW_STORAGE_KEY = "coprocure-search-feedback-shown";
+
+export function maybeShowFoundYesNoModal(trigger) {
+  // This will not show the modal if the user's already seen it this session. It returns
+  // true if modal pops up, false if already shown.
+  if (window.sessionStorage.getItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY) !== null) {
+    console.log("Search feedback modal already shown this session!");
+    return false;
+  }
+  window.sessionStorage.setItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY, "yes");
   let modalInfo = {
     type: MODALTYPE.FOUND_YES_NO,
     trigger: trigger,
@@ -580,4 +595,6 @@ export function showFoundYesNoModal(trigger) {
   };
 
   showModal(modalInfo);
+
+  return true;
 }
