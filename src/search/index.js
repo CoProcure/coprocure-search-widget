@@ -184,11 +184,11 @@ export default class CoProcureSearch extends HTMLElement {
     if(this.query || this.prepop) {
       if(this.query && this.query.indexOf('"')<0) {
         url += `&q=(and `;
-        decodeURIComponent(this.query).split(' ').forEach( (term) => {
-          url += ` '${term}'`;
+        this.query.split(' ').forEach( (term) => {
+          url += ` '${this.prepareSearchQueryTerm(term)}'`;
         })
       } else if (this.query) {
-        url += `&q=(and '${this.query}' `;
+        url += `&q=(and '${this.prepareSearchQueryTerm(this.query)}' `;
       } else {
         url += `&q=(and `;
       }
@@ -421,6 +421,15 @@ export default class CoProcureSearch extends HTMLElement {
       gtag('config', 'UA-121612479-1');`
     document.head.appendChild(script1);
     document.head.appendChild(script2);
+  }
+
+  prepareSearchQueryTerm(term) {
+    // AWS CloudSearch chokes on single quotes in queries unless they're escaped.
+    // Escaping backslashes must be added *after* URI encoding, otherwise they'll be cleaned out.
+    let preparedTerm = encodeURIComponent(term)
+    preparedTerm = preparedTerm.replace(/'/g, "%5C'");
+
+    return preparedTerm;
   }
 
 }
