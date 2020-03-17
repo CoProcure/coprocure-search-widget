@@ -1,6 +1,7 @@
 import { isDate } from './is-date';
 import { offset } from './offset.js';
 import { getSearchFeedbackEmbed } from './search-feedback.js';
+import { getUser } from "./user.js";
 
 export function resultLayout(json, query, sort, expired, noncoop, states, buyers, coops, selectedStates, selectedBuyers, selectedCoops, headless, restrictedSearch, restrictionLifted) {
   let stateList = states();
@@ -233,7 +234,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
                 <label>Name</label>
                 <input name="fullname" type="text" required="required"/>
                 <label>Email</label>
-                <input name="email" type="email" required="required"/>
+                <input name="email" type="email" required="required" value="${getUser()}"/>
               </div>
               <div class="message-info">
                 <label>What goods, services and/or vendors are you looking for?</label>

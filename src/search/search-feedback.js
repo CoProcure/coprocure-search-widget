@@ -49,12 +49,15 @@ export function connectSearchFeedback(json, searchTerm) {
 
     const url = "https://93flntoz36.execute-api.us-east-1.amazonaws.com/production/contact/";
     const email = document.querySelector('.search-no-results input[name="email"]').value;
-    setUser(email);
+    
+    if (email) {
+      setUser(email); 
+    }
 
     const feedbackType = 'search-failure';
     const description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
     description += document.querySelector('textarea[name="search-feedback"]').value;
-    
+
     fetch(url, {
       method: "post",
       body: `fullname=${name}&email=${email}&description=${description}`,
