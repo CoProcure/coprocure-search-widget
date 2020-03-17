@@ -37,7 +37,7 @@ export function getSearchFeedbackEmbed(numHits) {
 }
 
 export function connectSearchFeedback(json, searchTerm) {
-  if (json.hits.found !== 0) {
+  if (json.hits.found > 0) {
     // the search feedback embed isn't showing anyway
     return;
   }
