@@ -231,13 +231,13 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
             <div class="fields row">
               <div class="submitter-info">
                 <label>Name</label>
-                <input name="fullname" type="text" />
+                <input name="fullname" type="text" required="required"/>
                 <label>Email</label>
                 <input name="email" type="email" required="required"/>
               </div>
               <div class="message-info">
                 <label>What goods, services and/or vendors are you looking for?</label>
-                <textarea name="description"></textarea>
+                <textarea name="description" required="required"></textarea>
               </div>
             </div>
             <div class="">
