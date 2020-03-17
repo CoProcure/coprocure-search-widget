@@ -223,29 +223,29 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
     // the contact form is redundant so we hide it.
     if (!headless && json.hits.found !== 0) {
       output = `<section class="contact-us blue-back">
-      <a name="contactanchor"></a>
-      <div class="section-interior">
-        <h2>Submit a request</h2>
-        <p class="subtext--medium">Not finding what you are looking for? Would you like some assistance? Let us know what you need and we'll get in touch within 24 hours</p>
-        <form method="POST" action="https://5o1jg1o9n4.execute-api.us-west-2.amazonaws.com/staging/contact">
-          <div class="fields row">
-            <div class="submitter-info">
-              <label>Name</label>
-              <input name="fullname" type="text" />
-              <label>Email</label>
-              <input name="email" type="text" />
+        <a name="contactanchor"></a>
+        <div class="section-interior">
+          <h2>Submit a request</h2>
+          <p class="subtext--medium">Not finding what you are looking for? Would you like some assistance? Let us know what you need and we'll get in touch within 24 hours</p>
+          <form>
+            <div class="fields row">
+              <div class="submitter-info">
+                <label>Name</label>
+                <input name="fullname" type="text" />
+                <label>Email</label>
+                <input name="email" type="email" required="required"/>
+              </div>
+              <div class="message-info">
+                <label>What goods, services and/or vendors are you looking for?</label>
+                <textarea name="description"></textarea>
+              </div>
             </div>
-            <div class="message-info">
-              <label>What goods, services and/or vendors are you looking for?</label>
-              <textarea name="description"></textarea>
+            <div class="">
+              <button class="highlight">Submit</button>
             </div>
-          </div>
-          <div class="">
-            <button class="highlight">Submit</button>
-          </div>
-        </form>
-      </div>
-    </section>`
+          </form>
+        </div>
+      </section>`
     }
     return output;
   })()}
