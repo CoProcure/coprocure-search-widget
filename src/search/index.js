@@ -184,7 +184,7 @@ export default class CoProcureSearch extends HTMLElement {
     if(this.query || this.prepop) {
       if(this.query && this.query.indexOf('"')<0) {
         url += `&q=(and `;
-        this.query.split(' ').forEach( (term) => {
+        decodeURIComponent(this.query).split(' ').forEach( (term) => {
           url += ` '${this.prepareSearchQueryTerm(term)}'`;
         })
       } else if (this.query) {
