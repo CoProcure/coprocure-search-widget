@@ -55,7 +55,7 @@ export function connectSearchFeedback(json, searchTerm) {
     }
 
     const feedbackType = 'search-failure';
-    const description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
+    let description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
     description += document.querySelector('textarea[name="search-feedback"]').value;
 
     fetch(url, {
