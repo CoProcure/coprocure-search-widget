@@ -1,6 +1,6 @@
 {
   "name": "@coprocure/search-widget",
-  "version": "3.0.22",
+  "version": "3.0.23",
   "description": "CoProcure search widget",
   "main": "src/index.js",
   "files": [
