@@ -1,11 +1,8 @@
 import { getUser, setUser } from "./user.js";
 import { trackEvent } from './tracking.js';
-import { SEARCH_FEEDBACK_SHOW_STORAGE_KEY } from './overlays.js';
 
 export function getSearchFeedbackEmbed(numHits) {
   if (numHits === 0) {
-    // Set this key so we don't show them the popup later
-    window.sessionStorage.setItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY, "yes");
     trackEvent("feedback-modal", "triggered", "zero-results");
     // Show a version of the search feedback modal embedded where the search results would
     // usually be.
@@ -49,9 +46,9 @@ export function connectSearchFeedback(json, searchTerm) {
 
     const url = "https://93flntoz36.execute-api.us-east-1.amazonaws.com/production/contact/";
     const email = document.querySelector('.search-no-results input[name="email"]').value;
-    
+
     if (email) {
-      setUser(email); 
+      setUser(email);
     }
 
     const feedbackType = 'search-failure';
