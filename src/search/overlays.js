@@ -4,7 +4,6 @@ import { trackEvent } from "./tracking.js";
 
 const MODALTYPE = {
   ADDITIONAL_DOCS: "additional-docs",
-  FOUND_YES_NO: "found-yes-no",
   GENERAL_QUESTION: "general-question",
   IDENTITY: "identity",
   PRODUCT: "product",
@@ -45,9 +44,6 @@ function showModal(modalInfo) {
   .querySelector(".js-identityModal .close-modal")
   .addEventListener("click", function() {
     const modalType = document.querySelector(".js-identityModal").classList;
-    if (modalType.contains('found-yes-no') || modalType.contains('search-feedback')) {
-      trackEvent("feedback-modal", "closed", "close circle");
-    }
     closeModal('close-clicked');
   });
 
@@ -68,14 +64,6 @@ function showModal(modalInfo) {
     setupGeneralQuestionModal();
   }
 
-  if (document.querySelector(".js-identityModal button.search-feedback")) {
-    setupSearchFeedbackModal();
-  }
-
-  if (modalInfo.type === "found-yes-no") {
-    setupFoundYesNoModal(modalInfo.trigger);
-  }
-
   document.querySelector(".modal").addEventListener("click", function(event) {
     if (event.srcElement.name != "anonymous") {
       event.preventDefault();
@@ -92,10 +80,6 @@ function closeModal(source, modalInfo) {
   console.log("Closing modal from", source);
   document.querySelector(".modal-backdrop").remove();
   document.querySelector(".js-identityModal").remove();
-  document.querySelector("body").classList.remove("noscroll");
-  if (modalInfo && modalInfo.type === "found-yes-no"){
-    trackEvent("feedback-modal", "closed", "clicked out");
-  }
 }
 
 export function showIdentityModal(contractId) {
@@ -438,163 +422,4 @@ export function showProductModal() {
     close: false
   };
   showModal(modalInfo);
-}
-
-function setupSearchFeedbackModal() {
-  document
-  .querySelector(".js-identityModal button.search-feedback")
-  .addEventListener("click", function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-
-    let url =
-    "https://93flntoz36.execute-api.us-east-1.amazonaws.com/production/contact/";
-    let email = document.querySelector('.modal input[name="email"]').value;
-    if (email) {
-      setUser(email);
-    } else {
-      document.getElementById("errors").innerHTML = "Please enter an email*";;
-      document.querySelector('.modal input[name="email"]').focus();
-      return;
-    }
-    let searchTerm = window.location.search.split('=')[1];
-
-    const feedbackType = document.querySelector('.field-description').id;
-    let description = `Search Term: ${searchTerm} Type: ${feedbackType} Feedback: `;
-    description += document.querySelector(
-      'textarea[name="search-feedback"]'
-    ).value;
-    fetch(url, {
-      method: "post",
-      body: `fullname=${name}&email=${email}&description=${description}`,
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      }
-    })
-    .then(function(response) {
-      return response.text();
-    })
-    .then(function(data) {
-      console.log(data);
-      if (feedbackType == 'search-failure'){
-        trackEvent("feedback-modal", "modal 2 response", "modal 2 failure details");
-      } else {
-        trackEvent("feedback-modal", "modal 2 response", "modal 2 feedback");
-      }
-      closeModal('form-submitted');
-    });
-  });
-}
-
-export function showSearchFeedbackModal(successfulSearch) {
-  let title = "We're glad to help!";
-  let description = "Is there anything else you'd like to share with us?";
-  let feedbackType = "search-success";
-  let feedbackLabel = "Feedback";
-  let placeholder = "It would be great if...";
-  if (!successfulSearch) {
-    title = "Sorry we couldn't be more helpful";
-    description = "If you share a little more information about what you're looking for, we may be able to provide additional support on your request.";
-    feedbackType = "search-failure";
-    feedbackLabel = "Please tell us in more detail what you are looking for:";
-    placeholder = "I'm looking for...";
-  }
-  let modalInfo = {
-    type: "search-feedback",
-    title: `${title}`,
-    body: `<form method="post" action="">
-    <span class="field-description" id="${feedbackType}">
-      ${description}
-    </span>
-    <div id="errors"> </div>
-    <label>
-      <span class="label-text">Email</span>
-      <input type="text" name="email"  value="${getUser()}" />
-      <div class='email-disclaimer'>We're committed to keeping your information secure. We will not share your email with any third party.</div>
-    </label>
-    <label>
-      <span class="label-text">${feedbackLabel}</span>
-      <textarea name="search-feedback" placeholder="${placeholder}"></textarea>
-    </label>
-    <button type="submit" class="search-feedback">Send</button>
-  </form>`,
-    close: false
-  };
-
-  showModal(modalInfo);
-}
-
-function setupFoundYesNoModal(trigger) {
-  document
-  .querySelector(".js-identityModal .found-yes")
-  .addEventListener("click", yesNoOnClick);
-
-  document
-  .querySelector(".js-identityModal .found-no")
-  .addEventListener("click", yesNoOnClick);
-
-  document
-  .querySelector(".still-searching")
-  .addEventListener("click", function(){
-    console.log('clicked on still searching');
-    closeModal('still-searching');
-    trackEvent("feedback-modal", "closed", "still searching");
-  });
-
-  trackEvent("feedback-modal", "triggered", trigger);
-}
-
-function yesNoOnClick(event) {
-  event.preventDefault();
-  event.stopPropagation();
-  // GA event tracking:
-  const clickedYes = (
-    event.target.className === "found-yes" ||
-    event.target.className === "yes-img" ||
-    event.target.className === "yes-text");
-  if (clickedYes) {
-    trackEvent("feedback-modal", "modal 1 response", "modal 1 yes");
-  } else{
-    trackEvent("feedback-modal", "modal 1 response", "modal 1 no");
-  }
-  // This is kind of a disgusting way to show the next modal. But it works?
-  closeModal('search-feedback-next-modal');
-  console.log("User clicked on", event.target.className);
-  showSearchFeedbackModal(clickedYes);
-}
-
-export const SEARCH_FEEDBACK_SHOW_STORAGE_KEY = "coprocure-search-feedback-shown";
-
-export function maybeShowFoundYesNoModal(trigger) {
-  // This will not show the modal if the user's already seen it this session. It returns
-  // true if modal pops up, false if already shown.
-  if (window.sessionStorage.getItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY) !== null) {
-    console.log("Search feedback modal already shown this session!");
-    return false;
-  }
-  window.sessionStorage.setItem(SEARCH_FEEDBACK_SHOW_STORAGE_KEY, "yes");
-  let modalInfo = {
-    type: MODALTYPE.FOUND_YES_NO,
-    trigger: trigger,
-    title: "Did you find what you were looking for today?",
-    body: `<form method="post" action="">
-    <div id="errors"> </div>
-    <div class="yes-no-container">
-      <div class="found-no">
-        <img class="no-img" src="img/thumbs.png">
-        <div class="no-text">No</div>
-      </div>
-      <div class="found-yes">
-        <img class="yes-img" src="img/thumbs.png">
-        <div class="yes-text">Yes</div>
-      </div>
-    </div>
-    <div class="still-searching">I'm still searching...</div>
-  </form>`,
-    close: false
-  };
-
-  showModal(modalInfo);
-
-  return true;
 }
