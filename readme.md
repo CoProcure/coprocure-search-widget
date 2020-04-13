@@ -4,48 +4,6 @@ This package is shared by embedded widgets, e.g. http://marc2.org/assets/kcrpc/i
 
 You can install this component on your site if you would like to add the CoProcure contract search engine to your webpage.
 
-## How to install
-
-1) Include the javascript
-
-    Either:
-    
-    - Install the package locally:
-
-      ```
-      npm i @coprocure/search-widget
-      ```
-      and
-
-    - Require it in your bundle:
-
-      ```
-      import '@coprocure/search-widget'
-      ```
-
-    Or
-
-    - Include the script tag in your page:
-
-      ```
-      <script src="https://components.coprocure.us/dist/search/v2/index.js" type="text/javascript"></script>
-      ```
-
-2) Add the web component custom element to your HTML:
-
-```
-<coprocure-search data-results="10" data-display-state="0" />
-```
-
-## Parameters
-
-- Control the number of results returned on each page: ```data-results="10"```
-- Limit the initial data set to a set of buyers: ```buyers='["State of Michigan"]'```
-- Load a set of results before any query is entered: ```prepop="true"```
-- Limit the scope of any query to results from a specific set of buyers: ```searchonly="State of Michigan"```
-- Include non-cooperative contracts in the search: ```show-non-coop="true"```
-- Include expired contracts in the search: ```show-expired="true"```
-
 # Development
 - Make your changes
 - `npm test` in the search widget repo
@@ -67,13 +25,19 @@ You can install this component on your site if you would like to add the CoProcu
 
 # Deployment
 ## Test browsers
-- Test your functionality. Generally, test every browser that has a different rendering engine
-  - Chrome
-  - Safari
-  - Firefox
-  - Edge
-  - IE11
+- Before deploying EVERY change, please test whatever you changed on
+    - A modern browser
+    - IE11
+    - Mobile (you can fake this by decreasing your browser window size to a width of less than 768 pixels)
   If testing in Browserstack, make sure you have the localhost extension installed.
+- If you've made likely breaking changes (updated babel, refactored CSS, etc), try to test every browser that has a different rendering engine.
+    - Chrome
+    - IE11
+    - iPhone (via Browserstack)
+    - Safari
+    - Firefox
+    - Edge
+    - Android (via Browserstack)
 
 ## Update the NPM package
 - When everything is ready, `npm version patch` to up the version (or do this manually)
@@ -85,17 +49,43 @@ You can install this component on your site if you would like to add the CoProcu
 - `npm install @coprocure/search-widget`
 - `npm run build`
 - Retest the functionality locally on at least one browser (restart your localservers).
-- Check in those changes to the components repo.
-- `npm run deploy` to publish these new changes to S3
+- Check in those changes to the components repo. Once the changes are merged, you can try out the new code on components.coprocure.us ([Portland link](http://components.coprocure.us/partners/columbia-test2.html)). This is equivalent to "deploying to staging".
+- `npm run deploy` to publish these new changes to S3.
 - That doesn’t actually touch the files that our partners are referring to. To update Portland
     - `cp dist/search/v2/index.js dist/index2.js`
     - `cp dist/search/v2/index.js.map dist/index2.js.map`
-    - `npm run deploy` again
-    - <a href="https://www.dropbox.com/scl/fi/m3fz75knz4nda47g2cdhr/Software-Engineer-Documentation.paper?dl=0&rlkey=1n3y7cjsgddustdjgx2m9v1jj#:uid=188852806138254769823627&h2=Clearing-the-Cloudfront-cache">Clear the cloudfront cache.</a>
+    - `npm run deploy` again. This is the "deploy to production" step for the Portland widget.
+    - <a href="https://docs.google.com/document/d/1RubeFJi3ZOoVCUdogGgKcNqxX0oNAnPiZi3e7nuE9lo/edit#heading=h.exic8yjrdp9j">Clear the cloudfront cache.</a>
     - Test the Portland embedded widget. (shift+Cmd+R to bypass your browser cache)
 - To update KCRPC
     - `cp dist/search/v2/index.js dist/index.js`
     - `cp dist/search/v2/index.js.map dist/index.js.map`
-    - `npm run deploy` again
+    - `npm run deploy` again. This is the "deploy to production" step for the KCRPC widget.
     - Test the KCRPC embedded widget (you may again need to clear Cloudfront and local cache).
 - Update the coprocure.us website according to https://github.com/CoProcure/coprocure.us
+
+
+## How to embed the search widget to a webpage
+
+1) Include the script tag in your page:
+
+      ```
+      <script src="https://components.coprocure.us/dist/search/v2/index.js" type="text/javascript"></script>
+      ```
+
+2) Add the web component custom element to your HTML:
+
+```
+<coprocure-search data-results="10" data-display-state="0" />
+```
+
+(For demo and testing purposes, you may wish to duplicate the target webpage in components.coprocure.us/partners/demos and embed the search widget. You'll probably want to replace relative links on the page with absolute links).
+
+## Parameters
+
+- Control the number of results returned on each page: ```data-results="10"```
+- Limit the initial data set to a set of buyers: ```buyers='["State of Michigan"]'```
+- Load a set of results before any query is entered: ```prepop="true"```
+- Limit the scope of any query to results from a specific set of buyers: ```searchonly="State of Michigan"```
+- Include non-cooperative contracts in the search: ```show-non-coop="true"```
+- Include expired contracts in the search: ```show-expired="true"```
