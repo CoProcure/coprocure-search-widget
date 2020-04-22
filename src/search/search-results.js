@@ -20,7 +20,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
       return `<div class="search-interior">
       <a href="https://www.coprocure.us" class="company-identifier powered-by" style="text-decoration: none;">
         <span class="powered-by-text">Powered by</span>
-        <img width="150px" src="https://www.coprocure.us/img/logo-svg.svg" alt="CoProcure logo">
+        <img width="150px" src="https://www.coprocure.us/static/img/logo-svg.svg" alt="CoProcure logo">
       </a>
       <form class="search-query">
         <div class="search-container" style="opacity: 1;${alignmentMod}">
@@ -162,7 +162,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
                   ${(function() {
                     let output = '';
                     if(item.fields.cooperative_language == "false" || item.fields.cooperative_language == "False" ) {
-                        output += `<div class="warning"> <img src="https://www.coprocure.us/img/exclamation-point.svg" class=""> Non-cooperative contract</div>`
+                        output += `<div class="warning"> <img src="https://www.coprocure.us/static/img/exclamation-point.svg" class=""> Non-cooperative contract</div>`
                     }
                     return output;
                     })()}
@@ -195,7 +195,7 @@ export function resultLayout(json, query, sort, expired, noncoop, states, buyers
                     );
                     let ret = '';
                     if(contractExpDate < new Date()) {
-                      ret += `<div class="warning"> <img src="https://www.coprocure.us/img/exclamation-point.svg" class=""> </div>`;
+                      ret += `<div class="warning"> <img src="https://www.coprocure.us/static/img/exclamation-point.svg" class=""> </div>`;
                     }
                     ret += contractExpDate.toLocaleDateString("en-US");
                     return ret;
