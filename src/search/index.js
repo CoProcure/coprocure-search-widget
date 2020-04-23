@@ -120,7 +120,7 @@ export default class CoProcureSearch extends HTMLElement {
         <div class="search-interior">
         <a href="https://www.coprocure.us" class="company-identifier powered-by" style="text-decoration: none;">
           <span class="powered-by-text">Powered by</span>
-          <img width="150px" src="https://www.coprocure.us/img/logo-svg.svg" alt="CoProcure logo">
+          <img width="150px" src="https://www.coprocure.us/static/img/logo-svg.svg" alt="CoProcure logo">
         </a>
         <form class="search-query">
           <div class="search-container" style="opacity: 1;${alignmentMod}">

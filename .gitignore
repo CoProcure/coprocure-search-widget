@@ -4,8 +4,6 @@ common/
 .npmrc
 .vscode
 .idea
-coverage/index.html
-coverage/index.js.html
-coverage/lcov.info
+coverage/
 npm-debug.log
 *.iml
