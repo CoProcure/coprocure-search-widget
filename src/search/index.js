@@ -226,7 +226,7 @@ export default class CoProcureSearch extends HTMLElement {
       url += `)`
     }
     if(!this.showNonCoop) {
-      url += `(and cooperative_language:'true')`;
+      url += `(or cooperative_language:'true' cooperative_language:1)`;
     }
     // End of the query
     url += `)`
